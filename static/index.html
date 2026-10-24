@@ -139,6 +139,44 @@
   .msg.a .try { color: var(--muted); font-size: 13px; margin-top: 3px; }
   .askrow { display: flex; gap: 8px; } .askrow input { flex: 1; }
 
+  .topbar { padding-bottom: 22px; margin-bottom: 30px; border-bottom: 1px solid var(--line); }
+  .barrow { display: grid; grid-template-columns: 1fr 160px 150px auto; gap: 10px; }
+  .barrow textarea { min-height: 48px; height: 48px; resize: none; padding-top: 13px; }
+  @media (max-width: 820px) { .barrow { grid-template-columns: 1fr 1fr; } .barrow textarea { grid-column: 1 / -1; } }
+  .subrow { display: flex; justify-content: space-between; align-items: center; gap: 14px; flex-wrap: wrap; margin-top: 12px; }
+  .subrow .chip { margin-bottom: 0; font-size: 12px; padding: 4px 10px; }
+  .opts { display: flex; gap: 16px; align-items: center; font-size: 12px; color: var(--muted); }
+  .opts input { accent-color: #111; }
+  .hidden { display: none !important; }
+
+  /* compact horizontal look cards */
+  .cards { display: grid; grid-template-columns: repeat(3, minmax(260px, 1fr)); gap: 18px; margin-bottom: 18px; align-items: start; }
+  @media (max-width: 900px) { .cards { grid-template-columns: repeat(3, 82%); overflow-x: auto; scroll-snap-type: x mandatory; padding-bottom: 6px; }
+                              .card3 { scroll-snap-align: start; } }
+  .card3 { border: 1px solid var(--line); display: flex; flex-direction: column; background: var(--paper); }
+  .card3 .flat { background: var(--soft); aspect-ratio: 2 / 1; display: flex; flex-wrap: wrap; align-content: center; justify-content: center; gap: 6px 10px; padding: 16px; }
+  .card3 .flat span { width: 62px; height: 62px; display: flex; align-items: center; justify-content: center; }
+  .card3 .flat svg { width: 100%; height: 100%; }
+  .card3 .body { padding: 14px 16px 16px; display: flex; flex-direction: column; flex: 1; }
+  .card3 .top { display: flex; justify-content: space-between; align-items: center; }
+  .card3 .vibe { font-family: var(--serif); font-size: 26px; font-style: italic; line-height: 1.1; margin: 10px 0 4px; }
+  .card3 .headline { font-size: 13.5px; margin-bottom: 10px; }
+  .card3 .shoe { font-size: 12.5px; color: var(--muted); margin-bottom: 12px; }
+  .card3 .more { margin-top: auto; }
+  .card3 .lnk { font-size: 11px; letter-spacing: 1.4px; text-transform: uppercase; font-weight: 600; }
+  .card3 .detail { border-top: 1px solid var(--line); margin-top: 12px; padding-top: 10px; }
+  .card3 .detail p { font-size: 12.5px; margin: 0 0 8px; }
+  .card3 .detail b { font-size: 10px; letter-spacing: 1.3px; text-transform: uppercase; display: block; }
+  .brief { display: flex; gap: 0; border: 1px solid var(--line); margin-bottom: 26px; flex-wrap: wrap; }
+  .brief > div { flex: 1 1 260px; padding: 14px 16px; border-right: 1px solid var(--line); }
+  .brief > div:last-child { border-right: 0; }
+  .brief .t { font-family: var(--serif); font-size: 20px; margin: 2px 0 6px; }
+  .brief .tags { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; margin-bottom: 6px; }
+  .brief p { margin: 0; font-size: 13px; }
+  .brief .da { font-size: 12px; color: var(--muted); margin-top: 4px; }
+  .capline { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; flex-wrap: wrap; margin-bottom: 14px; }
+  .capline .n { font-size: 12px; letter-spacing: 1.4px; text-transform: uppercase; font-weight: 700; }
+
   /* ---------- closet ---------- */
   .closet-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(170px, 1fr)); gap: 22px 16px; }
   .citem.laundry { opacity: .4; }
@@ -181,31 +219,27 @@
 
   <!-- ================= PLAN ================= -->
   <section class="tab on" id="tab-plan">
-    <div class="grid2">
-      <div>
-        <div class="eyebrow">Step 1</div>
-        <h2>What's the <i>occasion?</i></h2>
-        <textarea id="dayText" maxlength="1500" placeholder="e.g. First date tomorrow, 7pm at a wine bar. Or paste an invite."></textarea>
-        <div class="small muted" style="margin:6px 0 16px"><span id="charCount">0</span> / 1500</div>
-        <div class="eyebrow">Or try one</div>
-        <div id="examples"></div>
-        <div class="row" style="margin-top:18px">
-          <div><div class="eyebrow">Date</div><input type="date" id="date"></div>
-          <div><div class="eyebrow">City</div><input type="text" id="city" value="New Haven" maxlength="60"></div>
-        </div>
-        <label class="checks" style="display:block;margin-top:16px"><label><input type="checkbox" id="useCloset"> Style it from my saved closet (optional)</label></label>
-        <div style="margin-top:14px; display:flex; gap:14px; align-items:center">
-          <button class="btn" id="go">Dress me</button>
-          <span class="small muted">10–30 seconds</span>
-        </div>
-        <div class="small muted" style="margin-top:18px" id="fitHint"></div>
+    <div class="topbar">
+      <h2 style="margin-bottom:14px">What's the <i>occasion?</i></h2>
+      <div class="barrow">
+        <textarea id="dayText" rows="1" maxlength="1500" placeholder="e.g. First date tomorrow, 7pm at a wine bar — or paste an invite"></textarea>
+        <input type="date" id="date" title="Date">
+        <input type="text" id="city" value="New Haven" maxlength="60" title="City">
+        <button class="btn" id="go">Dress me</button>
       </div>
-
-      <div id="result">
-        <div class="empty">
-          <div class="big">You don't need <i>more</i> clothes.<br>You need a plan.</div>
-          <div class="muted">Tell me what's coming up. I'll tell you how dressed-up to be,<br>then give you three looks built from basics you probably already own.</div>
+      <div class="subrow">
+        <div id="examples"></div>
+        <div class="opts">
+          <label><input type="checkbox" id="useCloset"> use my saved closet</label>
+          <span id="fitHint"></span>
+          <span class="hidden" id="charCount">0</span>
         </div>
+      </div>
+    </div>
+    <div id="result">
+      <div class="empty">
+        <div class="big">You don't need <i>more</i> clothes.<br>You need a plan.</div>
+        <div class="muted">Three looks, built from basics you probably already own.</div>
       </div>
     </div>
   </section>
@@ -395,7 +429,7 @@ $("date").value = new Date(Date.now() + 864e5).toLocaleDateString("en-CA");
 EXAMPLES.forEach(t => $("examples").append(el("span", {class: "chip", onclick: () => { $("dayText").value = t; $("charCount").textContent = t.length; }}, t)));
 $("dayText").addEventListener("input", e => $("charCount").textContent = e.target.value.length);
 $("go").onclick = plan;
-$("dayText").addEventListener("keydown", e => { if (e.key === "Enter" && (e.metaKey || e.ctrlKey)) plan(); });
+$("dayText").addEventListener("keydown", e => { if (e.key === "Enter" && !e.shiftKey) { e.preventDefault(); plan(); } });
 
 let loadingTimer;
 function showLoading() {
@@ -433,41 +467,41 @@ function renderResult(d) {
     $("result").replaceChildren(...out); return;
   }
   const w = d.weather, o = d.options;
-  out.push(el("div", {class: "eyebrow"}, "The occasion, decoded"));
-  out.push(el("div", {style: "display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:8px"},
-    el("h2", {style: "margin:0"}, "Here's the ", el("i", {}, "brief")),
+  out.push(el("div", {class: "capline"},
+    el("div", {class: "eyebrow", style: "margin:0"}, "The brief"),
     el("span", {class: "weather"}, `${w.city} · ${w.date} · ${w.summary}`)));
-  out.push(el("div", {class: "events"}, d.events.map((e, i) => el("div", {class: "event"},
-    el("div", {class: "time"}, `${i + 1} · ${e.time || "any time"} · ${e.confidence === "stated" ? "from the invite" : "decoded"}`),
-    el("h3", {}, e.title),
-    el("div", {style: "display:flex;gap:10px;align-items:center;flex-wrap:wrap"}, dc(e.dress_code), effort(e.effort)),
-    el("p", {class: "small", style: "margin:12px 0 4px"}, e.why),
-    el("ul", {class: "do"}, e.do.map(x => el("li", {}, x))),
-    el("ul", {class: "avoid"}, e.avoid.map(x => el("li", {}, x))),
+  out.push(el("div", {class: "brief"}, d.events.map(e => el("div", {},
+    el("div", {class: "time weather"}, e.time || "any time"),
+    el("div", {class: "t"}, e.title),
+    el("div", {class: "tags"}, dc(e.dress_code), effort(e.effort)),
+    el("p", {}, e.why),
+    el("div", {class: "da"}, [...e.do.map(x => "+ " + x), ...e.avoid.map(x => "– " + x)].join("   ")),
   ))));
 
-  out.push(el("div", {class: "eyebrow"}, o.mode === "closet" ? "From your closet" : "Built from basics"));
-  out.push(el("h2", {}, "Three ways to ", el("i", {}, "wear it")));
-  out.push(el("div", {class: "capsule"},
-    el("div", {class: "n"}, `3 looks · ${o.unique_pieces} pieces`),
-    el("div", {class: "small"}, o.less_is_more)));
-  out.push(el("div", {class: "looks3"}, o.looks.map(look => el("div", {class: "look3"},
-    el("div", {style: "display:flex;justify-content:space-between;align-items:center"}, effort(look.effort_level, false), dc(look.dress_code)),
-    el("div", {class: "vibe"}, look.vibe),
-    el("div", {class: "headline"}, look.headline),
-    el("ul", {class: "pieces"}, look.pieces.map(p => el("li", {},
-      el("span", {class: "ic"}, garment(p.category, p.color_hex, p.name)),
-      el("span", {}, p.name, p.swap ? el("span", {class: "sw"}, "no " + p.name.split(" ").slice(-1)[0] + "? " + p.swap) : null),
-      p.closet_id ? el("span", {class: "own"}, "yours") : p.basic ? el("span", {class: "own"}, "a basic") : null))),
-    el("p", {class: "note"}, el("b", {}, "Shoes"), look.shoes_tip),
-    el("p", {class: "note"}, el("b", {}, "Why it works"), look.why),
-    el("p", {class: "note"}, el("b", {}, "Effortless because"), look.effortless_because),
-    look.flatters ? el("p", {class: "note"}, el("b", {}, "Shows off"), look.flatters) : null,
-    look.tweaks.length ? el("p", {class: "note"}, el("b", {}, "Between events"), look.tweaks.join(" ")) : null,
-    look.warnings.map(x => el("div", {class: "warn"}, "Note: " + x)),
-    o.mode === "closet" ? el("div", {style: "margin-top:auto;padding-top:8px"}, wornButton(look.pieces.map(p => p.closet_id).filter(Boolean), w.date)) : null,
-  ))));
-  out.push(el("div", {class: "small muted", style: "margin:-8px 0 22px"}, "Weather: ", o.weather_note));
+  out.push(el("div", {class: "capline"},
+    el("h2", {style: "margin:0"}, "Three ways to ", el("i", {}, "wear it")),
+    el("span", {class: "n"}, `3 looks · ${o.unique_pieces} pieces${o.mode === "closet" ? " · from your closet" : ""}`)));
+  out.push(el("div", {class: "cards"}, o.looks.map(look => {
+    const detail = el("div", {class: "detail hidden"},
+      el("p", {}, el("b", {}, "The pieces"), look.pieces.map(p => p.name + (p.swap ? ` (or ${p.swap})` : "")).join(" · ")),
+      el("p", {}, el("b", {}, "Why it works"), look.why),
+      el("p", {}, el("b", {}, "Effortless because"), look.effortless_because),
+      look.flatters ? el("p", {}, el("b", {}, "Shows off"), look.flatters) : null,
+      look.tweaks.length ? el("p", {}, el("b", {}, "Between events"), look.tweaks.join(" ")) : null,
+      look.warnings.map(x => el("p", {class: "warn"}, "Note: " + x)),
+      o.mode === "closet" ? wornButton(look.pieces.map(p => p.closet_id).filter(Boolean), w.date) : null);
+    const toggle = el("button", {class: "lnk"}, "Details +");
+    toggle.onclick = () => { const open = detail.classList.toggle("hidden"); toggle.textContent = open ? "Details +" : "Less –"; };
+    return el("div", {class: "card3"},
+      el("div", {class: "flat"}, look.pieces.map(p => el("span", {title: p.name}, garment(p.category, p.color_hex, p.name)))),
+      el("div", {class: "body"},
+        el("div", {class: "top"}, effort(look.effort_level, false), dc(look.dress_code)),
+        el("div", {class: "vibe"}, look.vibe),
+        el("div", {class: "headline"}, look.headline),
+        el("div", {class: "shoe"}, look.shoes_tip),
+        el("div", {class: "more"}, toggle, detail)));
+  })));
+  out.push(el("div", {class: "small muted", style: "margin:0 0 26px"}, o.less_is_more, " · ", o.weather_note));
   out.push(chatBox(d.run_id));
   out.push(usageStrip(d));
   out.push(traceBlock(d.trace, d.guard_rejections));
@@ -584,7 +618,7 @@ async function loadFit() {
 }
 function fitHint(f) {
   const bits = [f.love_to_show.length ? "shows off your " + f.love_to_show.join(" & ") : null, f.style_words || null].filter(Boolean);
-  $("fitHint").replaceChildren("Styling for: ", el("b", {}, bits.join(" · ") || "no fit profile yet"), " — ", el("button", {class: "lnk", onclick: () => openTab("fit")}, "edit my fit"));
+  $("fitHint").replaceChildren(el("button", {class: "lnk", onclick: () => openTab("fit")}, f.love_to_show.length ? "my fit: " + f.love_to_show.join(" & ") : "add my fit"));
 }
 $("saveFit").onclick = async () => {
   const body = {wardrobe: checked($("fWardrobe"))[0] || "no preference", love_to_show: checked($("fLove")), relaxed_fit_around: checked($("fRelaxed")),
