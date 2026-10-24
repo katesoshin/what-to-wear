@@ -1,0 +1,834 @@
+[
+ {
+  "id": "t01",
+  "name": "White cotton poplin button-down",
+  "category": "top",
+  "color": "white",
+  "color_hex": "#f7f5f0",
+  "suits": [
+   "smart casual",
+   "business casual",
+   "business professional"
+  ],
+  "warmth": 1,
+  "times_worn": 9,
+  "last_worn": null,
+  "in_laundry": false,
+  "fit": [
+   "fitted",
+   "collared"
+  ]
+ },
+ {
+  "id": "t02",
+  "name": "Light blue oxford shirt",
+  "category": "top",
+  "color": "light blue",
+  "color_hex": "#bcd3ea",
+  "suits": [
+   "smart casual",
+   "business casual"
+  ],
+  "warmth": 1,
+  "times_worn": 6,
+  "last_worn": null,
+  "in_laundry": false,
+  "fit": [
+   "relaxed",
+   "collared"
+  ]
+ },
+ {
+  "id": "t03",
+  "name": "Cream fine-gauge merino crewneck",
+  "category": "top",
+  "color": "cream",
+  "color_hex": "#efe6d2",
+  "suits": [
+   "smart casual",
+   "business casual"
+  ],
+  "warmth": 2,
+  "times_worn": 4,
+  "last_worn": null,
+  "in_laundry": false,
+  "fit": [
+   "fitted",
+   "crewneck"
+  ]
+ },
+ {
+  "id": "t04",
+  "name": "Black silk shell blouse",
+  "category": "top",
+  "color": "black",
+  "color_hex": "#1b1b1b",
+  "suits": [
+   "business casual",
+   "business professional",
+   "cocktail"
+  ],
+  "warmth": 1,
+  "times_worn": 2,
+  "last_worn": null,
+  "in_laundry": false,
+  "fit": [
+   "relaxed",
+   "v-neck",
+   "sleeveless"
+  ]
+ },
+ {
+  "id": "t05",
+  "name": "Grey striped tee",
+  "category": "top",
+  "color": "grey",
+  "color_hex": "#9a9a9a",
+  "suits": [
+   "casual"
+  ],
+  "warmth": 1,
+  "times_worn": 14,
+  "last_worn": null,
+  "in_laundry": false,
+  "fit": [
+   "relaxed",
+   "crewneck",
+   "boxy"
+  ]
+ },
+ {
+  "id": "t06",
+  "name": "Navy cable-knit sweater",
+  "category": "top",
+  "color": "navy",
+  "color_hex": "#22314f",
+  "suits": [
+   "casual",
+   "smart casual"
+  ],
+  "warmth": 3,
+  "times_worn": 7,
+  "last_worn": null,
+  "in_laundry": false,
+  "fit": [
+   "oversized",
+   "crewneck"
+  ]
+ },
+ {
+  "id": "t07",
+  "name": "Pink logo hoodie",
+  "category": "top",
+  "color": "pink",
+  "color_hex": "#f2a7c3",
+  "suits": [
+   "casual"
+  ],
+  "warmth": 3,
+  "times_worn": 11,
+  "last_worn": null,
+  "in_laundry": false,
+  "fit": [
+   "oversized"
+  ]
+ },
+ {
+  "id": "t08",
+  "name": "Camel turtleneck",
+  "category": "top",
+  "color": "camel",
+  "color_hex": "#b98a5a",
+  "suits": [
+   "smart casual",
+   "business casual"
+  ],
+  "warmth": 3,
+  "times_worn": 0,
+  "last_worn": null,
+  "in_laundry": false,
+  "fit": [
+   "fitted",
+   "turtleneck"
+  ]
+ },
+ {
+  "id": "t09",
+  "name": "Black square-neck fitted top",
+  "category": "top",
+  "color": "black",
+  "color_hex": "#111111",
+  "suits": [
+   "casual",
+   "smart casual",
+   "business casual"
+  ],
+  "warmth": 1,
+  "fit": [
+   "fitted",
+   "square-neck"
+  ],
+  "times_worn": 3,
+  "last_worn": null,
+  "in_laundry": false
+ },
+ {
+  "id": "t10",
+  "name": "White boxy cotton tee",
+  "category": "top",
+  "color": "white",
+  "color_hex": "#fafafa",
+  "suits": [
+   "casual",
+   "smart casual"
+  ],
+  "warmth": 1,
+  "fit": [
+   "relaxed",
+   "crewneck",
+   "boxy"
+  ],
+  "times_worn": 12,
+  "last_worn": null,
+  "in_laundry": false
+ },
+ {
+  "id": "t11",
+  "name": "Ivory silk camisole",
+  "category": "top",
+  "color": "ivory",
+  "color_hex": "#f3ecdc",
+  "suits": [
+   "smart casual",
+   "cocktail"
+  ],
+  "warmth": 1,
+  "fit": [
+   "v-neck",
+   "sleeveless",
+   "flowy"
+  ],
+  "times_worn": 0,
+  "last_worn": null,
+  "in_laundry": false
+ },
+ {
+  "id": "t12",
+  "name": "Navy striped boat-neck top",
+  "category": "top",
+  "color": "navy/white",
+  "color_hex": "#2c3a5c",
+  "suits": [
+   "casual",
+   "smart casual"
+  ],
+  "warmth": 1,
+  "fit": [
+   "fitted",
+   "boat-neck"
+  ],
+  "times_worn": 5,
+  "last_worn": null,
+  "in_laundry": false
+ },
+ {
+  "id": "b01",
+  "name": "Black tailored wool trousers",
+  "category": "bottom",
+  "color": "black",
+  "color_hex": "#151515",
+  "suits": [
+   "business casual",
+   "business professional"
+  ],
+  "warmth": 2,
+  "times_worn": 10,
+  "last_worn": null,
+  "in_laundry": false,
+  "fit": [
+   "high-waist",
+   "straight",
+   "structured"
+  ]
+ },
+ {
+  "id": "b02",
+  "name": "Charcoal suit trousers",
+  "category": "bottom",
+  "color": "charcoal",
+  "color_hex": "#3b3d42",
+  "suits": [
+   "business professional"
+  ],
+  "warmth": 2,
+  "times_worn": 1,
+  "last_worn": null,
+  "in_laundry": false,
+  "fit": [
+   "straight",
+   "structured"
+  ]
+ },
+ {
+  "id": "b03",
+  "name": "Khaki chinos",
+  "category": "bottom",
+  "color": "khaki",
+  "color_hex": "#c8b48a",
+  "suits": [
+   "smart casual",
+   "business casual"
+  ],
+  "warmth": 1,
+  "times_worn": 3,
+  "last_worn": null,
+  "in_laundry": false,
+  "fit": [
+   "straight",
+   "mid-rise"
+  ]
+ },
+ {
+  "id": "b04",
+  "name": "Dark wash straight jeans",
+  "category": "bottom",
+  "color": "dark indigo",
+  "color_hex": "#28324a",
+  "suits": [
+   "casual",
+   "smart casual"
+  ],
+  "warmth": 2,
+  "times_worn": 15,
+  "last_worn": null,
+  "in_laundry": false,
+  "fit": [
+   "high-waist",
+   "straight"
+  ]
+ },
+ {
+  "id": "b05",
+  "name": "Light wash ripped jeans",
+  "category": "bottom",
+  "color": "light blue",
+  "color_hex": "#9fb6cf",
+  "suits": [
+   "casual"
+  ],
+  "warmth": 2,
+  "times_worn": 8,
+  "last_worn": null,
+  "in_laundry": false,
+  "fit": [
+   "relaxed",
+   "mid-rise"
+  ]
+ },
+ {
+  "id": "b06",
+  "name": "Black pleated midi skirt",
+  "category": "bottom",
+  "color": "black",
+  "color_hex": "#202020",
+  "suits": [
+   "smart casual",
+   "business casual",
+   "cocktail"
+  ],
+  "warmth": 1,
+  "times_worn": 1,
+  "last_worn": null,
+  "in_laundry": false,
+  "fit": [
+   "high-waist",
+   "a-line",
+   "midi",
+   "flowy"
+  ]
+ },
+ {
+  "id": "b07",
+  "name": "Grey wide-leg trousers",
+  "category": "bottom",
+  "color": "grey",
+  "color_hex": "#8d8f94",
+  "suits": [
+   "smart casual",
+   "business casual"
+  ],
+  "warmth": 2,
+  "times_worn": 0,
+  "last_worn": null,
+  "in_laundry": false,
+  "fit": [
+   "high-waist",
+   "wide-leg",
+   "flowy"
+  ]
+ },
+ {
+  "id": "b08",
+  "name": "Vintage straight-leg blue jeans",
+  "category": "bottom",
+  "color": "mid blue",
+  "color_hex": "#6f8fb5",
+  "suits": [
+   "casual",
+   "smart casual"
+  ],
+  "warmth": 2,
+  "fit": [
+   "high-waist",
+   "straight"
+  ],
+  "times_worn": 7,
+  "last_worn": null,
+  "in_laundry": false
+ },
+ {
+  "id": "b09",
+  "name": "Champagne silk slip midi skirt",
+  "category": "bottom",
+  "color": "champagne",
+  "color_hex": "#e6d3b3",
+  "suits": [
+   "smart casual",
+   "cocktail"
+  ],
+  "warmth": 1,
+  "fit": [
+   "high-waist",
+   "midi",
+   "flowy"
+  ],
+  "times_worn": 0,
+  "last_worn": null,
+  "in_laundry": false
+ },
+ {
+  "id": "d01",
+  "name": "Black sheath dress",
+  "category": "dress",
+  "color": "black",
+  "color_hex": "#111111",
+  "suits": [
+   "business casual",
+   "business professional",
+   "cocktail"
+  ],
+  "warmth": 1,
+  "times_worn": 2,
+  "last_worn": null,
+  "in_laundry": false,
+  "fit": [
+   "fitted",
+   "defined-waist",
+   "knee-length"
+  ]
+ },
+ {
+  "id": "d02",
+  "name": "Emerald satin slip dress",
+  "category": "dress",
+  "color": "emerald",
+  "color_hex": "#0f6b4f",
+  "suits": [
+   "cocktail"
+  ],
+  "warmth": 1,
+  "times_worn": 1,
+  "last_worn": null,
+  "in_laundry": false,
+  "fit": [
+   "v-neck",
+   "flowy",
+   "midi",
+   "open-back"
+  ]
+ },
+ {
+  "id": "d03",
+  "name": "Floral wrap midi dress",
+  "category": "dress",
+  "color": "floral blue",
+  "color_hex": "#7d93c4",
+  "suits": [
+   "casual",
+   "smart casual",
+   "business casual"
+  ],
+  "warmth": 1,
+  "fit": [
+   "v-neck",
+   "defined-waist",
+   "midi",
+   "flowy"
+  ],
+  "times_worn": 1,
+  "last_worn": null,
+  "in_laundry": false
+ },
+ {
+  "id": "o01",
+  "name": "Charcoal suit blazer",
+  "category": "outerwear",
+  "color": "charcoal",
+  "color_hex": "#3b3d42",
+  "suits": [
+   "business casual",
+   "business professional"
+  ],
+  "warmth": 2,
+  "times_worn": 2,
+  "last_worn": null,
+  "in_laundry": false,
+  "fit": [
+   "structured",
+   "fitted"
+  ]
+ },
+ {
+  "id": "o02",
+  "name": "Navy unstructured blazer",
+  "category": "outerwear",
+  "color": "navy",
+  "color_hex": "#1f2d4d",
+  "suits": [
+   "smart casual",
+   "business casual"
+  ],
+  "warmth": 2,
+  "times_worn": 5,
+  "last_worn": null,
+  "in_laundry": false,
+  "fit": [
+   "relaxed"
+  ]
+ },
+ {
+  "id": "o03",
+  "name": "Camel wool coat",
+  "category": "outerwear",
+  "color": "camel",
+  "color_hex": "#b98a5a",
+  "suits": [
+   "smart casual",
+   "business casual",
+   "business professional",
+   "cocktail"
+  ],
+  "warmth": 3,
+  "times_worn": 6,
+  "last_worn": null,
+  "in_laundry": false,
+  "fit": [
+   "relaxed",
+   "long"
+  ]
+ },
+ {
+  "id": "o04",
+  "name": "Black puffer jacket",
+  "category": "outerwear",
+  "color": "black",
+  "color_hex": "#1a1a1a",
+  "suits": [
+   "casual"
+  ],
+  "warmth": 3,
+  "times_worn": 9,
+  "last_worn": null,
+  "in_laundry": false,
+  "fit": [
+   "oversized"
+  ]
+ },
+ {
+  "id": "o05",
+  "name": "Beige trench coat",
+  "category": "outerwear",
+  "color": "beige",
+  "color_hex": "#d8c3a0",
+  "suits": [
+   "smart casual",
+   "business casual",
+   "business professional"
+  ],
+  "warmth": 2,
+  "times_worn": 0,
+  "last_worn": null,
+  "in_laundry": false,
+  "fit": [
+   "defined-waist",
+   "belted",
+   "long"
+  ]
+ },
+ {
+  "id": "o06",
+  "name": "Denim jacket",
+  "category": "outerwear",
+  "color": "mid blue",
+  "color_hex": "#5b7fa6",
+  "suits": [
+   "casual"
+  ],
+  "warmth": 2,
+  "times_worn": 4,
+  "last_worn": null,
+  "in_laundry": false,
+  "fit": [
+   "cropped",
+   "boxy"
+  ]
+ },
+ {
+  "id": "o07",
+  "name": "Oversized grey wool blazer",
+  "category": "outerwear",
+  "color": "grey",
+  "color_hex": "#7d7f84",
+  "suits": [
+   "smart casual",
+   "business casual"
+  ],
+  "warmth": 2,
+  "fit": [
+   "oversized",
+   "relaxed"
+  ],
+  "times_worn": 2,
+  "last_worn": null,
+  "in_laundry": false
+ },
+ {
+  "id": "s01",
+  "name": "Black leather loafers",
+  "category": "shoes",
+  "color": "black",
+  "color_hex": "#141414",
+  "suits": [
+   "smart casual",
+   "business casual",
+   "business professional"
+  ],
+  "warmth": 2,
+  "times_worn": 12,
+  "last_worn": null,
+  "in_laundry": false,
+  "fit": []
+ },
+ {
+  "id": "s02",
+  "name": "Black pointed pumps",
+  "category": "shoes",
+  "color": "black",
+  "color_hex": "#0e0e0e",
+  "suits": [
+   "business casual",
+   "business professional",
+   "cocktail"
+  ],
+  "warmth": 1,
+  "times_worn": 2,
+  "last_worn": null,
+  "in_laundry": false,
+  "fit": [
+   "pointed",
+   "heel"
+  ]
+ },
+ {
+  "id": "s03",
+  "name": "White leather minimal sneakers",
+  "category": "shoes",
+  "color": "white",
+  "color_hex": "#f4f4f4",
+  "suits": [
+   "casual",
+   "smart casual"
+  ],
+  "warmth": 1,
+  "times_worn": 16,
+  "last_worn": null,
+  "in_laundry": false,
+  "fit": []
+ },
+ {
+  "id": "s04",
+  "name": "Running sneakers",
+  "category": "shoes",
+  "color": "grey/pink",
+  "color_hex": "#c9a3b5",
+  "suits": [
+   "casual"
+  ],
+  "warmth": 1,
+  "times_worn": 10,
+  "last_worn": null,
+  "in_laundry": false,
+  "fit": []
+ },
+ {
+  "id": "s05",
+  "name": "Brown suede ankle boots",
+  "category": "shoes",
+  "color": "brown",
+  "color_hex": "#6b4a33",
+  "suits": [
+   "casual",
+   "smart casual",
+   "business casual"
+  ],
+  "warmth": 3,
+  "times_worn": 3,
+  "last_worn": null,
+  "in_laundry": false,
+  "fit": [
+   "block-heel"
+  ]
+ },
+ {
+  "id": "s06",
+  "name": "Nude ballet flats",
+  "category": "shoes",
+  "color": "nude",
+  "color_hex": "#d9b9a0",
+  "suits": [
+   "smart casual",
+   "business casual"
+  ],
+  "warmth": 1,
+  "times_worn": 0,
+  "last_worn": null,
+  "in_laundry": false,
+  "fit": [
+   "flat"
+  ]
+ },
+ {
+  "id": "s07",
+  "name": "Black block-heel slingbacks",
+  "category": "shoes",
+  "color": "black",
+  "color_hex": "#141414",
+  "suits": [
+   "smart casual",
+   "business casual",
+   "cocktail"
+  ],
+  "warmth": 1,
+  "fit": [
+   "block-heel"
+  ],
+  "times_worn": 1,
+  "last_worn": null,
+  "in_laundry": false
+ },
+ {
+  "id": "s08",
+  "name": "Tan strappy flat sandals",
+  "category": "shoes",
+  "color": "tan",
+  "color_hex": "#c49a6c",
+  "suits": [
+   "casual",
+   "smart casual"
+  ],
+  "warmth": 1,
+  "fit": [
+   "flat"
+  ],
+  "times_worn": 4,
+  "last_worn": null,
+  "in_laundry": false
+ },
+ {
+  "id": "a01",
+  "name": "Gold small hoop earrings",
+  "category": "accessory",
+  "color": "gold",
+  "color_hex": "#c9a64a",
+  "suits": [
+   "casual",
+   "smart casual",
+   "business casual",
+   "business professional",
+   "cocktail"
+  ],
+  "warmth": 1,
+  "times_worn": 8,
+  "last_worn": null,
+  "in_laundry": false,
+  "fit": []
+ },
+ {
+  "id": "a02",
+  "name": "Black leather tote",
+  "category": "accessory",
+  "color": "black",
+  "color_hex": "#191919",
+  "suits": [
+   "smart casual",
+   "business casual",
+   "business professional"
+  ],
+  "warmth": 1,
+  "times_worn": 11,
+  "last_worn": null,
+  "in_laundry": false,
+  "fit": []
+ },
+ {
+  "id": "a03",
+  "name": "Pink silk scarf",
+  "category": "accessory",
+  "color": "pink",
+  "color_hex": "#f06fa4",
+  "suits": [
+   "smart casual",
+   "business casual",
+   "cocktail"
+  ],
+  "warmth": 1,
+  "times_worn": 0,
+  "last_worn": null,
+  "in_laundry": false,
+  "fit": []
+ },
+ {
+  "id": "a04",
+  "name": "Canvas backpack",
+  "category": "accessory",
+  "color": "olive",
+  "color_hex": "#6b6b45",
+  "suits": [
+   "casual"
+  ],
+  "warmth": 1,
+  "times_worn": 13,
+  "last_worn": null,
+  "in_laundry": false,
+  "fit": []
+ },
+ {
+  "id": "a05",
+  "name": "Thin gold chain necklace",
+  "category": "accessory",
+  "color": "gold",
+  "color_hex": "#c9a64a",
+  "suits": [
+   "casual",
+   "smart casual",
+   "business casual",
+   "business professional",
+   "cocktail"
+  ],
+  "warmth": 1,
+  "fit": [],
+  "times_worn": 6,
+  "last_worn": null,
+  "in_laundry": false
+ }
+]

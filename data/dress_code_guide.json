@@ -1,0 +1,295 @@
+{
+ "levels": {
+  "casual": {
+   "rank": 1,
+   "plain_meaning": "Everyday clothes you would wear to class. Clean and put-together, nothing torn or stained.",
+   "formula": "Jeans or casual trousers + tee, sweater, or casual shirt + sneakers or flats.",
+   "do": [
+    "Clean sneakers are fine",
+    "Denim is fine",
+    "A good knit makes it look intentional"
+   ],
+   "avoid": [
+    "Gym wear unless it is a sports event",
+    "Anything wrinkled or stained"
+   ],
+   "designer_rule": "Casual still has a silhouette. One fitted piece + one relaxed piece looks chosen, not thrown on."
+  },
+  "smart casual": {
+   "rank": 2,
+   "plain_meaning": "One step up from class clothes. Relaxed, but you look like you thought about it.",
+   "formula": "Dark jeans or chinos + knit, polo, or button-down + loafers, clean leather sneakers, or ankle boots. A soft blazer is optional.",
+   "do": [
+    "Dark denim with no rips",
+    "Swap the tee for a knit or shirt",
+    "Leather shoes or very clean minimal sneakers"
+   ],
+   "avoid": [
+    "Logo tees and hoodies",
+    "Athletic sneakers",
+    "Shorts"
+   ],
+   "designer_rule": "Upgrade one piece from your casual outfit, usually the shoes or the top. That is the whole trick."
+  },
+  "business casual": {
+   "rank": 3,
+   "plain_meaning": "Office clothes without a full suit. No jeans, no sneakers. This is the default for most MBA recruiting events.",
+   "formula": "Tailored trousers, chinos, or a midi skirt + blouse, button-down, or fine knit + loafers, flats, or low heels. A blazer is a plus but not required.",
+   "do": [
+    "Trousers with a crease or a structured skirt",
+    "Collared shirt, blouse, or fine-gauge knit",
+    "Closed-toe leather shoes"
+   ],
+   "avoid": [
+    "Jeans of any color",
+    "Sneakers",
+    "Hoodies, graphic tees, leggings",
+    "Anything you would wear to a party"
+   ],
+   "designer_rule": "Look at the fabric, not just the item. Wool, cotton poplin, and fine knits read business. Jersey, denim, and fleece read weekend."
+  },
+  "business professional": {
+   "rank": 4,
+   "plain_meaning": "The suit level. For interviews, superdays, client meetings, and formal presentations.",
+   "formula": "Matching suit, or a blazer with tailored trousers/skirt in a dark neutral + crisp shirt or shell + polished closed-toe shoes.",
+   "do": [
+    "Dark neutrals: navy, charcoal, black",
+    "Matching jacket and bottom when you have one",
+    "Minimal jewelry"
+   ],
+   "avoid": [
+    "Bright prints",
+    "Open-toe shoes",
+    "Knits as the outer layer",
+    "Anything casual, even one piece"
+   ],
+   "designer_rule": "A suit is a uniform. Let one quiet detail (a good watch, a silk shell) be the personality."
+  },
+  "cocktail": {
+   "rank": 5,
+   "plain_meaning": "Evening dressy. Galas, formal dinners, weddings that are not black tie.",
+   "formula": "Knee-to-midi dress or a sharp dark suit/jumpsuit + heels or dress shoes + one statement accessory.",
+   "do": [
+    "Dark or jewel tones",
+    "Silk, satin, or crepe",
+    "Heels or polished dress shoes"
+   ],
+   "avoid": [
+    "Daytime office separates",
+    "Casual cotton",
+    "Sneakers or flat sandals"
+   ],
+   "designer_rule": "Evening is about texture and shine. A plain black dress becomes cocktail with one statement piece."
+  }
+ },
+ "situations": [
+  {
+   "name": "Coffee chat with a company",
+   "keywords": [
+    "coffee chat",
+    "coffee",
+    "informational",
+    "chat with"
+   ],
+   "default_code": "business casual",
+   "tip": "Business casual. Dress like the company's office on a normal day. Bankers and consultants: lean toward a blazer. Tech and startups: a sharp knit is enough.",
+   "target_effort": 4
+  },
+  {
+   "name": "Case interview / job interview",
+   "keywords": [
+    "interview",
+    "case",
+    "superday",
+    "final round"
+   ],
+   "default_code": "business professional",
+   "tip": "Business professional unless the recruiter clearly said otherwise. You will never lose points for being one step too formal at an interview.",
+   "target_effort": 4
+  },
+  {
+   "name": "Recruiting info session / corporate presentation",
+   "keywords": [
+    "info session",
+    "corporate presentation",
+    "company presentation",
+    "recruiting event"
+   ],
+   "default_code": "business casual",
+   "tip": "Business casual. The firm's people will be there, so treat it like a short interview.",
+   "target_effort": 4
+  },
+  {
+   "name": "Career fair / trek / office visit",
+   "keywords": [
+    "career fair",
+    "trek",
+    "office visit",
+    "site visit"
+   ],
+   "default_code": "business casual",
+   "tip": "Business casual for most firms. For banking or consulting treks, bring a blazer.",
+   "target_effort": 4
+  },
+  {
+   "name": "Club mixer / networking happy hour",
+   "keywords": [
+    "mixer",
+    "happy hour",
+    "networking",
+    "net impact"
+   ],
+   "default_code": "smart casual",
+   "tip": "Smart casual. If it comes right after a recruiting event, just take off the blazer.",
+   "target_effort": 3
+  },
+  {
+   "name": "Student presentation / class pitch",
+   "keywords": [
+    "pitch",
+    "class presentation",
+    "presenting",
+    "demo day"
+   ],
+   "default_code": "business casual",
+   "tip": "Business casual. You are on stage, so pick something that fits well standing up.",
+   "target_effort": 3
+  },
+  {
+   "name": "Regular class day",
+   "keywords": [
+    "class",
+    "lecture",
+    "study group",
+    "library"
+   ],
+   "default_code": "casual",
+   "tip": "Casual. Comfortable, clean, put together.",
+   "target_effort": 2
+  },
+  {
+   "name": "Gala / formal dinner",
+   "keywords": [
+    "gala",
+    "formal",
+    "ball",
+    "black tie"
+   ],
+   "default_code": "cocktail",
+   "tip": "Cocktail unless the invite says black tie.",
+   "target_effort": 5
+  },
+  {
+   "name": "Sports / outdoor club activity",
+   "keywords": [
+    "hike",
+    "game",
+    "tailgate",
+    "sports",
+    "outdoor"
+   ],
+   "default_code": "casual",
+   "tip": "Casual and weather-ready. Comfortable shoes.",
+   "target_effort": 1
+  },
+  {
+   "name": "First date",
+   "keywords": [
+    "first date",
+    "date",
+    "dinner date",
+    "drinks with",
+    "wine bar"
+   ],
+   "default_code": "smart casual",
+   "target_effort": 3,
+   "tip": "Smart casual at effort 3: look like yourself on a great day. One polished piece, one relaxed piece, one focal point. Comfortable shoes you can walk in."
+  },
+  {
+   "name": "Meeting a partner's parents",
+   "keywords": [
+    "parents",
+    "meet the family",
+    "family lunch",
+    "family dinner"
+   ],
+   "default_code": "smart casual",
+   "target_effort": 4,
+   "tip": "Smart casual at effort 4: neat, warm, and modest. Think 'favorite niece', not 'night out'. Soft colors and good fabric."
+  },
+  {
+   "name": "Wedding guest",
+   "keywords": [
+    "wedding",
+    "ceremony",
+    "reception",
+    "rehearsal dinner"
+   ],
+   "default_code": "cocktail",
+   "target_effort": 5,
+   "tip": "Cocktail unless the invite says otherwise. Never white or ivory. Garden or daytime weddings: lighter fabrics and block heels or flats."
+  },
+  {
+   "name": "Dinner or drinks with friends",
+   "keywords": [
+    "friends",
+    "birthday",
+    "dinner party",
+    "drinks",
+    "bar"
+   ],
+   "default_code": "smart casual",
+   "target_effort": 3,
+   "tip": "Smart casual, effortless. Jeans are fine — upgrade the top or the shoes."
+  },
+  {
+   "name": "Brunch / weekend plans",
+   "keywords": [
+    "brunch",
+    "weekend",
+    "farmers market",
+    "museum"
+   ],
+   "default_code": "casual",
+   "target_effort": 2,
+   "tip": "Casual and comfortable with one nice detail — a good knit, a fun earring."
+  },
+  {
+   "name": "Concert / party",
+   "keywords": [
+    "concert",
+    "party",
+    "club",
+    "show"
+   ],
+   "default_code": "smart casual",
+   "target_effort": 3,
+   "tip": "Smart casual with more personality: one bold piece, shoes you can stand in all night."
+  }
+ ],
+ "effort_scale": {
+  "1": "barely tried — comfy, fine for errands",
+  "2": "relaxed — casual but clean",
+  "3": "effortless — put-together, but it looks easy (the sweet spot for dates and friendly coffee)",
+  "4": "polished — clearly dressed for the moment (interviews, meeting the parents)",
+  "5": "dressed up — evening events, weddings, galas"
+ },
+ "effortless_rules": [
+  "Mix one polished piece with one relaxed piece (blazer + tee, silk skirt + chunky knit).",
+  "Texture over shine: knit, linen, suede, washed silk read easy; sequins and stiff satin read like trying.",
+  "One focal point only — a color, a neckline, or a piece of jewelry, not all three.",
+  "Imperfect details: roll the sleeves, half-tuck the top, leave one button open.",
+  "Shoes set the level: a sneaker or flat brings any outfit down one notch, a heel brings it up one.",
+  "Fit beats formality: a piece that fits perfectly looks intentional without looking stiff."
+ ],
+ "fit_rules": {
+  "shoulders": "square neck, boat neck, off-shoulder, or sleeveless tops",
+  "collarbones": "V-neck, square neck, open collar",
+  "waist": "defined-waist pieces, high-waist bottoms, a tuck or a belt",
+  "legs": "high-waist bottoms, straight or cropped trousers, shorter hems, pointed shoes",
+  "arms": "sleeveless tops, or roll the sleeves",
+  "back": "open-back or low-back pieces",
+  "neck": "V-necks and open collars, hair up",
+  "relaxed_areas": "where someone prefers a relaxed fit, choose relaxed, flowy, wide-leg, or A-line pieces there — never clingy fabric there"
+ }
+}

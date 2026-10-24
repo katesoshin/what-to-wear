@@ -1,0 +1,544 @@
+[
+ {
+  "id": "t01",
+  "name": "White oxford button-down",
+  "category": "top",
+  "color": "white",
+  "color_hex": "#f7f5f0",
+  "suits": [
+   "smart casual",
+   "business casual",
+   "business professional"
+  ],
+  "warmth": 1,
+  "fit": [
+   "fitted",
+   "collared"
+  ],
+  "times_worn": 10,
+  "last_worn": null,
+  "in_laundry": false
+ },
+ {
+  "id": "t02",
+  "name": "Light blue poplin dress shirt",
+  "category": "top",
+  "color": "light blue",
+  "color_hex": "#bcd3ea",
+  "suits": [
+   "business casual",
+   "business professional",
+   "cocktail"
+  ],
+  "warmth": 1,
+  "fit": [
+   "fitted",
+   "collared"
+  ],
+  "times_worn": 4,
+  "last_worn": null,
+  "in_laundry": false
+ },
+ {
+  "id": "t03",
+  "name": "Navy merino crewneck sweater",
+  "category": "top",
+  "color": "navy",
+  "color_hex": "#22314f",
+  "suits": [
+   "smart casual",
+   "business casual"
+  ],
+  "warmth": 2,
+  "fit": [
+   "fitted",
+   "crewneck"
+  ],
+  "times_worn": 6,
+  "last_worn": null,
+  "in_laundry": false
+ },
+ {
+  "id": "t04",
+  "name": "Charcoal fine-knit polo",
+  "category": "top",
+  "color": "charcoal",
+  "color_hex": "#3b3d42",
+  "suits": [
+   "smart casual",
+   "business casual"
+  ],
+  "warmth": 1,
+  "fit": [
+   "fitted",
+   "collared"
+  ],
+  "times_worn": 0,
+  "last_worn": null,
+  "in_laundry": false
+ },
+ {
+  "id": "t05",
+  "name": "White heavyweight tee",
+  "category": "top",
+  "color": "white",
+  "color_hex": "#fafafa",
+  "suits": [
+   "casual",
+   "smart casual"
+  ],
+  "warmth": 1,
+  "fit": [
+   "relaxed",
+   "crewneck"
+  ],
+  "times_worn": 15,
+  "last_worn": null,
+  "in_laundry": false
+ },
+ {
+  "id": "t06",
+  "name": "Grey hoodie",
+  "category": "top",
+  "color": "grey",
+  "color_hex": "#9a9a9a",
+  "suits": [
+   "casual"
+  ],
+  "warmth": 3,
+  "fit": [
+   "oversized"
+  ],
+  "times_worn": 12,
+  "last_worn": null,
+  "in_laundry": false
+ },
+ {
+  "id": "t07",
+  "name": "Cream cable-knit sweater",
+  "category": "top",
+  "color": "cream",
+  "color_hex": "#efe6d2",
+  "suits": [
+   "casual",
+   "smart casual"
+  ],
+  "warmth": 3,
+  "fit": [
+   "relaxed",
+   "crewneck"
+  ],
+  "times_worn": 2,
+  "last_worn": null,
+  "in_laundry": false
+ },
+ {
+  "id": "t08",
+  "name": "Black linen camp-collar shirt",
+  "category": "top",
+  "color": "black",
+  "color_hex": "#1a1a1a",
+  "suits": [
+   "casual",
+   "smart casual"
+  ],
+  "warmth": 1,
+  "fit": [
+   "relaxed",
+   "open-collar"
+  ],
+  "times_worn": 1,
+  "last_worn": null,
+  "in_laundry": false
+ },
+ {
+  "id": "t09",
+  "name": "Olive overshirt",
+  "category": "top",
+  "color": "olive",
+  "color_hex": "#5f6340",
+  "suits": [
+   "casual",
+   "smart casual"
+  ],
+  "warmth": 2,
+  "fit": [
+   "relaxed",
+   "collared"
+  ],
+  "times_worn": 3,
+  "last_worn": null,
+  "in_laundry": false
+ },
+ {
+  "id": "b01",
+  "name": "Navy suit trousers",
+  "category": "bottom",
+  "color": "navy",
+  "color_hex": "#1f2d4d",
+  "suits": [
+   "business professional"
+  ],
+  "warmth": 2,
+  "fit": [
+   "straight",
+   "structured"
+  ],
+  "times_worn": 2,
+  "last_worn": null,
+  "in_laundry": false
+ },
+ {
+  "id": "b02",
+  "name": "Grey wool trousers",
+  "category": "bottom",
+  "color": "grey",
+  "color_hex": "#8d8f94",
+  "suits": [
+   "business casual",
+   "business professional"
+  ],
+  "warmth": 2,
+  "fit": [
+   "straight",
+   "structured"
+  ],
+  "times_worn": 5,
+  "last_worn": null,
+  "in_laundry": false
+ },
+ {
+  "id": "b03",
+  "name": "Khaki chinos",
+  "category": "bottom",
+  "color": "khaki",
+  "color_hex": "#c8b48a",
+  "suits": [
+   "smart casual",
+   "business casual"
+  ],
+  "warmth": 1,
+  "fit": [
+   "straight"
+  ],
+  "times_worn": 8,
+  "last_worn": null,
+  "in_laundry": false
+ },
+ {
+  "id": "b04",
+  "name": "Dark selvedge jeans",
+  "category": "bottom",
+  "color": "dark indigo",
+  "color_hex": "#28324a",
+  "suits": [
+   "casual",
+   "smart casual"
+  ],
+  "warmth": 2,
+  "fit": [
+   "straight"
+  ],
+  "times_worn": 14,
+  "last_worn": null,
+  "in_laundry": false
+ },
+ {
+  "id": "b05",
+  "name": "Black tailored trousers",
+  "category": "bottom",
+  "color": "black",
+  "color_hex": "#151515",
+  "suits": [
+   "smart casual",
+   "business casual",
+   "cocktail"
+  ],
+  "warmth": 2,
+  "fit": [
+   "straight",
+   "structured"
+  ],
+  "times_worn": 1,
+  "last_worn": null,
+  "in_laundry": false
+ },
+ {
+  "id": "b06",
+  "name": "Grey sweatpants",
+  "category": "bottom",
+  "color": "grey",
+  "color_hex": "#a3a3a3",
+  "suits": [
+   "casual"
+  ],
+  "warmth": 2,
+  "fit": [
+   "relaxed"
+  ],
+  "times_worn": 9,
+  "last_worn": null,
+  "in_laundry": false
+ },
+ {
+  "id": "o01",
+  "name": "Navy suit jacket",
+  "category": "outerwear",
+  "color": "navy",
+  "color_hex": "#1f2d4d",
+  "suits": [
+   "business casual",
+   "business professional",
+   "cocktail"
+  ],
+  "warmth": 2,
+  "fit": [
+   "structured",
+   "fitted"
+  ],
+  "times_worn": 2,
+  "last_worn": null,
+  "in_laundry": false
+ },
+ {
+  "id": "o02",
+  "name": "Brown unstructured blazer",
+  "category": "outerwear",
+  "color": "brown",
+  "color_hex": "#6b4a33",
+  "suits": [
+   "smart casual",
+   "business casual"
+  ],
+  "warmth": 2,
+  "fit": [
+   "relaxed"
+  ],
+  "times_worn": 0,
+  "last_worn": null,
+  "in_laundry": false
+ },
+ {
+  "id": "o03",
+  "name": "Charcoal wool overcoat",
+  "category": "outerwear",
+  "color": "charcoal",
+  "color_hex": "#3b3d42",
+  "suits": [
+   "smart casual",
+   "business casual",
+   "business professional",
+   "cocktail"
+  ],
+  "warmth": 3,
+  "fit": [
+   "long",
+   "structured"
+  ],
+  "times_worn": 5,
+  "last_worn": null,
+  "in_laundry": false
+ },
+ {
+  "id": "o04",
+  "name": "Black puffer jacket",
+  "category": "outerwear",
+  "color": "black",
+  "color_hex": "#1a1a1a",
+  "suits": [
+   "casual"
+  ],
+  "warmth": 3,
+  "fit": [
+   "oversized"
+  ],
+  "times_worn": 8,
+  "last_worn": null,
+  "in_laundry": false
+ },
+ {
+  "id": "o05",
+  "name": "Tan suede trucker jacket",
+  "category": "outerwear",
+  "color": "tan",
+  "color_hex": "#b68b5e",
+  "suits": [
+   "casual",
+   "smart casual"
+  ],
+  "warmth": 2,
+  "fit": [
+   "cropped"
+  ],
+  "times_worn": 1,
+  "last_worn": null,
+  "in_laundry": false
+ },
+ {
+  "id": "o06",
+  "name": "Black velvet dinner jacket",
+  "category": "outerwear",
+  "color": "black",
+  "color_hex": "#0f0f12",
+  "suits": [
+   "cocktail"
+  ],
+  "warmth": 2,
+  "fit": [
+   "structured",
+   "fitted"
+  ],
+  "times_worn": 0,
+  "last_worn": null,
+  "in_laundry": false
+ },
+ {
+  "id": "s01",
+  "name": "Brown leather loafers",
+  "category": "shoes",
+  "color": "brown",
+  "color_hex": "#5a3a24",
+  "suits": [
+   "smart casual",
+   "business casual",
+   "business professional"
+  ],
+  "warmth": 2,
+  "fit": [],
+  "times_worn": 7,
+  "last_worn": null,
+  "in_laundry": false
+ },
+ {
+  "id": "s02",
+  "name": "Black oxford dress shoes",
+  "category": "shoes",
+  "color": "black",
+  "color_hex": "#0e0e0e",
+  "suits": [
+   "business casual",
+   "business professional",
+   "cocktail"
+  ],
+  "warmth": 2,
+  "fit": [],
+  "times_worn": 3,
+  "last_worn": null,
+  "in_laundry": false
+ },
+ {
+  "id": "s03",
+  "name": "White leather minimal sneakers",
+  "category": "shoes",
+  "color": "white",
+  "color_hex": "#f4f4f4",
+  "suits": [
+   "casual",
+   "smart casual"
+  ],
+  "warmth": 1,
+  "fit": [],
+  "times_worn": 18,
+  "last_worn": null,
+  "in_laundry": false
+ },
+ {
+  "id": "s04",
+  "name": "Running sneakers",
+  "category": "shoes",
+  "color": "grey",
+  "color_hex": "#9fa3a8",
+  "suits": [
+   "casual"
+  ],
+  "warmth": 1,
+  "fit": [],
+  "times_worn": 11,
+  "last_worn": null,
+  "in_laundry": false
+ },
+ {
+  "id": "s05",
+  "name": "Brown suede chelsea boots",
+  "category": "shoes",
+  "color": "brown",
+  "color_hex": "#6b4a33",
+  "suits": [
+   "casual",
+   "smart casual",
+   "business casual"
+  ],
+  "warmth": 3,
+  "fit": [],
+  "times_worn": 2,
+  "last_worn": null,
+  "in_laundry": false
+ },
+ {
+  "id": "a01",
+  "name": "Silver watch",
+  "category": "accessory",
+  "color": "silver",
+  "color_hex": "#c0c0c0",
+  "suits": [
+   "casual",
+   "smart casual",
+   "business casual",
+   "business professional",
+   "cocktail"
+  ],
+  "warmth": 1,
+  "fit": [],
+  "times_worn": 13,
+  "last_worn": null,
+  "in_laundry": false
+ },
+ {
+  "id": "a02",
+  "name": "Navy silk tie",
+  "category": "accessory",
+  "color": "navy",
+  "color_hex": "#22314f",
+  "suits": [
+   "business professional",
+   "cocktail"
+  ],
+  "warmth": 1,
+  "fit": [],
+  "times_worn": 2,
+  "last_worn": null,
+  "in_laundry": false
+ },
+ {
+  "id": "a03",
+  "name": "Brown leather belt",
+  "category": "accessory",
+  "color": "brown",
+  "color_hex": "#5a3a24",
+  "suits": [
+   "smart casual",
+   "business casual",
+   "business professional"
+  ],
+  "warmth": 1,
+  "fit": [],
+  "times_worn": 10,
+  "last_worn": null,
+  "in_laundry": false
+ },
+ {
+  "id": "a04",
+  "name": "Canvas backpack",
+  "category": "accessory",
+  "color": "olive",
+  "color_hex": "#6b6b45",
+  "suits": [
+   "casual"
+  ],
+  "warmth": 1,
+  "fit": [],
+  "times_worn": 14,
+  "last_worn": null,
+  "in_laundry": false
+ }
+]

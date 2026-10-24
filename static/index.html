@@ -1,0 +1,638 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>what to wear — look good without looking like you tried too hard</title>
+<style>
+  :root {
+    --ink: #111; --paper: #fff; --soft: #f6f5f3; --line: #e3e1dd; --muted: #6f6c68; --faint: #a8a5a0;
+    --ok: #2f6b4a; --warn: #8a5a00; --bad: #a3242f;
+    --serif: "Didot", "Bodoni 72", "Bodoni Moda", "Playfair Display", Georgia, serif;
+    --sans: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(--sans); font-size: 15px; line-height: 1.55; }
+  button, input, textarea, select { font: inherit; color: inherit; }
+  .promo { background: var(--ink); color: var(--paper); text-align: center; font-size: 12px; letter-spacing: 1.5px;
+           text-transform: uppercase; padding: 9px 12px; }
+  .wrap { max-width: 1200px; margin: 0 auto; padding: 0 28px 70px; }
+
+  /* ---------- header ---------- */
+  header { display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; padding: 26px 0 18px; border-bottom: 1px solid var(--ink); }
+  .wordmark { font-family: var(--serif); font-size: 42px; letter-spacing: -.5px; line-height: 1; text-align: center; font-weight: 400; margin: 0; }
+  .wordmark i { font-style: italic; }
+  nav { display: flex; gap: 22px; }
+  nav.right { justify-content: flex-end; }
+  nav button { background: none; border: 0; padding: 4px 0; cursor: pointer; font-size: 12px; letter-spacing: 1.6px;
+               text-transform: uppercase; border-bottom: 1px solid transparent; }
+  nav button.on { border-bottom-color: var(--ink); font-weight: 700; }
+  nav button:hover { border-bottom-color: var(--ink); }
+  .status { font-size: 12px; color: var(--muted); letter-spacing: .3px; }
+  .tab { display: none; padding-top: 34px; } .tab.on { display: block; }
+  @media (max-width: 820px) { header { grid-template-columns: 1fr; gap: 14px; text-align: center; } nav, nav.right { justify-content: center; } }
+
+  /* ---------- shared ---------- */
+  .eyebrow { font-size: 11px; text-transform: uppercase; letter-spacing: 1.8px; color: var(--muted); margin-bottom: 8px; font-weight: 600; }
+  h2 { font-family: var(--serif); font-weight: 400; font-size: 34px; margin: 0 0 18px; letter-spacing: -.3px; line-height: 1.1; }
+  h2 i { font-style: italic; }
+  h3 { margin: 0 0 6px; font-size: 16px; font-weight: 600; }
+  .box { border: 1px solid var(--line); padding: 24px; background: var(--paper); }
+  .box.soft { background: var(--soft); border-color: var(--soft); }
+  input[type=text], input[type=date], textarea, select {
+    width: 100%; background: var(--paper); border: 1px solid var(--line); border-radius: 0; padding: 11px 12px; outline: none; }
+  input:focus, textarea:focus, select:focus { border-color: var(--ink); }
+  textarea { min-height: 120px; resize: vertical; }
+  .btn { background: var(--ink); color: var(--paper); border: 1px solid var(--ink); border-radius: 0; padding: 14px 26px; cursor: pointer;
+         font-size: 12px; letter-spacing: 1.8px; text-transform: uppercase; font-weight: 600; }
+  .btn:hover { background: #333; } .btn:disabled { opacity: .45; cursor: wait; }
+  .btn.ghost { background: transparent; color: var(--ink); } .btn.ghost:hover { background: var(--soft); }
+  .btn.small { padding: 8px 14px; font-size: 11px; }
+  .chip { display: inline-block; border: 1px solid var(--line); padding: 6px 12px; font-size: 13px; cursor: pointer; margin: 0 6px 6px 0; background: var(--paper); }
+  .chip:hover { border-color: var(--ink); }
+  .chip.on { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+  .tag { display: inline-block; border: 1px solid var(--ink); padding: 2px 8px; font-size: 10.5px; letter-spacing: 1.2px; text-transform: uppercase; font-weight: 600; }
+  .tag.solid { background: var(--ink); color: var(--paper); }
+  .muted { color: var(--muted); } .small { font-size: 13px; }
+  .row { display: flex; gap: 12px; } .row > * { flex: 1; }
+  .grid2 { display: grid; grid-template-columns: 380px 1fr; gap: 40px; align-items: start; }
+  @media (max-width: 960px) { .grid2 { grid-template-columns: 1fr; } }
+  .rule { border: 0; border-top: 1px solid var(--line); margin: 22px 0; }
+  .lnk { background: none; border: 0; padding: 0; cursor: pointer; text-decoration: underline; text-underline-offset: 3px; font-size: 12px; color: var(--ink); }
+
+  /* dress-code levels: light grey -> black */
+  .dc { display: inline-block; padding: 3px 9px; font-size: 10.5px; letter-spacing: 1.2px; text-transform: uppercase; font-weight: 700; border: 1px solid var(--ink); }
+  .dc-casual { background: var(--paper); }
+  .dc-smart-casual { background: #ebe9e5; border-color: #ebe9e5; }
+  .dc-business-casual { background: #c9c6c0; border-color: #c9c6c0; }
+  .dc-business-professional { background: #555; color: #fff; border-color: #555; }
+  .dc-cocktail { background: var(--ink); color: var(--paper); }
+
+  /* effort gauge */
+  .effort { display: inline-flex; align-items: center; gap: 8px; font-size: 11px; letter-spacing: 1.2px; text-transform: uppercase; }
+  .effort .dots { display: inline-flex; gap: 3px; }
+  .effort .dots span { width: 14px; height: 6px; border: 1px solid var(--ink); }
+  .effort .dots span.on { background: var(--ink); }
+
+  /* ---------- plan results ---------- */
+  .notice { padding: 13px 16px; margin-bottom: 16px; display: flex; gap: 10px; font-size: 14px; border: 1px solid var(--ink); }
+  .notice.stop { border-color: var(--bad); color: var(--bad); }
+  .weather { font-size: 12px; letter-spacing: .4px; color: var(--muted); }
+  .events { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 0; border-top: 1px solid var(--line); border-left: 1px solid var(--line); margin: 16px 0 36px; }
+  .event { border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); padding: 18px; }
+  .event .time { font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--muted); }
+  .event h3 { font-family: var(--serif); font-weight: 400; font-size: 21px; margin: 6px 0 10px; }
+  .event ul { margin: 8px 0 0; padding: 0; list-style: none; font-size: 13px; }
+  .event li { padding-left: 16px; position: relative; margin-bottom: 2px; }
+  .event li::before { position: absolute; left: 0; }
+  .event ul.do li::before { content: "+"; } .event ul.avoid li::before { content: "–"; color: var(--muted); }
+  .event ul.avoid li { color: var(--muted); }
+  .look { border-top: 1px solid var(--ink); padding-top: 22px; margin-bottom: 34px; }
+  .look .headline { font-family: var(--serif); font-size: 30px; line-height: 1.15; margin: 8px 0 20px; letter-spacing: -.3px; }
+  .items { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 14px; margin-bottom: 22px; }
+  .item .swatch { background: var(--soft); aspect-ratio: 4/5; display: flex; align-items: center; justify-content: center; position: relative; }
+  .item svg { width: 58%; height: 58%; }
+  .item .nm { font-size: 13px; margin-top: 8px; line-height: 1.3; }
+  .item .meta { font-size: 11.5px; color: var(--muted); margin-top: 2px; }
+  .item .badge { position: absolute; top: 8px; left: 8px; background: var(--paper); font-size: 9.5px; letter-spacing: 1.2px; font-weight: 700; padding: 2px 6px; text-transform: uppercase; }
+  .notes { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 24px; }
+  .notes p { margin: 0; font-size: 14px; }
+  .tweaks { margin: 16px 0 0; padding-left: 18px; font-size: 14px; }
+  .warn { color: var(--warn); font-size: 13px; margin-top: 8px; }
+  .gap { background: var(--soft); padding: 16px 18px; margin-bottom: 20px; font-size: 14px; }
+  .usage { display: flex; flex-wrap: wrap; gap: 0; margin-top: 26px; border: 1px solid var(--line); }
+  .usage span { padding: 8px 14px; font-size: 12px; border-right: 1px solid var(--line); color: var(--muted); }
+  .usage b { color: var(--ink); }
+  details { margin-top: 18px; } summary { cursor: pointer; font-size: 12px; letter-spacing: 1.4px; text-transform: uppercase; font-weight: 600; }
+  .trace { margin-top: 12px; border-left: 1px solid var(--ink); padding-left: 16px; }
+  .step { margin-bottom: 10px; font-size: 13px; }
+  .step .who { font-weight: 700; text-transform: uppercase; font-size: 11px; letter-spacing: 1.2px; }
+  .step code { display: block; color: var(--muted); white-space: pre-wrap; word-break: break-word; font-size: 12px; margin-top: 2px; font-family: ui-monospace, Menlo, monospace; }
+  .empty { padding: 70px 30px; text-align: center; background: var(--soft); }
+  .empty .big { font-family: var(--serif); font-size: 32px; margin-bottom: 8px; line-height: 1.15; }
+  .empty .big i { font-style: italic; }
+  .loading-steps { list-style: none; padding: 0; margin: 18px auto 0; max-width: 320px; text-align: left; font-size: 14px; }
+  .loading-steps li { padding: 4px 0; color: var(--faint); } .loading-steps li.on { color: var(--ink); }
+  .loading-steps li.done { color: var(--muted); } .loading-steps li.done::after { content: "  ✓"; }
+  .loading-steps li.on::after { content: "  …"; }
+
+  .looks3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; margin-bottom: 26px; }
+  @media (max-width: 1100px) { .looks3 { grid-template-columns: 1fr; } }
+  .look3 { border-top: 2px solid var(--ink); padding-top: 14px; display: flex; flex-direction: column; }
+  .look3 .vibe { font-family: var(--serif); font-size: 26px; font-style: italic; margin: 2px 0 6px; }
+  .look3 .headline { font-size: 14px; font-weight: 600; margin: 8px 0 12px; line-height: 1.35; }
+  .pieces { list-style: none; padding: 0; margin: 0 0 14px; border-top: 1px solid var(--line); }
+  .pieces li { display: flex; gap: 10px; align-items: center; padding: 8px 0; border-bottom: 1px solid var(--line); font-size: 13px; }
+  .pieces .ic { width: 38px; height: 38px; background: var(--soft); flex: none; display: flex; align-items: center; justify-content: center; }
+  .pieces .ic svg { width: 70%; height: 70%; }
+  .pieces .sw { display: block; color: var(--muted); font-size: 11.5px; }
+  .pieces .own { font-size: 9.5px; letter-spacing: 1px; text-transform: uppercase; border: 1px solid var(--line); padding: 1px 5px; margin-left: auto; white-space: nowrap; color: var(--muted); }
+  .look3 .note { font-size: 13px; margin: 0 0 10px; }
+  .look3 .note b { font-size: 10.5px; letter-spacing: 1.3px; text-transform: uppercase; display: block; margin-bottom: 1px; }
+  .capsule { display: flex; gap: 18px; align-items: center; background: var(--ink); color: var(--paper); padding: 16px 20px; margin-bottom: 26px; }
+  .capsule .n { font-family: var(--serif); font-size: 34px; line-height: 1; white-space: nowrap; }
+  .chat { border: 1px solid var(--ink); padding: 20px; margin-top: 8px; }
+  .chat .thread { margin: 12px 0; }
+  .msg { margin-bottom: 12px; font-size: 14px; }
+  .msg.q { text-align: right; } .msg.q span { background: var(--soft); padding: 8px 12px; display: inline-block; }
+  .msg.a .verdict { display: inline-block; background: var(--ink); color: var(--paper); font-size: 10.5px; letter-spacing: 1.3px; text-transform: uppercase; font-weight: 700; padding: 2px 7px; margin-right: 6px; }
+  .msg.a .try { color: var(--muted); font-size: 13px; margin-top: 3px; }
+  .askrow { display: flex; gap: 8px; } .askrow input { flex: 1; }
+
+  /* ---------- closet ---------- */
+  .closet-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(170px, 1fr)); gap: 22px 16px; }
+  .citem.laundry { opacity: .4; }
+  .citem .swatch { background: var(--soft); aspect-ratio: 1/1; display: flex; align-items: center; justify-content: center; }
+  .citem svg { width: 52%; height: 52%; }
+  .citem .nm { font-size: 13px; margin-top: 8px; line-height: 1.3; }
+  .citem .sub { font-size: 11.5px; color: var(--muted); }
+  .citem .codes { margin: 6px 0; display: flex; flex-wrap: wrap; gap: 3px; }
+  .citem .codes .dc { font-size: 9px; padding: 1px 5px; }
+  .citem .acts { display: flex; justify-content: space-between; align-items: center; font-size: 11.5px; color: var(--muted); margin-top: 4px; }
+  .checks label { display: inline-flex; gap: 6px; align-items: center; margin: 0 12px 8px 0; font-size: 13px; cursor: pointer; }
+  .checks input { accent-color: #111; }
+
+  /* ---------- usage tab ---------- */
+  .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); border-top: 1px solid var(--ink); border-left: 1px solid var(--line); margin-bottom: 34px; }
+  .stat { border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); padding: 18px; }
+  .stat .v { font-family: var(--serif); font-size: 38px; line-height: 1.1; margin: 4px 0; }
+  .bar { height: 4px; background: var(--line); margin-top: 8px; } .bar > div { height: 100%; background: var(--ink); }
+  table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  th, td { text-align: left; padding: 10px 8px; border-bottom: 1px solid var(--line); vertical-align: top; }
+  th { font-weight: 600; font-size: 11px; text-transform: uppercase; letter-spacing: 1.4px; border-bottom: 1px solid var(--ink); }
+  .oc-ok { color: var(--ok); } .oc-bad { color: var(--bad); } .oc-warn { color: var(--warn); }
+  footer { margin-top: 60px; padding-top: 20px; border-top: 1px solid var(--line); color: var(--muted); font-size: 12px; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px; }
+</style>
+</head>
+<body>
+<div class="promo">look good without looking like you tried too hard</div>
+<div class="wrap">
+  <header>
+    <nav>
+      <button class="on" data-tab="plan">Get dressed</button>
+      <button data-tab="closet">My closet</button>
+      <button data-tab="fit">My fit</button>
+    </nav>
+    <h1 class="wordmark">what to <i>wear</i></h1>
+    <nav class="right">
+      <button data-tab="usage">Cost &amp; safety</button>
+    </nav>
+  </header>
+
+  <!-- ================= PLAN ================= -->
+  <section class="tab on" id="tab-plan">
+    <div class="grid2">
+      <div>
+        <div class="eyebrow">Step 1</div>
+        <h2>What's the <i>occasion?</i></h2>
+        <textarea id="dayText" maxlength="1500" placeholder="e.g. First date tomorrow, 7pm at a wine bar. Or paste an invite."></textarea>
+        <div class="small muted" style="margin:6px 0 16px"><span id="charCount">0</span> / 1500</div>
+        <div class="eyebrow">Or try one</div>
+        <div id="examples"></div>
+        <div class="row" style="margin-top:18px">
+          <div><div class="eyebrow">Date</div><input type="date" id="date"></div>
+          <div><div class="eyebrow">City</div><input type="text" id="city" value="New Haven" maxlength="60"></div>
+        </div>
+        <label class="checks" style="display:block;margin-top:16px"><label><input type="checkbox" id="useCloset"> Style it from my saved closet (optional)</label></label>
+        <div style="margin-top:14px; display:flex; gap:14px; align-items:center">
+          <button class="btn" id="go">Dress me</button>
+          <span class="small muted">10–30 seconds</span>
+        </div>
+        <div class="small muted" style="margin-top:18px" id="fitHint"></div>
+      </div>
+
+      <div id="result">
+        <div class="empty">
+          <div class="big">You don't need <i>more</i> clothes.<br>You need a plan.</div>
+          <div class="muted">Tell me what's coming up. I'll tell you how dressed-up to be,<br>then give you three looks built from basics you probably already own.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= CLOSET ================= -->
+  <section class="tab" id="tab-closet">
+    <div class="grid2">
+      <div>
+        <div class="eyebrow">Add a piece</div>
+        <h2>New <i>in</i></h2>
+        <div class="eyebrow">Name</div>
+        <input type="text" id="nName" maxlength="80" placeholder="e.g. Black square-neck top">
+        <div class="row" style="margin-top:12px">
+          <div><div class="eyebrow">Category</div>
+            <select id="nCat"><option>top</option><option>bottom</option><option>dress</option><option>outerwear</option><option>shoes</option><option>accessory</option></select></div>
+          <div><div class="eyebrow">Warmth</div>
+            <select id="nWarm"><option value="1">Light</option><option value="2" selected>Medium</option><option value="3">Warm</option></select></div>
+        </div>
+        <div class="row" style="margin-top:12px">
+          <div><div class="eyebrow">Color</div><input type="text" id="nColor" maxlength="30" placeholder="e.g. black"></div>
+          <div style="flex:0 0 70px"><div class="eyebrow">Swatch</div><input type="color" id="nHex" value="#111111" style="width:100%;height:44px;border:1px solid var(--line);background:none;padding:2px"></div>
+        </div>
+        <div class="eyebrow" style="margin-top:14px">Works for</div>
+        <div class="checks" id="nSuits"></div>
+        <div class="eyebrow" style="margin-top:8px">Fit &amp; shape</div>
+        <div class="checks" id="nFit"></div>
+        <button class="btn" id="addItem" style="margin-top:10px">Add to closet</button>
+        <div class="small" id="addMsg" style="margin-top:10px"></div>
+        <hr class="rule">
+        <div class="eyebrow">Start over with a sample closet</div>
+        <div style="display:flex;gap:8px;flex-wrap:wrap">
+          <button class="btn ghost small" data-sample="womenswear">Womenswear sample</button>
+          <button class="btn ghost small" data-sample="menswear">Menswear sample</button>
+        </div>
+        <div class="small muted" style="margin-top:10px">Mark pieces “in the wash” and the stylist will skip them.</div>
+      </div>
+      <div>
+        <div class="eyebrow">Optional — for when you want looks from your exact pieces</div>
+        <h2>My <i>closet</i> <span class="small muted" id="closetCount" style="font-family:var(--sans)"></span></h2>
+        <div id="filters" style="margin-bottom:18px"></div>
+        <div class="closet-grid" id="closetGrid"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= FIT ================= -->
+  <section class="tab" id="tab-fit">
+    <div class="grid2">
+      <div>
+        <div class="eyebrow">Your fit profile</div>
+        <h2>Dress for <i>you</i></h2>
+        <p class="muted small">No body “types,” no labels. Just tell the stylist what you love and how you like things to feel. Everything is optional.</p>
+        <p class="muted small">The stylist will only ever talk about what a piece <b style="color:var(--ink)">shows off</b> — never about hiding anything.</p>
+      </div>
+      <div class="box">
+        <div class="eyebrow">I mostly wear</div>
+        <div class="checks" id="fWardrobe"></div>
+        <hr class="rule">
+        <div class="eyebrow">I love showing off my…</div>
+        <div class="checks" id="fLove"></div>
+        <hr class="rule">
+        <div class="eyebrow">I like a relaxed fit around my…</div>
+        <div class="checks" id="fRelaxed"></div>
+        <hr class="rule">
+        <div class="row">
+          <div><div class="eyebrow">Height (optional)</div><input type="text" id="fHeight" maxlength="30" placeholder="e.g. 5'4&quot;"></div>
+          <div><div class="eyebrow">My style in a few words</div><input type="text" id="fStyle" maxlength="120" placeholder="e.g. minimal, a little French"></div>
+        </div>
+        <div class="eyebrow" style="margin-top:14px">I never wear… (comma-separated)</div>
+        <input type="text" id="fNever" maxlength="300" placeholder="e.g. very high heels, crop tops">
+        <div style="margin-top:20px;display:flex;gap:14px;align-items:center">
+          <button class="btn" id="saveFit">Save my fit</button><span class="small" id="fitMsg"></span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= USAGE ================= -->
+  <section class="tab" id="tab-usage">
+    <div class="eyebrow">Measured from real runs</div>
+    <h2>Cost &amp; <i>safety</i></h2>
+    <div class="stats" id="stats"></div>
+    <div class="grid2" style="grid-template-columns: 1fr 1fr">
+      <div class="box">
+        <h3>Cost at scale</h3>
+        <div class="small muted" style="margin-bottom:12px">Uses the average real cost per outfit plan.</div>
+        <div class="row">
+          <div><div class="eyebrow">Users</div><input type="text" id="scUsers" value="10000"></div>
+          <div><div class="eyebrow">Plans per user / month</div><input type="text" id="scPlans" value="20"></div>
+        </div>
+        <div id="scaleOut" style="margin-top:16px"></div>
+      </div>
+      <div class="box">
+        <h3>Today's safety budget</h3>
+        <div class="small muted">A hard daily cap stops a bug or a bad actor from burning tokens.</div>
+        <div id="budget" style="margin-top:12px"></div>
+      </div>
+    </div>
+    <div style="margin-top:34px">
+      <h3>Recent runs</h3>
+      <div style="overflow-x:auto"><table id="runs"></table></div>
+    </div>
+  </section>
+
+  <footer><span>what to wear · MGT 409 final project</span><span>agents run on gpt-6-luna</span></footer>
+</div>
+
+<script>
+const CODES = ["casual", "smart casual", "business casual", "business professional", "cocktail"];
+const FIT_TAGS = ["fitted", "relaxed", "oversized", "cropped", "high-waist", "wide-leg", "straight", "a-line", "flowy",
+                  "defined-waist", "v-neck", "square-neck", "boat-neck", "crewneck", "sleeveless", "open-back", "structured", "midi"];
+const EXAMPLES = [
+  "First date tomorrow, 7pm at a wine bar",
+  "10am coffee chat with McKinsey, then 6pm club mixer",
+  "Meeting my partner's parents for Sunday lunch",
+  "Friend's garden wedding, ceremony at 4pm",
+  "Case interview with Bain at 2pm",
+];
+const EFFORT = {1: "barely tried", 2: "relaxed", 3: "effortless", 4: "polished", 5: "dressed up"};
+
+// ---------- tiny DOM helper (textContent only — never innerHTML with user/model text) ----------
+function el(tag, attrs = {}, ...kids) {
+  const n = document.createElement(tag);
+  for (const [k, v] of Object.entries(attrs)) {
+    if (k === "class") n.className = v; else if (k.startsWith("on")) n.addEventListener(k.slice(2), v);
+    else if (v !== null && v !== undefined) n.setAttribute(k, v);
+  }
+  for (const k of kids.flat()) if (k !== null && k !== undefined && k !== false) n.append(k.nodeType ? k : document.createTextNode(String(k)));
+  return n;
+}
+const $ = (id) => document.getElementById(id);
+const dc = (c) => el("span", {class: "dc dc-" + c.replace(/ /g, "-")}, c);
+const fmt$ = (x) => x < 0.01 ? "$" + x.toFixed(5) : "$" + x.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2});
+const fmtN = (x) => Math.round(x).toLocaleString();
+const effort = (n, label = true) => el("span", {class: "effort"},
+  el("span", {class: "dots"}, [1, 2, 3, 4, 5].map(i => el("span", {class: i <= n ? "on" : ""}))), label ? `effort ${n}/5 · ${EFFORT[n]}` : null);
+function checks(container, values, name, type = "checkbox") {
+  container.replaceChildren(...values.map(v => el("label", {}, el("input", {type, name, value: v}), v)));
+}
+const checked = (container) => [...container.querySelectorAll("input:checked")].map(x => x.value);
+
+// ---------- garment icons ----------
+const PATHS = {
+  top: "M18 8 L26 4 Q32 10 38 4 L46 8 L58 18 L51 27 L45 23 L45 58 L19 58 L19 23 L13 27 L6 18 Z",
+  bottom: "M18 6 L46 6 L49 58 L36 58 L32 22 L28 58 L15 58 Z",
+  dress: "M24 4 L28 4 Q32 10 36 4 L40 4 L41 20 L52 58 L12 58 L23 20 Z",
+  outerwear: "M20 6 L28 4 L32 20 L36 4 L44 6 L57 16 L54 58 L44 58 L44 30 L42 58 L22 58 L20 30 L20 58 L10 58 L7 16 Z",
+  shoes: "M6 34 Q10 26 18 28 L30 32 Q44 34 54 40 Q59 44 56 48 L8 48 Q4 44 6 34 Z",
+  accessory: "M14 24 L50 24 L54 58 L10 58 Z",
+  skirt: "M21 8 L43 8 L53 56 L11 56 Z",
+  jewelry: "M32 12 A18 18 0 1 0 32.1 12 Z M32 20 A10 10 0 1 1 31.9 20 Z",
+  tie: "M27 6 L37 6 L35 14 L42 50 L32 60 L22 50 L29 14 Z",
+  scarf: "M10 14 Q32 26 54 14 L50 30 Q32 40 14 30 Z M38 32 L46 58 L38 58 L32 36 Z",
+};
+function iconFor(cat, name = "") {
+  const n = name.toLowerCase();
+  if (/skirt/.test(n)) return "skirt";
+  if (/earring|necklace|watch|ring|bracelet|chain/.test(n)) return "jewelry";
+  if (/\btie\b/.test(n)) return "tie";
+  if (/scarf/.test(n)) return "scarf";
+  return cat;
+}
+function garment(cat, hex, name = "") {
+  cat = iconFor(cat, name);
+  const ns = "http://www.w3.org/2000/svg";
+  const s = document.createElementNS(ns, "svg"); s.setAttribute("viewBox", "0 0 64 64");
+  const p = document.createElementNS(ns, "path"); p.setAttribute("d", PATHS[cat] || PATHS.top);
+  p.setAttribute("fill", hex); p.setAttribute("fill-rule", "evenodd"); p.setAttribute("stroke", "#111"); p.setAttribute("stroke-width", "1.2"); p.setAttribute("stroke-linejoin", "round");
+  s.append(p);
+  if (cat === "accessory") { const h = document.createElementNS(ns, "path"); h.setAttribute("d", "M24 24 Q24 10 32 10 Q40 10 40 24");
+    h.setAttribute("fill", "none"); h.setAttribute("stroke", "#111"); h.setAttribute("stroke-width", "1.6"); s.append(h); }
+  return s;
+}
+
+// ---------- tabs ----------
+function openTab(name) {
+  document.querySelectorAll("nav button").forEach(x => x.classList.toggle("on", x.dataset.tab === name));
+  document.querySelectorAll(".tab").forEach(t => t.classList.toggle("on", t.id === "tab-" + name));
+  if (name === "closet") loadCloset();
+  if (name === "fit") loadFit();
+  if (name === "usage") loadUsage();
+}
+document.querySelectorAll("nav button").forEach(b => b.onclick = () => openTab(b.dataset.tab));
+
+// ---------- plan ----------
+$("date").value = new Date(Date.now() + 864e5).toLocaleDateString("en-CA");
+EXAMPLES.forEach(t => $("examples").append(el("span", {class: "chip", onclick: () => { $("dayText").value = t; $("charCount").textContent = t.length; }}, t)));
+$("dayText").addEventListener("input", e => $("charCount").textContent = e.target.value.length);
+$("go").onclick = plan;
+$("dayText").addEventListener("keydown", e => { if (e.key === "Enter" && (e.metaKey || e.ctrlKey)) plan(); });
+
+let loadingTimer;
+function showLoading() {
+  const steps = ["Reading the occasion", "Deciding how dressed-up to be", "Checking the weather",
+                 "Styling three looks", "Double-checking every look"];
+  const ul = el("ul", {class: "loading-steps"}, steps.map(s => el("li", {}, s)));
+  $("result").replaceChildren(el("div", {class: "empty"}, el("div", {class: "big"}, "Getting you ", el("i", {}, "dressed")), ul));
+  let i = 0; const lis = ul.children;
+  const tick = () => { [...lis].forEach((li, j) => { li.className = j < i ? "done" : j === i ? "on" : ""; }); if (i < steps.length - 1) i++; };
+  tick(); loadingTimer = setInterval(tick, 2200);
+}
+
+async function plan() {
+  const text = $("dayText").value.trim();
+  if (!text) { $("dayText").focus(); return; }
+  $("go").disabled = true; showLoading();
+  try {
+    const r = await fetch("/api/plan", {method: "POST", headers: {"Content-Type": "application/json"},
+      body: JSON.stringify({text, date: $("date").value, city: $("city").value || "New Haven", use_closet: $("useCloset").checked})});
+    const data = await r.json();
+    if (!r.ok) throw new Error(data.detail || "Something went wrong.");
+    renderResult(data);
+  } catch (e) {
+    $("result").replaceChildren(el("div", {class: "notice stop"}, e.message));
+  } finally { clearInterval(loadingTimer); $("go").disabled = false; }
+}
+
+function renderResult(d) {
+  const out = [];
+  for (const f of d.shield || []) out.push(el("div", {class: "notice"}, el("b", {}, "Safety shield — "), f));
+  for (const f of d.flags || []) out.push(el("div", {class: "notice stop"}, el("b", {}, "Stopped — "), f));
+  if (d.outcome !== "ok") {
+    out.push(el("div", {class: "empty"}, el("div", {class: "big"}, "Let's try ", el("i", {}, "that again")), el("div", {class: "muted"}, d.message || "")));
+    out.push(usageStrip(d));
+    $("result").replaceChildren(...out); return;
+  }
+  const w = d.weather, o = d.options;
+  out.push(el("div", {class: "eyebrow"}, "The occasion, decoded"));
+  out.push(el("div", {style: "display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:8px"},
+    el("h2", {style: "margin:0"}, "Here's the ", el("i", {}, "brief")),
+    el("span", {class: "weather"}, `${w.city} · ${w.date} · ${w.summary}`)));
+  out.push(el("div", {class: "events"}, d.events.map((e, i) => el("div", {class: "event"},
+    el("div", {class: "time"}, `${i + 1} · ${e.time || "any time"} · ${e.confidence === "stated" ? "from the invite" : "decoded"}`),
+    el("h3", {}, e.title),
+    el("div", {style: "display:flex;gap:10px;align-items:center;flex-wrap:wrap"}, dc(e.dress_code), effort(e.effort)),
+    el("p", {class: "small", style: "margin:12px 0 4px"}, e.why),
+    el("ul", {class: "do"}, e.do.map(x => el("li", {}, x))),
+    el("ul", {class: "avoid"}, e.avoid.map(x => el("li", {}, x))),
+  ))));
+
+  out.push(el("div", {class: "eyebrow"}, o.mode === "closet" ? "From your closet" : "Built from basics"));
+  out.push(el("h2", {}, "Three ways to ", el("i", {}, "wear it")));
+  out.push(el("div", {class: "capsule"},
+    el("div", {class: "n"}, `3 looks · ${o.unique_pieces} pieces`),
+    el("div", {class: "small"}, o.less_is_more)));
+  out.push(el("div", {class: "looks3"}, o.looks.map(look => el("div", {class: "look3"},
+    el("div", {style: "display:flex;justify-content:space-between;align-items:center"}, effort(look.effort_level, false), dc(look.dress_code)),
+    el("div", {class: "vibe"}, look.vibe),
+    el("div", {class: "headline"}, look.headline),
+    el("ul", {class: "pieces"}, look.pieces.map(p => el("li", {},
+      el("span", {class: "ic"}, garment(p.category, p.color_hex, p.name)),
+      el("span", {}, p.name, p.swap ? el("span", {class: "sw"}, "no " + p.name.split(" ").slice(-1)[0] + "? " + p.swap) : null),
+      p.closet_id ? el("span", {class: "own"}, "yours") : p.basic ? el("span", {class: "own"}, "a basic") : null))),
+    el("p", {class: "note"}, el("b", {}, "Shoes"), look.shoes_tip),
+    el("p", {class: "note"}, el("b", {}, "Why it works"), look.why),
+    el("p", {class: "note"}, el("b", {}, "Effortless because"), look.effortless_because),
+    look.flatters ? el("p", {class: "note"}, el("b", {}, "Shows off"), look.flatters) : null,
+    look.tweaks.length ? el("p", {class: "note"}, el("b", {}, "Between events"), look.tweaks.join(" ")) : null,
+    look.warnings.map(x => el("div", {class: "warn"}, "Note: " + x)),
+    o.mode === "closet" ? el("div", {style: "margin-top:auto;padding-top:8px"}, wornButton(look.pieces.map(p => p.closet_id).filter(Boolean), w.date)) : null,
+  ))));
+  out.push(el("div", {class: "small muted", style: "margin:-8px 0 22px"}, "Weather: ", o.weather_note));
+  out.push(chatBox(d.run_id));
+  out.push(usageStrip(d));
+  out.push(traceBlock(d.trace, d.guard_rejections));
+  $("result").replaceChildren(...out);
+}
+
+function chatBox(planId) {
+  const thread = el("div", {class: "thread"});
+  const input = el("input", {type: "text", maxlength: "300", placeholder: "e.g. Can I wear jeans? / 청바지 입어도 돼?"});
+  const send = el("button", {class: "btn small"}, "Ask");
+  const left = el("span", {class: "small muted"});
+  async function ask(q) {
+    q = (q || input.value).trim(); if (!q) return;
+    input.value = ""; send.disabled = true;
+    thread.append(el("div", {class: "msg q"}, el("span", {}, q)));
+    const wait = el("div", {class: "msg a muted"}, "Thinking…"); thread.append(wait);
+    try {
+      const r = await fetch("/api/ask", {method: "POST", headers: {"Content-Type": "application/json"}, body: JSON.stringify({plan_id: planId, question: q})});
+      const d = await r.json();
+      if (!r.ok) throw new Error(d.detail || "Something went wrong.");
+      const a = d.answer;
+      wait.replaceWith(el("div", {class: "msg a"},
+        ...(d.shield || []).map(s => el("div", {class: "small", style: "margin-bottom:4px"}, "Safety shield — " + s)),
+        a ? el("div", {}, a.verdict ? el("span", {class: "verdict"}, a.verdict) : null, a.answer) : el("div", {class: "muted"}, d.message),
+        a && a.try_this ? el("div", {class: "try"}, "Try: " + a.try_this) : null,
+        el("div", {class: "small muted", style: "margin-top:2px;font-size:11px"}, `${fmtN(Object.values(d.usage || {}).reduce((x, u) => x + u.input_tokens + u.output_tokens, 0))} tokens · ${fmt$(d.cost_usd || 0)} · ${d.seconds}s`)));
+      if (d.questions_left !== undefined) left.textContent = `${d.questions_left} questions left for this plan`;
+    } catch (e) { wait.replaceWith(el("div", {class: "msg a"}, e.message)); }
+    finally { send.disabled = false; input.focus(); }
+  }
+  send.onclick = () => ask();
+  input.addEventListener("keydown", e => { if (e.key === "Enter") ask(); });
+  const chips = ["Can I wear jeans?", "Which shoes are best?", "What if it rains?", "Is this too much?"]
+    .map(c => el("span", {class: "chip", onclick: () => ask(c)}, c));
+  return el("div", {class: "chat"},
+    el("div", {class: "eyebrow"}, "Still not sure?"),
+    el("h3", {style: "font-family:var(--serif);font-weight:400;font-size:24px"}, "Ask the ", el("i", {}, "stylist")),
+    el("div", {style: "margin-top:8px"}, chips), thread, el("div", {class: "askrow"}, input, send), el("div", {style: "margin-top:6px"}, left));
+}
+
+function wornButton(ids, date) {
+  const b = el("button", {class: "btn ghost small"}, "I wore this");
+  b.onclick = async () => {
+    await fetch("/api/wore", {method: "POST", headers: {"Content-Type": "application/json"}, body: JSON.stringify({item_ids: ids, date})});
+    b.textContent = "Logged — your closet remembers"; b.disabled = true;
+  };
+  return b;
+}
+
+function usageStrip(d) {
+  const u = d.usage || {}; const sum = (k) => Object.values(u).reduce((a, x) => a + (x[k] || 0), 0);
+  return el("div", {class: "usage"},
+    el("span", {}, "tokens in ", el("b", {}, fmtN(sum("input_tokens")))),
+    el("span", {}, "cached ", el("b", {}, fmtN(sum("cached_input_tokens")))),
+    el("span", {}, "out ", el("b", {}, fmtN(sum("output_tokens")))),
+    el("span", {}, "AI calls ", el("b", {}, sum("requests"))),
+    el("span", {}, "cost ", el("b", {}, fmt$(d.cost_usd || 0))),
+    el("span", {}, "time ", el("b", {}, (d.seconds || 0) + "s")));
+}
+
+function traceBlock(trace, rejections) {
+  const det = el("details", {}, el("summary", {}, `How the agents worked — ${trace.length} steps` + (rejections ? `, guard caught ${rejections}` : "")));
+  det.append(el("div", {class: "trace"}, trace.map(s => el("div", {class: "step"},
+    el("span", {class: "who"}, s.agent), " · ", s.kind, " · ", el("b", {}, s.tool), el("code", {}, s.detail)))));
+  return det;
+}
+
+// ---------- closet ----------
+let filter = "all";
+checks($("nSuits"), CODES, "suits"); checks($("nFit"), FIT_TAGS, "fit");
+async function loadCloset() {
+  const closet = await (await fetch("/api/closet")).json();
+  const cats = ["all", "top", "bottom", "dress", "outerwear", "shoes", "accessory"];
+  $("filters").replaceChildren(...cats.map(c => el("span", {class: "chip" + (c === filter ? " on" : ""), onclick: () => { filter = c; loadCloset(); }}, c)));
+  const shown = closet.filter(i => filter === "all" || i.category === filter);
+  $("closetCount").textContent = `${closet.length} pieces`;
+  $("closetGrid").replaceChildren(...shown.map(i => el("div", {class: "citem" + (i.in_laundry ? " laundry" : "")},
+    el("div", {class: "swatch"}, garment(i.category, i.color_hex, i.name)),
+    el("div", {class: "nm"}, i.name),
+    el("div", {class: "sub"}, [i.color, ...(i.fit || [])].join(" · ")),
+    el("div", {class: "codes"}, i.suits.map(dc)),
+    el("div", {class: "acts"},
+      el("span", {}, i.times_worn ? `worn ${i.times_worn}×` : "never worn"),
+      el("span", {},
+        el("button", {class: "lnk", onclick: async () => { await fetch("/api/closet/" + i.id, {method: "PATCH", headers: {"Content-Type": "application/json"}, body: JSON.stringify({in_laundry: !i.in_laundry})}); loadCloset(); }}, i.in_laundry ? "back from wash" : "in the wash"),
+        "  ",
+        el("button", {class: "lnk", onclick: async () => { if (confirm(`Remove "${i.name}"?`)) { await fetch("/api/closet/" + i.id, {method: "DELETE"}); loadCloset(); } }}, "remove"))),
+  )));
+}
+$("addItem").onclick = async () => {
+  const suits = checked($("nSuits"));
+  const body = {name: $("nName").value.trim(), category: $("nCat").value, color: $("nColor").value.trim(), color_hex: $("nHex").value,
+                suits, warmth: +$("nWarm").value, fit: checked($("nFit")).slice(0, 6)};
+  if (!body.name || !body.color || !suits.length) { $("addMsg").textContent = "Add a name, a color, and at least one dress code."; return; }
+  const r = await fetch("/api/closet", {method: "POST", headers: {"Content-Type": "application/json"}, body: JSON.stringify(body)});
+  $("addMsg").textContent = r.ok ? `Added “${body.name}”.` : "Couldn't add that item.";
+  if (r.ok) { $("nName").value = ""; $("nColor").value = ""; document.querySelectorAll("#nSuits input, #nFit input").forEach(x => x.checked = false); loadCloset(); }
+};
+document.querySelectorAll("[data-sample]").forEach(b => b.onclick = async () => {
+  if (!confirm(`Replace your closet with the ${b.dataset.sample} sample?`)) return;
+  await fetch("/api/closet/reset?sample=" + b.dataset.sample, {method: "POST"}); loadCloset();
+});
+
+// ---------- fit ----------
+async function loadFit() {
+  const f = await (await fetch("/api/fit")).json();
+  checks($("fWardrobe"), ["womenswear", "menswear", "both", "no preference"], "wardrobe", "radio");
+  checks($("fLove"), f.areas, "love"); checks($("fRelaxed"), f.areas, "relaxed");
+  $("fWardrobe").querySelectorAll("input").forEach(x => x.checked = x.value === f.wardrobe);
+  $("fLove").querySelectorAll("input").forEach(x => x.checked = f.love_to_show.includes(x.value));
+  $("fRelaxed").querySelectorAll("input").forEach(x => x.checked = f.relaxed_fit_around.includes(x.value));
+  $("fHeight").value = f.height; $("fStyle").value = f.style_words; $("fNever").value = f.never.join(", ");
+  fitHint(f);
+}
+function fitHint(f) {
+  const bits = [f.love_to_show.length ? "shows off your " + f.love_to_show.join(" & ") : null, f.style_words || null].filter(Boolean);
+  $("fitHint").replaceChildren("Styling for: ", el("b", {}, bits.join(" · ") || "no fit profile yet"), " — ", el("button", {class: "lnk", onclick: () => openTab("fit")}, "edit my fit"));
+}
+$("saveFit").onclick = async () => {
+  const body = {wardrobe: checked($("fWardrobe"))[0] || "no preference", love_to_show: checked($("fLove")), relaxed_fit_around: checked($("fRelaxed")),
+                height: $("fHeight").value.trim(), style_words: $("fStyle").value.trim(),
+                never: $("fNever").value.split(",").map(s => s.trim()).filter(Boolean).slice(0, 6)};
+  const r = await fetch("/api/fit", {method: "PUT", headers: {"Content-Type": "application/json"}, body: JSON.stringify(body)});
+  const data = await r.json();
+  $("fitMsg").textContent = r.ok ? "Saved. The stylist will use this next time." : (data.detail || "Couldn't save.");
+  if (r.ok) fitHint(data);
+};
+fetch("/api/fit").then(r => r.json()).then(fitHint);
+
+// ---------- usage ----------
+let avgCost = 0;
+async function loadUsage() {
+  const u = await (await fetch("/api/usage")).json();
+  const a = u.avg_per_ok_run; avgCost = a.cost_usd;
+  const stat = (label, v, sub) => el("div", {class: "stat"}, el("div", {class: "eyebrow"}, label), el("div", {class: "v"}, v), el("div", {class: "small muted"}, sub || ""));
+  $("stats").replaceChildren(
+    stat("Outfit plans", u.runs_ok, `${u.runs_total} runs total, incl. blocked`),
+    stat("Avg tokens in", fmtN(a.input_tokens), `${fmtN(a.cached_input_tokens)} cached (${a.input_tokens ? Math.round(100 * a.cached_input_tokens / a.input_tokens) : 0}%)`),
+    stat("Avg tokens out", fmtN(a.output_tokens), "per outfit plan"),
+    stat("Avg cost / plan", fmt$(a.cost_usd), `${a.seconds}s average wait`),
+    stat("Avg cost / question", fmt$(u.avg_per_question.cost_usd), `${u.avg_per_question.count} follow-ups · ${u.avg_per_question.seconds}s`));
+  const b = u.budget_today, pct = Math.min(100, 100 * b.cost_usd / u.caps.cost_usd), rpct = Math.min(100, 100 * b.runs / u.caps.runs);
+  $("budget").replaceChildren(
+    el("div", {class: "small"}, `Spend: ${fmt$(b.cost_usd)} of ${fmt$(u.caps.cost_usd)} cap`), el("div", {class: "bar"}, el("div", {style: `width:${pct}%`})),
+    el("div", {class: "small", style: "margin-top:12px"}, `Plans: ${b.runs} of ${u.caps.runs} cap`), el("div", {class: "bar"}, el("div", {style: `width:${rpct}%`})),
+    el("div", {class: "small muted", style: "margin-top:12px"}, `Requests blocked by the cap today: ${b.blocked}`));
+  scale();
+  const head = el("tr", {}, ["Time", "Request", "Outcome", "Tokens in / cached / out", "Cost", "Guard", "Safety"].map(h => el("th", {}, h)));
+  $("runs").replaceChildren(head, ...u.recent.map(r => {
+    const us = r.usage || {}, s = (k) => Object.values(us).reduce((x, y) => x + (y[k] || 0), 0);
+    const oc = r.outcome === "ok" ? "oc-ok" : r.outcome === "off_topic" ? "oc-warn" : "oc-bad";
+    return el("tr", {}, el("td", {class: "muted"}, new Date(r.ts).toLocaleString()), el("td", {}, el("span", {class: "muted"}, (r.kind === "ask" ? "question" : r.kind === "plan" ? "plan" : "v1 plan") + " · "), r.input_preview),
+      el("td", {class: oc}, r.outcome), el("td", {}, `${fmtN(s("input_tokens"))} / ${fmtN(s("cached_input_tokens"))} / ${fmtN(s("output_tokens"))}`),
+      el("td", {}, fmt$(r.cost_usd || 0)), el("td", {}, r.guard_rejections ? `caught ${r.guard_rejections}` : "—"),
+      el("td", {class: "small"}, [...(r.shield || []), ...(r.flags || [])].join("; ").slice(0, 160) || "—"));
+  }));
+}
+function scale() {
+  const users = +$("scUsers").value || 0, plans = +$("scPlans").value || 0, perUser = avgCost * plans;
+  $("scaleOut").replaceChildren(
+    el("div", {}, "Per user per month: ", el("b", {}, fmt$(perUser))),
+    el("div", {}, "100 users: ", el("b", {}, fmt$(perUser * 100)), " / month"),
+    el("div", {}, `${users.toLocaleString()} users: `, el("b", {}, fmt$(perUser * users)), " / month"));
+}
+$("scUsers").oninput = scale; $("scPlans").oninput = scale;
+</script>
+</body>
+</html>
