@@ -21,7 +21,7 @@ You need **Python 3.11+**. Nothing else (no Node, no database).
 
 ```bash
 # 1. Get the code
-git clone <this-repo-url> what-to-wear
+git clone https://github.com/katesoshin/what-to-wear.git
 cd what-to-wear
 
 # 2. Make a virtual environment and install
