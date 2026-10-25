@@ -761,6 +761,9 @@ function showFitModal(f) {
   checks($("mWardrobe"), ["womenswear", "menswear", "both", "no preference"], "mwardrobe", "radio");
   checks($("mLove"), f.areas, "mlove"); checks($("mRelaxed"), f.areas, "mrelaxed");
   $("mWardrobe").querySelectorAll("input").forEach(x => x.checked = x.value === f.wardrobe);
+  $("mLove").querySelectorAll("input").forEach(x => x.checked = f.love_to_show.includes(x.value));
+  $("mRelaxed").querySelectorAll("input").forEach(x => x.checked = f.relaxed_fit_around.includes(x.value));
+  $("mStyle").value = f.style_words || ""; $("mNever").value = (f.never || []).join(", ");
   $("fitModal").classList.remove("hidden");
 }
 $("mSkip").onclick = () => {
@@ -783,7 +786,8 @@ document.addEventListener("keydown", e => { if (e.key === "Escape" && !$("fitMod
 fetch("/api/fit").then(r => r.json()).then(f => {
   fitHint(f);
   const skippedUntil = Number(localStorage.getItem(SKIP_KEY) || 0);
-  if (!f.saved && Date.now() > skippedUntil) showFitModal(f);
+  const forced = new URLSearchParams(location.search).has("welcome");  // localhost:8000/?welcome shows it any time
+  if (forced || (!f.saved && Date.now() > skippedUntil)) showFitModal(f);
 });
 
 // ---------- usage ----------
