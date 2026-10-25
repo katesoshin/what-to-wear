@@ -1,4 +1,4 @@
-# what to wear — look good without looking like you tried too hard
+# what to wear — you have enough clothes. here's what to wear.
 
 **What it does:** tell it what's coming up ("first date tomorrow, 7pm at a wine bar", "coffee chat with
 McKinsey at 10", "meeting my partner's parents") or paste an invite. AI agents decide exactly how
