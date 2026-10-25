@@ -50,11 +50,11 @@ def test_normal_text_passes_untouched():
     assert clean == text and not removed
 
 
-def _look(pieces, vibe="Classic", colorways=None):
+def _look(pieces, vibe="Spot on", colorways=None):
     pieces = [app.Piece(**{"garment": "tee", **p}) for p in pieces]
     colorways = colorways or [{"name": "A", "colors": ["#111111"] * len(pieces)},
                               {"name": "B", "colors": ["#f5f0e6"] * len(pieces)}]
-    return app.Look(vibe=vibe, headline="x", pieces=pieces, shoes_tip="x", effort_level=3, why="x",
+    return app.Look(vibe=vibe, pick_if="x", headline="x", pieces=pieces, shoes_tip="x", effort_level=3, why="x",
                     effortless_because="x", palette_name="x", colorways=colorways)
 
 
@@ -191,6 +191,14 @@ def test_per_person_daily_limit():
     finally:
         app.BUDGET_PATH.unlink(missing_ok=True)
         app.BUDGET_PATH, app.PER_USER_DAILY_RUNS = saved
+
+
+def test_effort_ladder_stays_inside_the_scale():
+    ev = lambda n: app.Event(title="x", dress_code="smart casual", effort=n, confidence="inferred", why="x", do=[], avoid=[])  # noqa: E731
+    assert list(app.effort_ladder([ev(3)]).values()) == [2, 3, 4]
+    assert list(app.effort_ladder([ev(5)]).values()) == [4, 5, 5]
+    assert list(app.effort_ladder([ev(1)]).values()) == [1, 1, 2]
+    assert list(app.effort_ladder([ev(2), ev(4)]).values()) == [3, 4, 5]  # the day's most dressed-up event sets it
 
 
 def test_daily_budget_cap_blocks():

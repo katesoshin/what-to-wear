@@ -162,7 +162,10 @@
   .card3 .body { padding: 14px 16px 16px; display: flex; flex-direction: column; flex: 1; }
   .card3 .top { display: flex; justify-content: space-between; align-items: center; }
   .card3 .vibe { font-family: var(--serif); font-size: 26px; font-style: italic; line-height: 1.1; margin: 10px 0 4px; }
-  .card3 .headline { font-size: 13.5px; margin-bottom: 10px; }
+  .card3 .pick { font-size: 12.5px; font-style: italic; color: var(--muted); margin: -2px 0 8px; }
+  .card3 .headline { font-size: 13.5px; margin-bottom: 10px; font-weight: 600; }
+  .card3[data-step="A notch up"] .flat { background: #ebe9e5; }
+  .card3[data-step="A notch down"] .flat { background: #faf9f7; }
   .card3 .shoe { font-size: 12.5px; color: var(--muted); margin-bottom: 12px; }
   .card3 .more { margin-top: auto; }
   .card3 .lnk { font-size: 11px; letter-spacing: 1.4px; text-transform: uppercase; font-weight: 600; }
@@ -597,7 +600,9 @@ function renderResult(d) {
   out.push(el("div", {class: "capline"},
     el("h2", {style: "margin:0"}, "Three ways to ", el("i", {}, "wear it")),
     el("span", {class: "n"}, `3 looks · ${o.unique_pieces} pieces${o.mode === "closet" ? " · from your closet" : ""}`)));
-  out.push(el("div", {class: "cards"}, o.looks.map(look => {
+  const ORDER = ["A notch down", "Spot on", "A notch up"];
+  const looks = [...o.looks].sort((a, b) => ORDER.indexOf(a.vibe) - ORDER.indexOf(b.vibe));
+  out.push(el("div", {class: "cards"}, looks.map(look => {
     const detail = el("div", {class: "detail hidden"},
       el("p", {}, el("b", {}, "The pieces"), look.pieces.map(p => p.name + (p.swap ? ` (or ${p.swap})` : "")).join(" · ")),
       el("p", {}, el("b", {}, "Why it works"), look.why),
@@ -623,12 +628,13 @@ function renderResult(d) {
       wayBtns.forEach((b, j) => b.classList.toggle("on", j === i));
     }
     paint(0);
-    return el("div", {class: "card3"},
+    return el("div", {class: "card3", "data-step": look.vibe},
       flat,
       el("div", {class: "body"},
         palette,
-        el("div", {class: "top"}, effort(look.effort_level, false), dc(look.dress_code)),
+        el("div", {class: "top"}, effort(look.effort_level), dc(look.dress_code)),
         el("div", {class: "vibe"}, look.vibe),
+        el("div", {class: "pick"}, "Pick this if " + look.pick_if.replace(/^pick this if\s*/i, "").replace(/[.…]$/, "") + "."),
         el("div", {class: "headline"}, look.headline),
         el("div", {class: "shoe"}, look.shoes_tip),
         el("div", {class: "ways"}, wayBtns, wayName),
@@ -637,7 +643,7 @@ function renderResult(d) {
   out.push(el("div", {class: "small muted", style: "margin:0 0 26px"}, o.less_is_more, " · ", o.weather_note));
   currentPlanId = d.run_id;
   out.push(el("div", {class: "askcta"}, el("span", {}, "Not sure about something?"),
-    el("button", {class: "btn small", onclick: () => openChat("Which of these three looks would you pick for me?")}, "Ask your stylist ✦")));
+    el("button", {class: "btn small", onclick: () => openChat("Which of the three should I pick?")}, "Ask your stylist ✦")));
   out.push(usageStrip(d));
   out.push(traceBlock(d.trace, d.guard_rejections));
   $("result").replaceChildren(...out);

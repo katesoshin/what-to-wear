@@ -1,8 +1,8 @@
 # what to wear — you have enough clothes. here's what to wear.
 
 **What it does:** tell it what's coming up ("first date tomorrow, 7pm at a wine bar", "coffee chat at 10", "meeting my partner's parents") or paste an invite. AI agents decide exactly how
-dressed-up to be (dress code **and** effort level), then give you **three looks — Classic, Effortless,
-A little bold — built from basics you probably already own**, with shoe advice and easy swaps. Still
+dressed-up to be (dress code **and** effort level), then give you **three looks, one step apart on the effort scale — A notch down,
+Spot on, A notch up — built from basics you probably already own**, with shoe advice and easy swaps. Still
 unsure? Want it all built around one color (say, sage)? Pick it, and every look and color palette uses it.
 Tap the ✦ wand (bottom right) to chat with your personal stylist about anything — "what goes with wide-leg
 jeans?", "청바지 입어도 돼?", "which of these three would you pick?" — and get short answers, with outfit
