@@ -4,7 +4,8 @@
 McKinsey at 10", "meeting my partner's parents") or paste an invite. AI agents decide exactly how
 dressed-up to be (dress code **and** effort level), then give you **three looks — Classic, Effortless,
 A little bold — built from basics you probably already own**, with shoe advice and easy swaps. Still
-unsure? Ask the stylist ("can I wear jeans?", "청바지 입어도 돼?") and get a straight answer.
+unsure? Want it all built around one color (say, sage)? Pick it, and every look and color palette uses it.
+Ask the stylist ("can I wear jeans?", "청바지 입어도 돼?") and get a straight answer.
 
 The idea: you don't need a big wardrobe to look stylish — you need a plan. No sign-up, no closet to
 upload first. (You *can* save your closet and fit profile if you want looks from your exact pieces.)
@@ -99,6 +100,7 @@ python tests/test_safety.py
 ```
 app.py                     backend: agents, tools, safety, API (one file)
 static/index.html          the web page
+static/flats.js            technical-flat garment drawings (recolorable SVG)
 data/dress_code_guide.json house rules: dress codes, occasions, effort scale, effortless + fit rules
 data/closet_sample_*.json  womenswear / menswear sample closets (your edits go to data/closet.json)
 data/fit_profile_sample.json  sample fit profile (your edits go to data/fit_profile.json)

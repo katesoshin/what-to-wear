@@ -50,9 +50,34 @@ def test_normal_text_passes_untouched():
     assert clean == text and not removed
 
 
-def _look(pieces, vibe="Classic"):
-    return app.Look(vibe=vibe, headline="x", pieces=[app.Piece(**p) for p in pieces], shoes_tip="x", effort_level=3,
-                    why="x", effortless_because="x")
+def _look(pieces, vibe="Classic", colorways=None):
+    pieces = [app.Piece(**{"garment": "tee", **p}) for p in pieces]
+    colorways = colorways or [{"name": "A", "colors": ["#111111"] * len(pieces)},
+                              {"name": "B", "colors": ["#f5f0e6"] * len(pieces)}]
+    return app.Look(vibe=vibe, headline="x", pieces=pieces, shoes_tip="x", effort_level=3, why="x",
+                    effortless_because="x", palette_name="x", colorways=colorways)
+
+
+def test_base_color_must_appear_in_every_look_and_colorway():
+    sage = "#9caf88"
+    pieces = [{"name": "white shirt", "category": "top", "basic": True, "color_hex": "#ffffff"},
+              {"name": "dark jeans", "category": "bottom", "basic": True, "color_hex": "#28324a"},
+              {"name": "loafers", "category": "shoes", "basic": True, "color_hex": "#111111"}]
+    problems, _ = app.run_look_checks(_look(pieces), "smart casual", None, None, base_hex=sage)
+    assert any("asked for" in p for p in problems) and any("must also include" in p for p in problems), problems
+    pieces[0]["color_hex"] = "#a3b591"  # a sage knit instead of the white shirt
+    ok = [{"name": "A", "colors": ["#a3b591", "#28324a", "#111111"]}, {"name": "B", "colors": ["#9caf88", "#f5f0e6", "#6b4a33"]}]
+    problems, _ = app.run_look_checks(_look(pieces, colorways=ok), "smart casual", None, None, base_hex=sage)
+    assert not problems, problems
+
+
+def test_colorway_needs_one_color_per_piece():
+    pieces = [{"name": "white shirt", "category": "top", "basic": True},
+              {"name": "dark jeans", "category": "bottom", "basic": True},
+              {"name": "loafers", "category": "shoes", "basic": True}]
+    bad = [{"name": "A", "colors": ["#111111"]}, {"name": "B", "colors": ["#111111", "#222222", "#333333"]}]
+    problems, _ = app.run_look_checks(_look(pieces, colorways=bad), "smart casual", None, None)
+    assert any("exactly 3 colors" in p for p in problems), problems
 
 
 def test_body_kind_guard_catches_shaming_words():

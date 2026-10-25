@@ -155,7 +155,7 @@
                               .card3 { scroll-snap-align: start; } }
   .card3 { border: 1px solid var(--line); display: flex; flex-direction: column; background: var(--paper); }
   .card3 .flat { background: var(--soft); aspect-ratio: 2 / 1; display: flex; flex-wrap: wrap; align-content: center; justify-content: center; gap: 6px 10px; padding: 16px; }
-  .card3 .flat span { width: 62px; height: 62px; display: flex; align-items: center; justify-content: center; }
+  .card3 .flat span { width: 66px; height: 66px; display: flex; align-items: center; justify-content: center; }
   .card3 .flat svg { width: 100%; height: 100%; }
   .card3 .body { padding: 14px 16px 16px; display: flex; flex-direction: column; flex: 1; }
   .card3 .top { display: flex; justify-content: space-between; align-items: center; }
@@ -167,6 +167,18 @@
   .card3 .detail { border-top: 1px solid var(--line); margin-top: 12px; padding-top: 10px; }
   .card3 .detail p { font-size: 12.5px; margin: 0 0 8px; }
   .card3 .detail b { font-size: 10px; letter-spacing: 1.3px; text-transform: uppercase; display: block; }
+  .colorrow { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin-top: 14px; }
+  .colorrow #colorName { width: 190px; padding: 7px 10px; font-size: 13px; }
+  .sw { width: 22px; height: 22px; border-radius: 50%; border: 1px solid rgba(0,0,0,.25); cursor: pointer; display: inline-block; vertical-align: middle; margin-right: 6px; padding: 0; }
+  .sw.on { outline: 2px solid var(--ink); outline-offset: 2px; }
+  .picker { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; cursor: pointer; }
+  .picker input { width: 26px; height: 26px; border: 1px solid var(--line); padding: 0; background: none; cursor: pointer; }
+  .palette { display: flex; height: 10px; margin: 0 0 10px; border: 1px solid var(--line); }
+  .palette span { flex: 1; }
+  .ways { display: flex; align-items: center; gap: 8px; margin: 8px 0 2px; font-size: 11px; color: var(--muted); }
+  .way { width: 20px; height: 20px; border-radius: 50%; border: 1px solid rgba(0,0,0,.3); cursor: pointer; padding: 0; overflow: hidden; display: inline-flex; }
+  .way span { flex: 1; height: 100%; }
+  .way.on { outline: 2px solid var(--ink); outline-offset: 2px; }
   .brief { display: flex; gap: 0; border: 1px solid var(--line); margin-bottom: 26px; flex-wrap: wrap; }
   .brief > div { flex: 1 1 260px; padding: 14px 16px; border-right: 1px solid var(--line); }
   .brief > div:last-child { border-right: 0; }
@@ -226,6 +238,13 @@
         <input type="date" id="date" title="Date">
         <input type="text" id="city" value="New Haven" maxlength="60" title="City">
         <button class="btn" id="go">Dress me</button>
+      </div>
+      <div class="colorrow">
+        <span class="eyebrow" style="margin:0">Build it around a color <span style="font-weight:400;text-transform:none;letter-spacing:0">(optional)</span></span>
+        <div id="presets"></div>
+        <input type="text" id="colorName" maxlength="30" placeholder="or type one, e.g. sage">
+        <label class="picker" title="Pick any color"><input type="color" id="colorHex" value="#9caf88"><span>pick</span></label>
+        <button class="lnk hidden" id="colorClear">clear</button>
       </div>
       <div class="subrow">
         <div id="examples"></div>
@@ -347,6 +366,7 @@
   <footer><span>what to wear · MGT 409 final project</span><span>agents run on gpt-6-luna</span></footer>
 </div>
 
+<script src="/static/flats.js"></script>
 <script>
 const CODES = ["casual", "smart casual", "business casual", "business professional", "cocktail"];
 const FIT_TAGS = ["fitted", "relaxed", "oversized", "cropped", "high-waist", "wide-leg", "straight", "a-line", "flowy",
@@ -382,37 +402,8 @@ function checks(container, values, name, type = "checkbox") {
 const checked = (container) => [...container.querySelectorAll("input:checked")].map(x => x.value);
 
 // ---------- garment icons ----------
-const PATHS = {
-  top: "M18 8 L26 4 Q32 10 38 4 L46 8 L58 18 L51 27 L45 23 L45 58 L19 58 L19 23 L13 27 L6 18 Z",
-  bottom: "M18 6 L46 6 L49 58 L36 58 L32 22 L28 58 L15 58 Z",
-  dress: "M24 4 L28 4 Q32 10 36 4 L40 4 L41 20 L52 58 L12 58 L23 20 Z",
-  outerwear: "M20 6 L28 4 L32 20 L36 4 L44 6 L57 16 L54 58 L44 58 L44 30 L42 58 L22 58 L20 30 L20 58 L10 58 L7 16 Z",
-  shoes: "M6 34 Q10 26 18 28 L30 32 Q44 34 54 40 Q59 44 56 48 L8 48 Q4 44 6 34 Z",
-  accessory: "M14 24 L50 24 L54 58 L10 58 Z",
-  skirt: "M21 8 L43 8 L53 56 L11 56 Z",
-  jewelry: "M32 12 A18 18 0 1 0 32.1 12 Z M32 20 A10 10 0 1 1 31.9 20 Z",
-  tie: "M27 6 L37 6 L35 14 L42 50 L32 60 L22 50 L29 14 Z",
-  scarf: "M10 14 Q32 26 54 14 L50 30 Q32 40 14 30 Z M38 32 L46 58 L38 58 L32 36 Z",
-};
-function iconFor(cat, name = "") {
-  const n = name.toLowerCase();
-  if (/skirt/.test(n)) return "skirt";
-  if (/earring|necklace|watch|ring|bracelet|chain/.test(n)) return "jewelry";
-  if (/\btie\b/.test(n)) return "tie";
-  if (/scarf/.test(n)) return "scarf";
-  return cat;
-}
-function garment(cat, hex, name = "") {
-  cat = iconFor(cat, name);
-  const ns = "http://www.w3.org/2000/svg";
-  const s = document.createElementNS(ns, "svg"); s.setAttribute("viewBox", "0 0 64 64");
-  const p = document.createElementNS(ns, "path"); p.setAttribute("d", PATHS[cat] || PATHS.top);
-  p.setAttribute("fill", hex); p.setAttribute("fill-rule", "evenodd"); p.setAttribute("stroke", "#111"); p.setAttribute("stroke-width", "1.2"); p.setAttribute("stroke-linejoin", "round");
-  s.append(p);
-  if (cat === "accessory") { const h = document.createElementNS(ns, "path"); h.setAttribute("d", "M24 24 Q24 10 32 10 Q40 10 40 24");
-    h.setAttribute("fill", "none"); h.setAttribute("stroke", "#111"); h.setAttribute("stroke-width", "1.6"); s.append(h); }
-  return s;
-}
+// Garment drawings live in flats.js (technical flats, recolorable).
+function garment(cat, hex, name = "", g = null) { return drawFlat(g || guessGarment(cat, name), hex); }
 
 // ---------- tabs ----------
 function openTab(name) {
@@ -428,6 +419,22 @@ document.querySelectorAll("nav button").forEach(b => b.onclick = () => openTab(b
 $("date").value = new Date(Date.now() + 864e5).toLocaleDateString("en-CA");
 EXAMPLES.forEach(t => $("examples").append(el("span", {class: "chip", onclick: () => { $("dayText").value = t; $("charCount").textContent = t.length; }}, t)));
 $("dayText").addEventListener("input", e => $("charCount").textContent = e.target.value.length);
+
+// ---------- base color ----------
+const PRESETS = [["black", "#111111"], ["cream", "#f1e9d8"], ["camel", "#b98a5a"], ["navy", "#1f2d4d"],
+                 ["sage", "#9caf88"], ["burgundy", "#6e1f2f"], ["pink", "#f2a7c3"], ["cobalt", "#1f4fbf"]];
+let baseColor = {name: "", hex: null};
+function setBase(name, hex, typing = false) {
+  baseColor = {name, hex};
+  if (!typing) $("colorName").value = name;
+  document.querySelectorAll("#presets .sw").forEach(b => b.classList.toggle("on", b.dataset.hex === hex));
+  $("colorClear").classList.toggle("hidden", !name && !hex);
+}
+PRESETS.forEach(([name, hex]) => $("presets").append(el("button", {class: "sw", title: name, "data-hex": hex, style: `background:${hex}`,
+  onclick: () => baseColor.hex === hex ? setBase("", null) : setBase(name, hex)})));
+$("colorName").addEventListener("input", e => setBase(e.target.value.trim(), null, true));
+$("colorHex").addEventListener("input", e => setBase($("colorName").value.trim() || "my color", e.target.value));
+$("colorClear").onclick = () => setBase("", null);
 $("go").onclick = plan;
 $("dayText").addEventListener("keydown", e => { if (e.key === "Enter" && !e.shiftKey) { e.preventDefault(); plan(); } });
 
@@ -448,7 +455,8 @@ async function plan() {
   $("go").disabled = true; showLoading();
   try {
     const r = await fetch("/api/plan", {method: "POST", headers: {"Content-Type": "application/json"},
-      body: JSON.stringify({text, date: $("date").value, city: $("city").value || "New Haven", use_closet: $("useCloset").checked})});
+      body: JSON.stringify({text, date: $("date").value, city: $("city").value || "New Haven", use_closet: $("useCloset").checked,
+        base_color_name: baseColor.name, base_color_hex: baseColor.hex})});
     const data = await r.json();
     if (!r.ok) throw new Error(data.detail || "Something went wrong.");
     renderResult(data);
@@ -492,14 +500,31 @@ function renderResult(d) {
       o.mode === "closet" ? wornButton(look.pieces.map(p => p.closet_id).filter(Boolean), w.date) : null);
     const toggle = el("button", {class: "lnk"}, "Details +");
     toggle.onclick = () => { const open = detail.classList.toggle("hidden"); toggle.textContent = open ? "Details +" : "Less –"; };
+    const ways = [{name: look.palette_name, colors: look.pieces.map(p => p.color_hex)},
+                  ...look.colorways.filter(c => c.colors.length === look.pieces.length)];
+    const flat = el("div", {class: "flat"}), palette = el("div", {class: "palette"}), wayName = el("span", {});
+    const wayBtns = ways.map((wy, i) => {
+      const b = el("button", {class: "way", title: wy.name}, [...new Set(wy.colors)].slice(0, 3).map(c => el("span", {style: `background:${c}`})));
+      b.onclick = () => paint(i); return b;
+    });
+    function paint(i) {
+      const wy = ways[i];
+      flat.replaceChildren(...look.pieces.map((p, j) => el("span", {title: p.name}, garment(p.category, wy.colors[j], p.name, p.garment))));
+      palette.replaceChildren(...[...new Set(wy.colors)].map(c => el("span", {style: `background:${c}`, title: c})));
+      wayName.textContent = wy.name;
+      wayBtns.forEach((b, j) => b.classList.toggle("on", j === i));
+    }
+    paint(0);
     return el("div", {class: "card3"},
-      el("div", {class: "flat"}, look.pieces.map(p => el("span", {title: p.name}, garment(p.category, p.color_hex, p.name)))),
+      flat,
       el("div", {class: "body"},
+        palette,
         el("div", {class: "top"}, effort(look.effort_level, false), dc(look.dress_code)),
         el("div", {class: "vibe"}, look.vibe),
         el("div", {class: "headline"}, look.headline),
         el("div", {class: "shoe"}, look.shoes_tip),
-        el("div", {class: "more"}, toggle, detail)));
+        el("div", {class: "ways"}, wayBtns, wayName),
+        el("div", {class: "more", style: "margin-top:12px"}, toggle, detail)));
   })));
   out.push(el("div", {class: "small muted", style: "margin:0 0 26px"}, o.less_is_more, " · ", o.weather_note));
   out.push(chatBox(d.run_id));
