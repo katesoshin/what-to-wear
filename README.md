@@ -65,7 +65,7 @@ PORT=8001 python app.py
    outfit when it recommends one. 20 messages per chat.
 3. **My closet** (optional) — tick "Style it from my saved closet" to get looks from your exact pieces.
    Starts with a 44-piece womenswear sample (a 30-piece menswear sample is one click away).
-4. **My fit** — optional: what you mostly wear, what you love showing off, where you like a relaxed fit,
+4. **My fit** — asked once in a welcome popup (skip hides it for a week), editable any time; optional: what you mostly wear, what you love showing off, where you like a relaxed fit,
    what you never wear. No body "types" or labels.
 5. **Cost & safety** — measured token use and cost per run, cost at scale, today's spending cap,
    and a log of recent runs, including blocked ones.
@@ -108,7 +108,6 @@ static/index.html          the web page
 static/flats.js            technical-flat garment drawings (recolorable SVG)
 data/dress_code_guide.json house rules: dress codes, occasions, effort scale, effortless + fit rules
 data/closet_sample_*.json  womenswear / menswear sample closets (your edits go to data/closet.json)
-data/fit_profile_sample.json  sample fit profile (your edits go to data/fit_profile.json)
 logs/runs.jsonl            token + cost log of every run
 tests/test_safety.py       offline safety tests
 ```

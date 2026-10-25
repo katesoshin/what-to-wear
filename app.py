@@ -74,7 +74,6 @@ SAMPLE_CLOSETS = {"womenswear": DATA_DIR / "closet_sample_womenswear.json",
                   "menswear": DATA_DIR / "closet_sample_menswear.json"}
 SAMPLE_CLOSET_PATH = SAMPLE_CLOSETS["womenswear"]
 FIT_PROFILE_PATH = DATA_DIR / "fit_profile.json"
-SAMPLE_FIT_PROFILE_PATH = DATA_DIR / "fit_profile_sample.json"
 GUIDE = json.loads((DATA_DIR / "dress_code_guide.json").read_text(encoding="utf-8"))
 RUN_LOG = LOG_DIR / "runs.jsonl"
 BUDGET_PATH = LOG_DIR / "budget.json"
@@ -154,8 +153,10 @@ class FitProfile(BaseModel):
 
 
 def load_fit_profile() -> FitProfile:
-    path = FIT_PROFILE_PATH if FIT_PROFILE_PATH.exists() else SAMPLE_FIT_PROFILE_PATH
-    return FitProfile(**json.loads(path.read_text(encoding="utf-8")))
+    """The saved profile, or an empty one: we never style someone with another person's profile."""
+    if not FIT_PROFILE_PATH.exists():
+        return FitProfile()
+    return FitProfile(**json.loads(FIT_PROFILE_PATH.read_text(encoding="utf-8")))
 
 
 def fit_profile_text(p: FitProfile) -> str:
@@ -984,7 +985,7 @@ def api_reset_closet(sample: Literal["womenswear", "menswear"] = "womenswear") -
 
 @app.get("/api/fit")
 def api_get_fit() -> dict:
-    return {**load_fit_profile().model_dump(), "areas": FIT_AREAS}
+    return {**load_fit_profile().model_dump(), "areas": FIT_AREAS, "saved": FIT_PROFILE_PATH.exists()}
 
 
 @app.put("/api/fit")
@@ -997,7 +998,7 @@ def api_put_fit(profile: FitProfile) -> dict:
     profile.love_to_show = [a for a in profile.love_to_show if a in FIT_AREAS]
     profile.relaxed_fit_around = [a for a in profile.relaxed_fit_around if a in FIT_AREAS]
     FIT_PROFILE_PATH.write_text(profile.model_dump_json(indent=1), encoding="utf-8")
-    return profile.model_dump()
+    return {**profile.model_dump(), "saved": True}
 
 
 class WoreRequest(BaseModel):

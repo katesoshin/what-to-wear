@@ -214,6 +214,11 @@
   th, td { text-align: left; padding: 10px 8px; border-bottom: 1px solid var(--line); vertical-align: top; }
   th { font-weight: 600; font-size: 11px; text-transform: uppercase; letter-spacing: 1.4px; border-bottom: 1px solid var(--ink); }
   .oc-ok { color: var(--ok); } .oc-bad { color: var(--bad); } .oc-warn { color: var(--warn); }
+  .overlay { position: fixed; inset: 0; background: rgba(17,17,17,.45); z-index: 80; display: flex; align-items: center; justify-content: center; padding: 20px; }
+  .modal { background: var(--paper); border: 1px solid var(--ink); width: 560px; max-width: 100%; max-height: calc(100vh - 40px); overflow-y: auto; padding: 28px; }
+  .modal .checks label { margin-bottom: 6px; }
+  .toast { position: fixed; left: 50%; bottom: 30px; transform: translateX(-50%); background: var(--ink); color: var(--paper); padding: 12px 18px;
+           font-size: 13.5px; z-index: 90; box-shadow: 0 6px 20px rgba(0,0,0,.2); }
   .askcta { display: flex; gap: 14px; align-items: center; justify-content: space-between; border: 1px solid var(--ink); padding: 14px 18px; margin-bottom: 18px; font-family: var(--serif); font-size: 20px; }
   .wand { position: fixed; right: 26px; bottom: 26px; width: 58px; height: 58px; border-radius: 50%; background: var(--ink); border: 0;
           cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 0 6px 20px rgba(0,0,0,.25); z-index: 50; }
@@ -392,6 +397,26 @@
   <footer><span>what to wear · MGT 409 final project</span><span>agents run on gpt-6-luna</span></footer>
 </div>
 
+<div class="overlay hidden" id="fitModal" role="dialog" aria-modal="true" aria-labelledby="fitModalTitle">
+  <div class="modal">
+    <div class="eyebrow">Before we start · 30 seconds · all optional</div>
+    <h2 id="fitModalTitle" style="margin-bottom:6px">Dress for <i>you</i></h2>
+    <p class="small muted" style="margin:0 0 16px">No body types, no labels — just what you love. Your stylist will only ever talk about what a piece shows off.</p>
+    <div class="eyebrow">I mostly wear</div><div class="checks" id="mWardrobe"></div>
+    <div class="eyebrow" style="margin-top:10px">I love showing off my…</div><div class="checks" id="mLove"></div>
+    <div class="eyebrow" style="margin-top:10px">I like a relaxed fit around my…</div><div class="checks" id="mRelaxed"></div>
+    <div class="row" style="margin-top:10px">
+      <div><div class="eyebrow">My style in a few words</div><input type="text" id="mStyle" maxlength="120" placeholder="e.g. minimal, a little French"></div>
+      <div><div class="eyebrow">I never wear…</div><input type="text" id="mNever" maxlength="300" placeholder="e.g. very high heels"></div>
+    </div>
+    <div class="small" id="mMsg" style="margin-top:10px;color:var(--bad)"></div>
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-top:18px">
+      <button class="lnk" id="mSkip">Skip for now</button>
+      <button class="btn" id="mReady">Ready ✦</button>
+    </div>
+  </div>
+</div>
+<div class="toast hidden" id="toast"></div>
 <button class="wand" id="wand" title="Chat with your stylist" aria-label="Chat with your stylist">
   <svg viewBox="0 0 32 32" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round">
     <path d="M6 26 L20 12"/><path d="M18 10 l4 4"/>
@@ -725,7 +750,41 @@ $("saveFit").onclick = async () => {
   $("fitMsg").textContent = r.ok ? "Saved. The stylist will use this next time." : (data.detail || "Couldn't save.");
   if (r.ok) fitHint(data);
 };
-fetch("/api/fit").then(r => r.json()).then(fitHint);
+// ---------- welcome popup: fit profile once; "skip for now" hides it for a week ----------
+const SKIP_KEY = "wtw.fitSkipUntil", WEEK = 7 * 24 * 3600 * 1000;
+function toast(text) {
+  $("toast").textContent = text; $("toast").classList.remove("hidden");
+  clearTimeout(toast.t); toast.t = setTimeout(() => $("toast").classList.add("hidden"), 4500);
+}
+function closeFitModal() { $("fitModal").classList.add("hidden"); }
+function showFitModal(f) {
+  checks($("mWardrobe"), ["womenswear", "menswear", "both", "no preference"], "mwardrobe", "radio");
+  checks($("mLove"), f.areas, "mlove"); checks($("mRelaxed"), f.areas, "mrelaxed");
+  $("mWardrobe").querySelectorAll("input").forEach(x => x.checked = x.value === f.wardrobe);
+  $("fitModal").classList.remove("hidden");
+}
+$("mSkip").onclick = () => {
+  localStorage.setItem(SKIP_KEY, String(Date.now() + WEEK));
+  closeFitModal();
+  toast("No worries — you can always add this later in My fit.");
+};
+$("mReady").onclick = async () => {
+  const body = {wardrobe: checked($("mWardrobe"))[0] || "no preference", love_to_show: checked($("mLove")),
+                relaxed_fit_around: checked($("mRelaxed")), style_words: $("mStyle").value.trim(),
+                never: $("mNever").value.split(",").map(s => s.trim()).filter(Boolean).slice(0, 6), height: ""};
+  const r = await fetch("/api/fit", {method: "PUT", headers: {"Content-Type": "application/json"}, body: JSON.stringify(body)});
+  const data = await r.json();
+  if (!r.ok) { $("mMsg").textContent = data.detail || "Couldn't save that."; return; }
+  closeFitModal(); fitHint(data);
+  toast("Saved ✦ Your stylist will dress you with this. Edit it any time in My fit.");
+};
+$("fitModal").addEventListener("click", e => { if (e.target.id === "fitModal") $("mSkip").click(); });
+document.addEventListener("keydown", e => { if (e.key === "Escape" && !$("fitModal").classList.contains("hidden")) $("mSkip").click(); });
+fetch("/api/fit").then(r => r.json()).then(f => {
+  fitHint(f);
+  const skippedUntil = Number(localStorage.getItem(SKIP_KEY) || 0);
+  if (!f.saved && Date.now() > skippedUntil) showFitModal(f);
+});
 
 // ---------- usage ----------
 let avgCost = 0;
