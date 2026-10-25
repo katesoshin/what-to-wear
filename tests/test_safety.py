@@ -50,11 +50,11 @@ def test_normal_text_passes_untouched():
     assert clean == text and not removed
 
 
-def _look(pieces, vibe="Spot on", colorways=None):
+def _look(pieces, vibe="Effortless", colorways=None):
     pieces = [app.Piece(**{"garment": "tee", **p}) for p in pieces]
     colorways = colorways or [{"name": "A", "colors": ["#111111"] * len(pieces)},
                               {"name": "B", "colors": ["#f5f0e6"] * len(pieces)}]
-    return app.Look(vibe=vibe, pick_if="x", headline="x", pieces=pieces, shoes_tip="x", effort_level=3, why="x",
+    return app.Look(vibe=vibe, pick_if="x", headline="x", pieces=pieces, shoes_tip="x", why="x",
                     effortless_because="x", palette_name="x", colorways=colorways)
 
 
@@ -193,12 +193,14 @@ def test_per_person_daily_limit():
         app.BUDGET_PATH, app.PER_USER_DAILY_RUNS = saved
 
 
-def test_effort_ladder_stays_inside_the_scale():
-    ev = lambda n: app.Event(title="x", dress_code="smart casual", effort=n, confidence="inferred", why="x", do=[], avoid=[])  # noqa: E731
-    assert list(app.effort_ladder([ev(3)]).values()) == [2, 3, 4]
-    assert list(app.effort_ladder([ev(5)]).values()) == [4, 5, 5]
-    assert list(app.effort_ladder([ev(1)]).values()) == [1, 1, 2]
-    assert list(app.effort_ladder([ev(2), ev(4)]).values()) == [3, 4, 5]  # the day's most dressed-up event sets it
+def test_no_jeans_or_sneakers_at_business_casual_and_up():
+    look = _look([{"name": "white shirt", "category": "top", "garment": "shirt", "basic": True},
+                  {"name": "dark jeans", "category": "bottom", "garment": "jeans", "basic": True},
+                  {"name": "white sneakers", "category": "shoes", "garment": "sneakers", "basic": True}])
+    problems, _ = app.run_look_checks(look, "business casual", None, None)
+    assert sum("is not business casual" in p for p in problems) == 2, problems
+    problems, _ = app.run_look_checks(look, "smart casual", None, None)
+    assert not problems, problems  # jeans and sneakers are fine for smart casual
 
 
 def test_daily_budget_cap_blocks():

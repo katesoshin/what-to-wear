@@ -70,9 +70,6 @@
 
   /* effort gauge */
   .effort { display: inline-flex; align-items: center; gap: 8px; font-size: 11px; letter-spacing: 1.2px; text-transform: uppercase; }
-  .effort .dots { display: inline-flex; gap: 3px; }
-  .effort .dots span { width: 14px; height: 6px; border: 1px solid var(--ink); }
-  .effort .dots span.on { background: var(--ink); }
 
   /* ---------- plan results ---------- */
   .notice { padding: 13px 16px; margin-bottom: 16px; display: flex; gap: 10px; font-size: 14px; border: 1px solid var(--ink); }
@@ -164,8 +161,6 @@
   .card3 .vibe { font-family: var(--serif); font-size: 26px; font-style: italic; line-height: 1.1; margin: 10px 0 4px; }
   .card3 .pick { font-size: 12.5px; font-style: italic; color: var(--muted); margin: -2px 0 8px; }
   .card3 .headline { font-size: 13.5px; margin-bottom: 10px; font-weight: 600; }
-  .card3[data-step="A notch up"] .flat { background: #ebe9e5; }
-  .card3[data-step="A notch down"] .flat { background: #faf9f7; }
   .card3 .shoe { font-size: 12.5px; color: var(--muted); margin-bottom: 12px; }
   .card3 .more { margin-top: auto; }
   .card3 .lnk { font-size: 11px; letter-spacing: 1.4px; text-transform: uppercase; font-weight: 600; }
@@ -489,8 +484,7 @@ const $ = (id) => document.getElementById(id);
 const dc = (c) => el("span", {class: "dc dc-" + c.replace(/ /g, "-")}, c);
 const fmt$ = (x) => x < 0.01 ? "$" + x.toFixed(5) : "$" + x.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2});
 const fmtN = (x) => Math.round(x).toLocaleString();
-const effort = (n, label = true) => el("span", {class: "effort"},
-  el("span", {class: "dots"}, [1, 2, 3, 4, 5].map(i => el("span", {class: i <= n ? "on" : ""}))), label ? `effort ${n}/5 · ${EFFORT[n]}` : null);
+const effort = (n) => el("span", {class: "effort"}, EFFORT[n]);  // a word, not a gauge
 function checks(container, values, name, type = "checkbox") {
   container.replaceChildren(...values.map(v => el("label", {}, el("input", {type, name, value: v}), v)));
 }
@@ -600,7 +594,7 @@ function renderResult(d) {
   out.push(el("div", {class: "capline"},
     el("h2", {style: "margin:0"}, "Three ways to ", el("i", {}, "wear it")),
     el("span", {class: "n"}, `3 looks · ${o.unique_pieces} pieces${o.mode === "closet" ? " · from your closet" : ""}`)));
-  const ORDER = ["A notch down", "Spot on", "A notch up"];
+  const ORDER = ["Classic", "Effortless", "A little bold"];
   const looks = [...o.looks].sort((a, b) => ORDER.indexOf(a.vibe) - ORDER.indexOf(b.vibe));
   out.push(el("div", {class: "cards"}, looks.map(look => {
     const detail = el("div", {class: "detail hidden"},
@@ -632,7 +626,6 @@ function renderResult(d) {
       flat,
       el("div", {class: "body"},
         palette,
-        el("div", {class: "top"}, effort(look.effort_level), dc(look.dress_code)),
         el("div", {class: "vibe"}, look.vibe),
         el("div", {class: "pick"}, "Pick this if " + look.pick_if.replace(/^pick this if\s*/i, "").replace(/[.…]$/, "") + "."),
         el("div", {class: "headline"}, look.headline),
