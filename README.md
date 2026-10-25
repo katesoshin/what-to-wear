@@ -4,7 +4,9 @@
 dressed-up to be (dress code **and** effort level), then give you **three looks — Classic, Effortless,
 A little bold — built from basics you probably already own**, with shoe advice and easy swaps. Still
 unsure? Want it all built around one color (say, sage)? Pick it, and every look and color palette uses it.
-Ask the stylist ("can I wear jeans?", "청바지 입어도 돼?") and get a straight answer.
+Tap the ✦ wand (bottom right) to chat with your personal stylist about anything — "what goes with wide-leg
+jeans?", "청바지 입어도 돼?", "which of these three would you pick?" — and get short answers, with outfit
+sketches when it suggests a look.
 
 The idea: you don't need a big wardrobe to look stylish — you need a plan. No sign-up, no closet to
 upload first. (You *can* save your closet and fit profile if you want looks from your exact pieces.)
@@ -56,13 +58,16 @@ PORT=8001 python app.py
 1. **Get dressed** — type the occasion or click an example, pick the date and city, press **Dress me**.
    You get the dress code and effort level, then three looks with every piece, a swap for anything that
    isn't a basic, shoe advice, why it works, why it looks effortless, and what it shows off — plus how
-   many pieces the three looks need in total. Then **Ask the stylist** follow-up questions (8 per plan).
+   many pieces the three looks need in total. Switch each look's colorway, or build everything around one color.
    Open *How the agents worked* to see every step.
-2. **My closet** (optional) — tick "Style it from my saved closet" to get looks from your exact pieces.
+2. **✦ Stylist chat** (wand button, bottom right) — a personal stylist you can ask anything about what to wear,
+   in any language. It knows the looks on your screen, checks dress codes and the weather, and sketches an
+   outfit when it recommends one. 20 messages per chat.
+3. **My closet** (optional) — tick "Style it from my saved closet" to get looks from your exact pieces.
    Starts with a 44-piece womenswear sample (a 30-piece menswear sample is one click away).
-3. **My fit** — optional: what you mostly wear, what you love showing off, where you like a relaxed fit,
+4. **My fit** — optional: what you mostly wear, what you love showing off, where you like a relaxed fit,
    what you never wear. No body "types" or labels.
-4. **Cost & safety** — measured token use and cost per run, cost at scale, today's spending cap,
+5. **Cost & safety** — measured token use and cost per run, cost at scale, today's spending cap,
    and a log of recent runs, including blocked ones.
 
 ## The agents
@@ -73,7 +78,7 @@ PORT=8001 python app.py
 | 2 | code | `get_weather` (Open-Meteo, free, no key) | Forecast for the date and city |
 | 3 | **Stylist** agent | `check_look` | Three looks from basics (or your closet) + fit profile, using designer "effortless" and fit rules |
 | 4 | **Outfit guard** (code) | — | Rejects looks with no base or shoes, non-basics without a swap, three look-alike looks, invented closet items, no coat in the cold, body-shaming words → Stylist must retry |
-| 5 | **Ask** agent | — | Answers follow-up questions about the plan, in the language you ask in |
+| 5 | **Stylist chat** agent | `find_situation`, `weather` | Personal-stylist chat; knows the looks on screen; replies in your language, sketches outfits |
 
 ## Safety built in
 
@@ -83,7 +88,8 @@ PORT=8001 python app.py
 - **Body-kind language:** the stylist may only talk about what a piece shows off. Words like "hide",
   "slimming", "flaws" in the answer make the guard send it back (fabric words like "slim-fit" are fine).
 - **Fit profile:** its free-text fields are screened for injected instructions before they are saved.
-- **Off-topic follow-ups:** the Ask agent only answers questions about the outfit; 8 questions per plan.
+- **Off-topic chat:** the stylist chat only talks about style; 20 messages per chat; chat history is kept on
+  the server, so a page can't feed it fake history.
 - **Overspending:** per-run token/step limits on each agent, a 1,500-character input limit, and a daily cap
   (`DAILY_RUN_CAP`, `DAILY_COST_CAP_USD`).
 - **Off-topic:** non-outfit requests get a fixed one-line redirect.

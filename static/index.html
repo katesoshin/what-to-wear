@@ -214,6 +214,29 @@
   th, td { text-align: left; padding: 10px 8px; border-bottom: 1px solid var(--line); vertical-align: top; }
   th { font-weight: 600; font-size: 11px; text-transform: uppercase; letter-spacing: 1.4px; border-bottom: 1px solid var(--ink); }
   .oc-ok { color: var(--ok); } .oc-bad { color: var(--bad); } .oc-warn { color: var(--warn); }
+  .askcta { display: flex; gap: 14px; align-items: center; justify-content: space-between; border: 1px solid var(--ink); padding: 14px 18px; margin-bottom: 18px; font-family: var(--serif); font-size: 20px; }
+  .wand { position: fixed; right: 26px; bottom: 26px; width: 58px; height: 58px; border-radius: 50%; background: var(--ink); border: 0;
+          cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 0 6px 20px rgba(0,0,0,.25); z-index: 50; }
+  .wand:hover { transform: scale(1.05); } .wand svg { width: 28px; height: 28px; }
+  .wand .tip { position: absolute; right: 68px; white-space: nowrap; background: var(--paper); border: 1px solid var(--ink); font-size: 12px; padding: 5px 10px; }
+  .chatpanel { position: fixed; right: 26px; bottom: 96px; width: 370px; max-width: calc(100vw - 32px); height: 560px; max-height: calc(100vh - 130px);
+               background: var(--paper); border: 1px solid var(--ink); box-shadow: 0 12px 40px rgba(0,0,0,.18); z-index: 50; display: flex; flex-direction: column; }
+  .chatpanel header { display: flex; justify-content: space-between; align-items: center; padding: 14px 16px; border-bottom: 1px solid var(--ink); grid-template-columns: none; }
+  .chatpanel .ttl { font-family: var(--serif); font-size: 22px; } .chatpanel .ttl i { font-style: italic; }
+  .chatpanel .sub { font-size: 11px; color: var(--muted); letter-spacing: .3px; }
+  .chatpanel .x { background: none; border: 0; font-size: 20px; cursor: pointer; line-height: 1; }
+  .cthread { flex: 1; overflow-y: auto; padding: 14px 16px; }
+  .bub { max-width: 86%; margin-bottom: 12px; font-size: 13.5px; line-height: 1.45; }
+  .bub.me { margin-left: auto; background: var(--ink); color: var(--paper); padding: 8px 12px; }
+  .bub.st { background: var(--soft); padding: 10px 12px; }
+  .bub .verdict { display: inline-block; background: var(--ink); color: var(--paper); font-size: 10px; letter-spacing: 1.2px; text-transform: uppercase; font-weight: 700; padding: 1px 6px; margin-right: 6px; }
+  .bub .mini { display: flex; gap: 4px; flex-wrap: wrap; margin-top: 8px; background: var(--paper); padding: 6px; }
+  .bub .mini span { width: 44px; height: 44px; } .bub .mini svg { width: 100%; height: 100%; }
+  .bub .meta { font-size: 10.5px; color: var(--muted); margin-top: 6px; }
+  .cfoot { border-top: 1px solid var(--line); padding: 10px 12px; }
+  .csugg { display: flex; gap: 6px; overflow-x: auto; margin-bottom: 8px; scrollbar-width: none; }
+  .csugg .chip { white-space: nowrap; margin: 0; font-size: 12px; padding: 4px 10px; }
+  .crow { display: flex; gap: 6px; } .crow input { flex: 1; padding: 9px 10px; font-size: 13.5px; }
   footer { margin-top: 60px; padding-top: 20px; border-top: 1px solid var(--line); color: var(--muted); font-size: 12px; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px; }
 </style>
 </head>
@@ -369,6 +392,24 @@
   <footer><span>what to wear · MGT 409 final project</span><span>agents run on gpt-6-luna</span></footer>
 </div>
 
+<button class="wand" id="wand" title="Chat with your stylist" aria-label="Chat with your stylist">
+  <svg viewBox="0 0 32 32" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round">
+    <path d="M6 26 L20 12"/><path d="M18 10 l4 4"/>
+    <path d="M24 3 v4 M22 5 h4" stroke-width="1.6"/><path d="M27 12 v3 M25.5 13.5 h3" stroke-width="1.4"/><path d="M14 4 v3 M12.5 5.5 h3" stroke-width="1.4"/>
+  </svg>
+  <span class="tip" id="wandTip">your stylist is in ✦</span>
+</button>
+<div class="chatpanel hidden" id="chatpanel" role="dialog" aria-label="Personal stylist chat">
+  <header>
+    <div><div class="ttl">your <i>stylist</i></div><div class="sub">ask anything about what to wear · any language</div></div>
+    <button class="x" id="chatClose" aria-label="Close">×</button>
+  </header>
+  <div class="cthread" id="cthread"></div>
+  <div class="cfoot">
+    <div class="csugg" id="csugg"></div>
+    <div class="crow"><input type="text" id="cinput" maxlength="400" placeholder="e.g. What goes with wide-leg jeans?"><button class="btn small" id="csend">Send</button></div>
+  </div>
+</div>
 <script src="/static/flats.js"></script>
 <script>
 const CODES = ["casual", "smart casual", "business casual", "business professional", "cocktail"];
@@ -546,44 +587,12 @@ function renderResult(d) {
         el("div", {class: "more", style: "margin-top:12px"}, toggle, detail)));
   })));
   out.push(el("div", {class: "small muted", style: "margin:0 0 26px"}, o.less_is_more, " · ", o.weather_note));
-  out.push(chatBox(d.run_id));
+  currentPlanId = d.run_id;
+  out.push(el("div", {class: "askcta"}, el("span", {}, "Not sure about something?"),
+    el("button", {class: "btn small", onclick: () => openChat("Which of these three looks would you pick for me?")}, "Ask your stylist ✦")));
   out.push(usageStrip(d));
   out.push(traceBlock(d.trace, d.guard_rejections));
   $("result").replaceChildren(...out);
-}
-
-function chatBox(planId) {
-  const thread = el("div", {class: "thread"});
-  const input = el("input", {type: "text", maxlength: "300", placeholder: "e.g. Can I wear jeans? / 청바지 입어도 돼?"});
-  const send = el("button", {class: "btn small"}, "Ask");
-  const left = el("span", {class: "small muted"});
-  async function ask(q) {
-    q = (q || input.value).trim(); if (!q) return;
-    input.value = ""; send.disabled = true;
-    thread.append(el("div", {class: "msg q"}, el("span", {}, q)));
-    const wait = el("div", {class: "msg a muted"}, "Thinking…"); thread.append(wait);
-    try {
-      const r = await fetch("/api/ask", {method: "POST", headers: {"Content-Type": "application/json"}, body: JSON.stringify({plan_id: planId, question: q})});
-      const d = await r.json();
-      if (!r.ok) throw new Error(d.detail || "Something went wrong.");
-      const a = d.answer;
-      wait.replaceWith(el("div", {class: "msg a"},
-        ...(d.shield || []).map(s => el("div", {class: "small", style: "margin-bottom:4px"}, "Safety shield — " + s)),
-        a ? el("div", {}, a.verdict ? el("span", {class: "verdict"}, a.verdict) : null, a.answer) : el("div", {class: "muted"}, d.message),
-        a && a.try_this ? el("div", {class: "try"}, "Try: " + a.try_this) : null,
-        el("div", {class: "small muted", style: "margin-top:2px;font-size:11px"}, `${fmtN(Object.values(d.usage || {}).reduce((x, u) => x + u.input_tokens + u.output_tokens, 0))} tokens · ${fmt$(d.cost_usd || 0)} · ${d.seconds}s`)));
-      if (d.questions_left !== undefined) left.textContent = `${d.questions_left} questions left for this plan`;
-    } catch (e) { wait.replaceWith(el("div", {class: "msg a"}, e.message)); }
-    finally { send.disabled = false; input.focus(); }
-  }
-  send.onclick = () => ask();
-  input.addEventListener("keydown", e => { if (e.key === "Enter") ask(); });
-  const chips = ["Can I wear jeans?", "Which shoes are best?", "What if it rains?", "Is this too much?"]
-    .map(c => el("span", {class: "chip", onclick: () => ask(c)}, c));
-  return el("div", {class: "chat"},
-    el("div", {class: "eyebrow"}, "Still not sure?"),
-    el("h3", {style: "font-family:var(--serif);font-weight:400;font-size:24px"}, "Ask the ", el("i", {}, "stylist")),
-    el("div", {style: "margin-top:8px"}, chips), thread, el("div", {class: "askrow"}, input, send), el("div", {style: "margin-top:6px"}, left));
 }
 
 function wornButton(ids, date) {
@@ -612,6 +621,49 @@ function traceBlock(trace, rejections) {
     el("span", {class: "who"}, s.agent), " · ", s.kind, " · ", el("b", {}, s.tool), el("code", {}, s.detail)))));
   return det;
 }
+
+// ---------- personal stylist chat ----------
+let chatId = null, currentPlanId = null;
+const STARTERS = ["What goes with wide-leg jeans?", "Dress me for a first date", "비 오는 날 뭐 입지?", "How do I style a blazer casually?"];
+function suggest(list) {
+  $("csugg").replaceChildren(...list.map(q => el("span", {class: "chip", onclick: () => sendChat(q)}, q)));
+}
+function openChat(prefill) {
+  $("chatpanel").classList.remove("hidden"); $("wandTip").classList.add("hidden");
+  if (!$("cthread").children.length) {
+    $("cthread").append(el("div", {class: "bub st"}, "Hi! I'm your stylist. Tell me where you're going, what you own, or what you're unsure about — I'll keep it simple."));
+    suggest(STARTERS);
+  }
+  if (prefill && currentPlanId) suggest([prefill, "Can I wear sneakers?", "What if it rains?"]);
+  $("cinput").focus();
+}
+$("wand").onclick = () => $("chatpanel").classList.contains("hidden") ? openChat() : $("chatpanel").classList.add("hidden");
+$("chatClose").onclick = () => $("chatpanel").classList.add("hidden");
+$("csend").onclick = () => sendChat();
+$("cinput").addEventListener("keydown", e => { if (e.key === "Enter") sendChat(); });
+async function sendChat(text) {
+  const msg = (text || $("cinput").value).trim(); if (!msg) return;
+  $("cinput").value = ""; $("csend").disabled = true;
+  const th = $("cthread");
+  th.append(el("div", {class: "bub me"}, msg));
+  const wait = el("div", {class: "bub st muted"}, "…"); th.append(wait); th.scrollTop = th.scrollHeight;
+  try {
+    const r = await fetch("/api/chat", {method: "POST", headers: {"Content-Type": "application/json"},
+      body: JSON.stringify({message: msg, chat_id: chatId, plan_id: currentPlanId, city: $("city").value || "New Haven"})});
+    const d = await r.json();
+    if (!r.ok) throw new Error(d.detail || "Something went wrong.");
+    chatId = d.chat_id || chatId;
+    const rep = d.reply;
+    wait.replaceWith(el("div", {class: "bub st"},
+      ...(d.shield || []).map(s => el("div", {class: "small", style: "margin-bottom:4px"}, "Safety shield — " + s)),
+      rep ? el("div", {}, rep.verdict ? el("span", {class: "verdict"}, rep.verdict) : null, rep.reply) : el("div", {}, d.message),
+      rep && rep.outfit ? el("div", {class: "mini"}, rep.outfit.map(p => el("span", {title: p.name}, garment(p.category, p.color_hex, p.name, p.garment)))) : null,
+      el("div", {class: "meta"}, `${fmtN(Object.values(d.usage || {}).reduce((x, u) => x + u.input_tokens + u.output_tokens, 0))} tokens · ${fmt$(d.cost_usd || 0)} · ${d.seconds}s`)));
+    if (rep && rep.follow_ups && rep.follow_ups.length) suggest(rep.follow_ups);
+  } catch (e) { wait.replaceWith(el("div", {class: "bub st"}, e.message)); }
+  finally { $("csend").disabled = false; th.scrollTop = th.scrollHeight; $("cinput").focus(); }
+}
+setTimeout(() => $("wandTip").classList.add("hidden"), 6000);
 
 // ---------- closet ----------
 let filter = "all";
