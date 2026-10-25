@@ -39,7 +39,7 @@
   h3 { margin: 0 0 6px; font-size: 16px; font-weight: 600; }
   .box { border: 1px solid var(--line); padding: 24px; background: var(--paper); }
   .box.soft { background: var(--soft); border-color: var(--soft); }
-  input[type=text], input[type=date], textarea, select {
+  input[type=text], input[type=password], input[type=date], textarea, select {
     width: 100%; background: var(--paper); border: 1px solid var(--line); border-radius: 0; padding: 11px 12px; outline: none; }
   input:focus, textarea:focus, select:focus { border-color: var(--ink); }
   textarea { min-height: 120px; resize: vertical; }
@@ -217,6 +217,8 @@
   .overlay { position: fixed; inset: 0; background: rgba(17,17,17,.45); z-index: 80; display: flex; align-items: center; justify-content: center; padding: 20px; }
   .modal { background: var(--paper); border: 1px solid var(--ink); width: 560px; max-width: 100%; max-height: calc(100vh - 40px); overflow-y: auto; padding: 28px; }
   .modal .checks label { margin-bottom: 6px; }
+  .acct { display: inline-flex; gap: 8px; align-items: center; font-size: 12px; letter-spacing: .4px; }
+  .acct button { background: none; border: 0; padding: 4px 0; cursor: pointer; font-size: 12px; letter-spacing: 1.6px; text-transform: uppercase; border-bottom: 1px solid var(--ink); }
   .toast { position: fixed; left: 50%; bottom: 30px; transform: translateX(-50%); background: var(--ink); color: var(--paper); padding: 12px 18px;
            font-size: 13.5px; z-index: 90; box-shadow: 0 6px 20px rgba(0,0,0,.2); }
   .askcta { display: flex; gap: 14px; align-items: center; justify-content: space-between; border: 1px solid var(--ink); padding: 14px 18px; margin-bottom: 18px; font-family: var(--serif); font-size: 20px; }
@@ -257,6 +259,7 @@
     <h1 class="wordmark">what to <i>wear</i></h1>
     <nav class="right">
       <button data-tab="usage">Cost &amp; safety</button>
+      <span id="acct" class="acct"></span>
     </nav>
   </header>
 
@@ -411,9 +414,29 @@
     </div>
     <div class="small" id="mMsg" style="margin-top:10px;color:var(--bad)"></div>
     <div style="display:flex;justify-content:space-between;align-items:center;margin-top:18px">
-      <button class="lnk" id="mSkip">Skip for now</button>
+      <span><button class="lnk" id="mSkip">Skip for now</button>
+        <span class="small muted"> · </span><button class="lnk" id="mSignin">I have an account</button></span>
       <button class="btn" id="mReady">Ready ✦</button>
     </div>
+  </div>
+</div>
+<div class="overlay hidden" id="authModal" role="dialog" aria-modal="true" aria-labelledby="authTitle">
+  <div class="modal" style="width:420px">
+    <div class="eyebrow">Your account · optional</div>
+    <h2 id="authTitle" style="margin-bottom:6px">Sign <i>in</i></h2>
+    <p class="small muted" style="margin:0 0 14px" id="authNote">Your fit profile and closet follow you to any device.</p>
+    <div class="eyebrow">Username</div>
+    <input type="text" id="aUser" maxlength="20" autocomplete="username" placeholder="letters, numbers, _ or .">
+    <div class="eyebrow" style="margin-top:12px">Password</div>
+    <input type="password" id="aPass" maxlength="128" autocomplete="current-password" placeholder="at least 8 characters">
+    <div class="small" id="aMsg" style="margin-top:10px;color:var(--bad)"></div>
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-top:18px">
+      <button class="lnk" id="aSwitch">New here? Create an account</button>
+      <button class="btn" id="aGo">Sign in</button>
+    </div>
+    <hr class="rule" style="margin:18px 0 12px">
+    <button class="lnk" id="aGuest">Continue as a guest</button>
+    <span class="small muted"> — guests keep everything on this browser.</span>
   </div>
 </div>
 <div class="toast hidden" id="toast"></div>
@@ -476,13 +499,13 @@ function garment(cat, hex, name = "", g = null) { return drawFlat(g || guessGarm
 
 // ---------- tabs ----------
 function openTab(name) {
-  document.querySelectorAll("nav button").forEach(x => x.classList.toggle("on", x.dataset.tab === name));
+  document.querySelectorAll("nav button[data-tab]").forEach(x => x.classList.toggle("on", x.dataset.tab === name));
   document.querySelectorAll(".tab").forEach(t => t.classList.toggle("on", t.id === "tab-" + name));
   if (name === "closet") loadCloset();
   if (name === "fit") loadFit();
   if (name === "usage") loadUsage();
 }
-document.querySelectorAll("nav button").forEach(b => b.onclick = () => openTab(b.dataset.tab));
+document.querySelectorAll("nav button[data-tab]").forEach(b => b.onclick = () => openTab(b.dataset.tab));
 
 // ---------- plan ----------
 $("date").value = new Date(Date.now() + 864e5).toLocaleDateString("en-CA");
@@ -750,6 +773,43 @@ $("saveFit").onclick = async () => {
   $("fitMsg").textContent = r.ok ? "Saved. The stylist will use this next time." : (data.detail || "Couldn't save.");
   if (r.ok) fitHint(data);
 };
+// ---------- account (optional): sign in / create account / sign out ----------
+let authMode = "signin";
+function setAuthMode(mode) {
+  authMode = mode;
+  const up = mode === "signup";
+  $("authTitle").replaceChildren(up ? "Create an " : "Sign ", el("i", {}, up ? "account" : "in"));
+  $("aGo").textContent = up ? "Create account" : "Sign in";
+  $("aSwitch").textContent = up ? "Have an account? Sign in" : "New here? Create an account";
+  $("authNote").textContent = up ? "Everything you've set up as a guest moves into your new account."
+                                 : "Your fit profile and closet follow you to any device.";
+  $("aPass").autocomplete = up ? "new-password" : "current-password";
+  $("aMsg").textContent = "";
+}
+function openAuth(mode = "signin") { setAuthMode(mode); $("authModal").classList.remove("hidden"); $("aUser").focus(); }
+$("aSwitch").onclick = () => setAuthMode(authMode === "signup" ? "signin" : "signup");
+$("aGuest").onclick = () => $("authModal").classList.add("hidden");
+$("authModal").addEventListener("click", e => { if (e.target.id === "authModal") $("authModal").classList.add("hidden"); });
+$("aGo").onclick = async () => {
+  const body = {username: $("aUser").value.trim(), password: $("aPass").value};
+  const r = await fetch(authMode === "signup" ? "/api/signup" : "/api/login",
+    {method: "POST", headers: {"Content-Type": "application/json"}, body: JSON.stringify(body)});
+  const d = await r.json();
+  if (!r.ok) {
+    const detail = Array.isArray(d.detail) ? "Username: 3–20 letters, numbers, _ or . — password: at least 8 characters." : d.detail;
+    $("aMsg").textContent = detail || "Something went wrong."; return;
+  }
+  location.reload();
+};
+$("aPass").addEventListener("keydown", e => { if (e.key === "Enter") $("aGo").click(); });
+async function loadMe() {
+  const me = await (await fetch("/api/me")).json();
+  $("acct").replaceChildren(...(me.username
+    ? [el("span", {class: "muted"}, "hi, " + me.username), el("button", {onclick: async () => { await fetch("/api/logout", {method: "POST"}); location.reload(); }}, "Sign out")]
+    : [el("button", {onclick: () => openAuth("signin")}, "Sign in")]));
+}
+loadMe();
+
 // ---------- welcome popup: fit profile once; "skip for now" hides it for a week ----------
 const SKIP_KEY = "wtw.fitSkipUntil", WEEK = 7 * 24 * 3600 * 1000;
 function toast(text) {
@@ -782,6 +842,7 @@ $("mReady").onclick = async () => {
   toast("Saved ✦ Your stylist will dress you with this. Edit it any time in My fit.");
 };
 $("fitModal").addEventListener("click", e => { if (e.target.id === "fitModal") $("mSkip").click(); });
+$("mSignin").onclick = () => { closeFitModal(); openAuth("signin"); };
 document.addEventListener("keydown", e => { if (e.key === "Escape" && !$("fitModal").classList.contains("hidden")) $("mSkip").click(); });
 fetch("/api/fit").then(r => r.json()).then(f => {
   fitHint(f);

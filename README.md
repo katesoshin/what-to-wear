@@ -90,8 +90,11 @@ PORT=8001 python app.py
 - **Fit profile:** its free-text fields are screened for injected instructions before they are saved.
 - **Off-topic chat:** the stylist chat only talks about style; 20 messages per chat; chat history is kept on
   the server, so a page can't feed it fake history.
+- **Your data stays yours:** every visitor gets their own space (signed, HttpOnly cookie) — no one sees or
+  overwrites anyone else's fit profile or closet. Optional accounts (username + password, stored only as
+  salted scrypt hashes; 5 wrong passwords lock the account for 10 minutes). No sign-up needed to use the app.
 - **Overspending:** per-run token/step limits on each agent, a 1,500-character input limit, and a daily cap
-  (`DAILY_RUN_CAP`, `DAILY_COST_CAP_USD`).
+  (`DAILY_RUN_CAP`, `DAILY_COST_CAP_USD`), plus a per-person daily limit (`PER_USER_DAILY_RUNS`, default 40).
 - **Off-topic:** non-outfit requests get a fixed one-line redirect.
 
 Run the safety tests (no API key needed, no tokens spent):
@@ -108,6 +111,7 @@ static/index.html          the web page
 static/flats.js            technical-flat garment drawings (recolorable SVG)
 data/dress_code_guide.json house rules: dress codes, occasions, effort scale, effortless + fit rules
 data/closet_sample_*.json  womenswear / menswear sample closets (your edits go to data/closet.json)
-logs/runs.jsonl            token + cost log of every run
+logs/runs.jsonl            token + cost log of every run (users appear only as a short pseudonymous hash)
+experiments/               reasoning-effort cost experiment (script, results.md, results.json)
 tests/test_safety.py       offline safety tests
 ```

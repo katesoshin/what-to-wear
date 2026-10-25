@@ -8,3 +8,8 @@ data/closet.tmp
 logs/budget.json
 tests/_budget_test.json
 data/fit_profile.json
+data/users/
+data/accounts.json
+data/accounts.tmp
+data/.secret
+tests/_budget_user_test.json

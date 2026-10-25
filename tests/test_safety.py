@@ -120,6 +120,79 @@ def test_fit_profile_rejects_injection():
     assert r.status_code == 400
 
 
+def _isolated(tmp_name):
+    """Point accounts and user folders at a throwaway folder so tests never touch real data."""
+    import shutil
+    base = Path(__file__).resolve().parent / tmp_name
+    shutil.rmtree(base, ignore_errors=True)
+    saved = (app.USERS_DIR, app.ACCOUNTS_PATH, app.LEGACY_CLOSET_PATH, app.LEGACY_FIT_PATH)
+    app.USERS_DIR, app.ACCOUNTS_PATH = base / "users", base / "accounts.json"
+    app.LEGACY_CLOSET_PATH, app.LEGACY_FIT_PATH = base / "no_closet.json", base / "no_fit.json"
+    base.mkdir(parents=True)
+
+    def restore():
+        app.USERS_DIR, app.ACCOUNTS_PATH, app.LEGACY_CLOSET_PATH, app.LEGACY_FIT_PATH = saved
+        shutil.rmtree(base, ignore_errors=True)
+    return restore
+
+
+def test_two_people_never_share_a_fit_profile():
+    from fastapi.testclient import TestClient
+    restore = _isolated("_tmp_users")
+    try:
+        a, b = TestClient(app.app), TestClient(app.app)
+        a.get("/"); b.get("/")
+        assert a.put("/api/fit", json={"love_to_show": ["shoulders"]}).status_code == 200
+        assert a.get("/api/fit").json()["love_to_show"] == ["shoulders"]
+        fb = b.get("/api/fit").json()
+        assert fb["love_to_show"] == [] and fb["saved"] is False
+    finally:
+        restore()
+
+
+def test_forged_cookie_gets_a_fresh_guest_space():
+    good = app.sign("u_0123456789abcdef")
+    assert app.unsign(good) == "u_0123456789abcdef"
+    assert app.unsign("u_0123456789abcdef.deadbeef") is None          # wrong signature
+    assert app.unsign(good.replace("u_0123", "u_9999")) is None         # someone else's id
+    assert app.unsign("../../etc.passwd") is None                       # path tricks
+
+
+def test_accounts_store_hashes_and_lock_after_wrong_passwords():
+    from fastapi.testclient import TestClient
+    restore = _isolated("_tmp_accounts")
+    app._failed_logins.clear()
+    try:
+        c = TestClient(app.app); c.get("/")
+        assert c.post("/api/signup", json={"username": "kate_test", "password": "correct horse"}).status_code == 200
+        stored = app.ACCOUNTS_PATH.read_text()
+        assert "correct horse" not in stored and '"hash"' in stored
+        assert c.post("/api/signup", json={"username": "kate_test", "password": "another one"}).status_code == 409
+        other = TestClient(app.app)
+        codes = [other.post("/api/login", json={"username": "kate_test", "password": "wrong pass"}).status_code
+                 for _ in range(6)]
+        assert codes[:5] == [401] * 5 and codes[5] == 429
+        # even the right password is refused while locked
+        assert other.post("/api/login", json={"username": "kate_test", "password": "correct horse"}).status_code == 429
+    finally:
+        app._failed_logins.clear()
+        restore()
+
+
+def test_per_person_daily_limit():
+    saved = (app.BUDGET_PATH, app.PER_USER_DAILY_RUNS)
+    app.BUDGET_PATH = Path(__file__).resolve().parent / "_budget_user_test.json"
+    app.PER_USER_DAILY_RUNS = 2
+    try:
+        app.BUDGET_PATH.unlink(missing_ok=True)
+        app.budget_add(0.0001, "u_aaaaaaaaaaaaaaaa"); app.budget_add(0.0001, "u_aaaaaaaaaaaaaaaa")
+        assert "limit" in (app.budget_check("u_aaaaaaaaaaaaaaaa") or "")
+        assert app.budget_check("u_bbbbbbbbbbbbbbbb") is None  # someone else is unaffected
+    finally:
+        app.BUDGET_PATH.unlink(missing_ok=True)
+        app.BUDGET_PATH, app.PER_USER_DAILY_RUNS = saved
+
+
 def test_daily_budget_cap_blocks():
     saved = (app.BUDGET_PATH, app.DAILY_COST_CAP_USD)
     app.BUDGET_PATH = Path(__file__).resolve().parent / "_budget_test.json"

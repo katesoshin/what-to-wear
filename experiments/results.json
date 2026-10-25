@@ -1,0 +1,1048 @@
+{
+ "summary": {
+  "none": {
+   "plans": 5,
+   "ok": 5,
+   "avg_input_tokens": 8149,
+   "avg_cached_input_tokens": 3922.4,
+   "avg_output_tokens": 2111.6,
+   "avg_cost_usd": 0.001518,
+   "avg_seconds": 15.6,
+   "guard_retries": 0,
+   "score_fits_occasion": 3.6,
+   "score_distinct_looks": 2.8,
+   "score_explanations": 3.8
+  },
+  "low": {
+   "plans": 5,
+   "ok": 5,
+   "avg_input_tokens": 10208.2,
+   "avg_cached_input_tokens": 5909.2,
+   "avg_output_tokens": 2565.6,
+   "avg_cost_usd": 0.001772,
+   "avg_seconds": 17.06,
+   "guard_retries": 1,
+   "score_fits_occasion": 3.6,
+   "score_distinct_looks": 3,
+   "score_explanations": 3.6
+  },
+  "medium": {
+   "plans": 5,
+   "ok": 5,
+   "avg_input_tokens": 9963.8,
+   "avg_cached_input_tokens": 5291.8,
+   "avg_output_tokens": 3571.6,
+   "avg_cost_usd": 0.002306,
+   "avg_seconds": 24.66,
+   "guard_retries": 0,
+   "score_fits_occasion": 3.6,
+   "score_distinct_looks": 3.2,
+   "score_explanations": 3.8
+  }
+ },
+ "judge_cost_usd": 0.001466,
+ "rows": [
+  {
+   "effort": "none",
+   "occasion": "First date tomorrow, 7pm at a wine bar",
+   "outcome": "ok",
+   "input_tokens": 8134,
+   "cached_input_tokens": 2240,
+   "output_tokens": 1999,
+   "cost_usd": 0.001612,
+   "seconds": 15.8,
+   "guard_rejections": 0,
+   "looks": [
+    {
+     "vibe": "Classic",
+     "headline": "Open shirt, relaxed trousers, loafers",
+     "why": "An open collar and relaxed trousers make smart casual feel natural for a wine-bar date.",
+     "effortless_because": "Leave the collar open and let the blazer stay unbuttoned.",
+     "shoes_tip": "Loafers feel polished but easy; clean leather sneakers are a softer option.",
+     "pieces": [
+      "cream open-collar shirt",
+      "charcoal relaxed trousers",
+      "black leather loafers",
+      "navy unstructured blazer"
+     ]
+    },
+    {
+     "vibe": "Effortless",
+     "headline": "Knit, straight jeans, blazer, sneakers",
+     "why": "A soft knit and familiar denim balance the blazer for a relaxed, date-ready look.",
+     "effortless_because": "Push up the knit sleeves and leave the blazer open.",
+     "shoes_tip": "White sneakers keep it relaxed; loafers make it a touch sharper.",
+     "pieces": [
+      "soft charcoal crewneck knit",
+      "dark straight-leg jeans",
+      "navy unstructured blazer",
+      "white leather sneakers"
+     ]
+    },
+    {
+     "vibe": "A little bold",
+     "headline": "Black V-neck, wide trousers, boots",
+     "why": "The V-neck gives a sharper focal point, while wide trousers keep the silhouette relaxed and smart casual.",
+     "effortless_because": "Keep the knit soft and wear the blazer open.",
+     "shoes_tip": "Chelsea boots ground the wide leg; loafers are an easy alternative.",
+     "pieces": [
+      "black V-neck knit",
+      "stone wide-leg trousers",
+      "dark brown Chelsea boots",
+      "navy unstructured blazer"
+     ]
+    }
+   ],
+   "brief": [
+    {
+     "title": "First date at a wine bar",
+     "dress_code": "smart casual",
+     "effort": 3
+    }
+   ],
+   "score": {
+    "fits_occasion": 4,
+    "distinct_looks": 3,
+    "explanations": 4,
+    "note": "All three are wearable smart-casual choices for a wine-bar date, but the same navy blazer anchors every look, so the options feel less distinct than their labels suggest."
+   }
+  },
+  {
+   "effort": "none",
+   "occasion": "Coffee chat with a consulting firm at 10am",
+   "outcome": "ok",
+   "input_tokens": 8165,
+   "cached_input_tokens": 4343,
+   "output_tokens": 2075,
+   "cost_usd": 0.001464,
+   "seconds": 15.1,
+   "guard_rejections": 0,
+   "looks": [
+    {
+     "vibe": "Classic",
+     "headline": "Open-collar shirt, trousers, blazer",
+     "why": "A sharp blazer and open collar land squarely in business casual while keeping the palette quietly French.",
+     "effortless_because": "Leave the collar open and sleeves softly rolled.",
+     "shoes_tip": "Loafers feel polished without fuss; black ankle boots also work.",
+     "pieces": [
+      "crisp white shirt",
+      "relaxed charcoal trousers",
+      "navy blazer",
+      "black loafers"
+     ]
+    },
+    {
+     "vibe": "Effortless",
+     "headline": "Knit, wide trousers, blazer",
+     "why": "The knit and sneakers soften tailored trousers and a blazer, making the business-casual mix approachable.",
+     "effortless_because": "Half-tuck the knit and push up the blazer sleeves.",
+     "shoes_tip": "Clean sneakers relax the tailoring; switch to loafers if you want more polish.",
+     "pieces": [
+      "fine-gauge navy knit",
+      "relaxed charcoal trousers",
+      "navy blazer",
+      "white leather sneakers"
+     ]
+    },
+    {
+     "vibe": "A little bold",
+     "headline": "White shirt, olive trousers, boots",
+     "why": "Olive trousers add one quiet color shift while the open shirt and coat stay meeting-ready.",
+     "effortless_because": "Tuck just the front of the shirt and leave the top button open.",
+     "shoes_tip": "Low-heeled ankle boots ground the look; loafers are an easy alternative.",
+     "pieces": [
+      "crisp white shirt",
+      "relaxed olive trousers",
+      "camel coat",
+      "black ankle boots"
+     ]
+    }
+   ],
+   "brief": [
+    {
+     "title": "Consulting firm coffee chat",
+     "dress_code": "business casual",
+     "effort": 4
+    }
+   ],
+   "score": {
+    "fits_occasion": 4,
+    "distinct_looks": 3,
+    "explanations": 4,
+    "note": "Looks 1 and 2 are credible business-casual options for a morning consulting chat, while look 3 is still polished but relies on the coat as its main layer; the repeated charcoal trousers and blazer make the set feel less distinct than its labels suggest."
+   }
+  },
+  {
+   "effort": "none",
+   "occasion": "Lunch with my partner's parents on Sunday",
+   "outcome": "ok",
+   "input_tokens": 8090,
+   "cached_input_tokens": 4344,
+   "output_tokens": 2038,
+   "cost_usd": 0.001437,
+   "seconds": 15.2,
+   "guard_rejections": 0,
+   "looks": [
+    {
+     "vibe": "Classic",
+     "headline": "Open shirt, relaxed trousers, loafers",
+     "why": "The open collar and tailored trousers make a warm, considered impression while staying comfortably smart casual.",
+     "effortless_because": "Leave the collar open and let the coat do the finishing.",
+     "shoes_tip": "Loafers feel polished without fuss; try clean leather sneakers for a softer finish.",
+     "pieces": [
+      "white open-collar shirt",
+      "charcoal relaxed trousers",
+      "black leather loafers",
+      "navy wool coat"
+     ]
+    },
+    {
+     "vibe": "Effortless",
+     "headline": "Knit, relaxed jeans, suede boots",
+     "why": "A soft knit balances neat dark denim for a relaxed but thoughtful family lunch.",
+     "effortless_because": "Push the sleeves up and keep the jeans easy, not distressed.",
+     "shoes_tip": "Suede boots ground the knit; dark loafers are an easy alternative.",
+     "pieces": [
+      "cream crewneck knit",
+      "dark straight-leg jeans",
+      "brown suede boots",
+      "navy wool coat"
+     ]
+    },
+    {
+     "vibe": "A little bold",
+     "headline": "Black tee, olive trousers, loafers",
+     "why": "Olive trousers add one quiet color twist, while the clean tee and loafers stay smart casual.",
+     "effortless_because": "A simple half-tuck gives shape without looking overly arranged.",
+     "shoes_tip": "Loafers keep the contrast refined; try simple black sneakers for a more casual note.",
+     "pieces": [
+      "black fitted tee",
+      "olive relaxed trousers",
+      "black leather loafers",
+      "navy wool coat"
+     ]
+    }
+   ],
+   "brief": [
+    {
+     "title": "Lunch with your partner’s parents",
+     "dress_code": "smart casual",
+     "effort": 4
+    }
+   ],
+   "score": {
+    "fits_occasion": 4,
+    "distinct_looks": 3,
+    "explanations": 4,
+    "note": "All three suit a smart-casual family lunch, though the dark jeans look is a little more relaxed than the requested effort; the outfits are wearable but share the same navy coat and polished, muted palette, so the differences feel modest."
+   }
+  },
+  {
+   "effort": "none",
+   "occasion": "Friend's garden wedding, ceremony at 4pm",
+   "outcome": "ok",
+   "input_tokens": 8177,
+   "cached_input_tokens": 4342,
+   "output_tokens": 2226,
+   "cost_usd": 0.00154,
+   "seconds": 15.7,
+   "guard_rejections": 0,
+   "looks": [
+    {
+     "vibe": "Classic",
+     "headline": "Navy suit, open-collar shirt, polished loafers",
+     "why": "A clean, tailored suit with an open collar is cocktail-ready and quietly French.",
+     "effortless_because": "Open collar and softly rolled cuffs keep the tailoring easy.",
+     "shoes_tip": "Loafers keep the suit refined without heels; polished flats also work.",
+     "pieces": [
+      "navy blazer",
+      "navy tailored trousers",
+      "white open-collar shirt",
+      "black leather loafers",
+      "black leather belt"
+     ]
+    },
+    {
+     "vibe": "Effortless",
+     "headline": "Soft blazer, knit, wide trousers, loafers",
+     "why": "Soft knit and roomy trousers feel relaxed, while the blazer brings cocktail polish.",
+     "effortless_because": "A half-tuck and gently pushed-up sleeves keep it unstudied.",
+     "shoes_tip": "Loafers make the relaxed tailoring wedding-ready; try sleek flats instead.",
+     "pieces": [
+      "charcoal relaxed blazer",
+      "cream crewneck knit",
+      "black wide-leg trousers",
+      "black leather loafers",
+      "silver hoop earrings"
+     ]
+    },
+    {
+     "vibe": "A little bold",
+     "headline": "Black open-back dress, sharp blazer, loafers",
+     "why": "The unexpected open back adds one confident focal point beneath familiar tailoring.",
+     "effortless_because": "A simple blazer and low-key loafers balance the open-back detail.",
+     "shoes_tip": "Loafers ground the open-back silhouette; pointed flats are a dressier alternative.",
+     "pieces": [
+      "black open-back midi dress",
+      "navy blazer",
+      "black leather loafers",
+      "black leather belt"
+     ]
+    }
+   ],
+   "brief": [
+    {
+     "title": "Friend’s garden wedding",
+     "dress_code": "cocktail",
+     "effort": 5
+    }
+   ],
+   "score": {
+    "fits_occasion": 3,
+    "distinct_looks": 2,
+    "explanations": 3,
+    "note": "The tailoring reads cocktail-appropriate, but these are mostly dark, trouser-and-loafer variations that feel underdressed for a high-effort garden wedding; add a more celebratory dress or lighter color, and make sure the open-back dress is secure and suitable for an outdoor ceremony."
+   }
+  },
+  {
+   "effort": "none",
+   "occasion": "Job interview at a tech company, 2pm",
+   "outcome": "ok",
+   "input_tokens": 8179,
+   "cached_input_tokens": 4343,
+   "output_tokens": 2220,
+   "cost_usd": 0.001537,
+   "seconds": 16.2,
+   "guard_rejections": 0,
+   "looks": [
+    {
+     "vibe": "Classic",
+     "headline": "Navy blazer, white shirt, tailored trousers",
+     "why": "A crisp shirt, structured blazer, and tailored trousers meet business-professional expectations without feeling corporate-stiff.",
+     "effortless_because": "Leave the collar open and let the trousers fall cleanly.",
+     "shoes_tip": "Loafers keep it professional; plain leather oxfords also work.",
+     "pieces": [
+      "navy blazer",
+      "crisp white shirt",
+      "charcoal relaxed trousers",
+      "black leather loafers",
+      "black leather belt"
+     ]
+    },
+    {
+     "vibe": "Effortless",
+     "headline": "Charcoal knit, navy blazer, wide-leg trousers",
+     "why": "A refined blazer and easy knit balance relaxed comfort with the polish expected at a professional interview.",
+     "effortless_because": "Soft knit texture and an easy half-tuck keep the tailoring approachable.",
+     "shoes_tip": "Leather loafers polish the knit; clean leather sneakers are a softer option.",
+     "pieces": [
+      "charcoal crewneck knit",
+      "navy blazer",
+      "stone wide-leg trousers",
+      "black leather loafers"
+     ]
+    },
+    {
+     "vibe": "A little bold",
+     "headline": "Black blazer, striped shirt, relaxed trousers",
+     "why": "A fine stripe adds one quiet point of interest while the blazer and trousers stay interview-ready.",
+     "effortless_because": "Keep the shirt open at the neck and sleeves softly rolled.",
+     "shoes_tip": "Loafers keep the stripe grounded; black leather oxfords also suit the room.",
+     "pieces": [
+      "black blazer",
+      "blue-and-white striped shirt",
+      "black relaxed trousers",
+      "black leather loafers",
+      "silver watch"
+     ]
+    }
+   ],
+   "brief": [
+    {
+     "title": "Tech company job interview",
+     "dress_code": "business professional",
+     "effort": 4
+    }
+   ],
+   "score": {
+    "fits_occasion": 3,
+    "distinct_looks": 3,
+    "explanations": 4,
+    "note": "The looks are polished and wearable, but the open collars, knit-and-sneaker option, and rolled sleeves lean more business-casual than business-professional; keep the shirt fully pressed and choose leather dress shoes for the interview."
+   }
+  },
+  {
+   "effort": "low",
+   "occasion": "First date tomorrow, 7pm at a wine bar",
+   "outcome": "ok",
+   "input_tokens": 8205,
+   "cached_input_tokens": 4345,
+   "output_tokens": 2137,
+   "cost_usd": 0.001498,
+   "seconds": 15.2,
+   "guard_rejections": 0,
+   "looks": [
+    {
+     "vibe": "Classic",
+     "headline": "Open-collar shirt, pleated trousers, loafers",
+     "why": "An open collar and tailored trousers land neatly at smart casual for a wine-bar date.",
+     "effortless_because": "Leave the collar open and sleeves casually rolled.",
+     "shoes_tip": "Loafers feel smart without fuss; try clean white sneakers for softer polish.",
+     "pieces": [
+      "white open-collar shirt",
+      "charcoal relaxed trousers",
+      "black loafers",
+      "navy wool coat"
+     ]
+    },
+    {
+     "vibe": "Effortless",
+     "headline": "Soft knit, relaxed jeans, blazer",
+     "why": "A soft knit relaxes the blazer, while dark denim keeps the date look considered.",
+     "effortless_because": "Push up the blazer sleeves and let the knit sit naturally.",
+     "shoes_tip": "Loafers sharpen the denim; clean white sneakers make it more laid-back.",
+     "pieces": [
+      "cream crewneck knit",
+      "dark straight-leg jeans",
+      "navy blazer",
+      "black loafers"
+     ]
+    },
+    {
+     "vibe": "A little bold",
+     "headline": "Black tee, wide trousers, suede jacket",
+     "why": "The warm suede jacket is the single texture-led risk, balanced by clean neutral basics.",
+     "effortless_because": "Keep the tee untucked and the jacket open.",
+     "shoes_tip": "Low-heeled boots add a little edge; loafers keep the line quieter.",
+     "pieces": [
+      "black fitted tee",
+      "stone wide-leg trousers",
+      "brown suede jacket",
+      "black boots",
+      "simple silver chain"
+     ]
+    }
+   ],
+   "brief": [
+    {
+     "title": "First date at a wine bar",
+     "dress_code": "smart casual",
+     "effort": 3
+    }
+   ],
+   "score": {
+    "fits_occasion": 4,
+    "distinct_looks": 4,
+    "explanations": 4,
+    "note": "All three are wearable smart-casual options with useful styling rationale; the silhouettes differ, though the repeated loafers and navy tailoring make the first two feel a little close."
+   }
+  },
+  {
+   "effort": "low",
+   "occasion": "Coffee chat with a consulting firm at 10am",
+   "outcome": "ok",
+   "input_tokens": 8131,
+   "cached_input_tokens": 4343,
+   "output_tokens": 2130,
+   "cost_usd": 0.001487,
+   "seconds": 14.3,
+   "guard_rejections": 0,
+   "looks": [
+    {
+     "vibe": "Classic",
+     "headline": "Navy blazer, white shirt, relaxed trousers",
+     "why": "A crisp shirt and tailored layers feel credible for a consulting coffee chat without reading too formal.",
+     "effortless_because": "Leave the collar open and let the trousers drape easily.",
+     "shoes_tip": "Loafers keep it polished but approachable; sleek flats work too.",
+     "pieces": [
+      "navy blazer",
+      "white button-down shirt",
+      "charcoal relaxed trousers",
+      "black loafers"
+     ]
+    },
+    {
+     "vibe": "Effortless",
+     "headline": "Knit, open-collar shirt, wide-leg trousers",
+     "why": "A relaxed knit-and-shirt layer balances crisp trousers for an easy, business-casual conversation.",
+     "effortless_because": "Let the shirt hem peek out and keep the collar open.",
+     "shoes_tip": "Clean leather sneakers soften the tailoring; loafers would sharpen it.",
+     "pieces": [
+      "charcoal crewneck knit",
+      "white button-down shirt",
+      "black wide-leg trousers",
+      "white leather sneakers",
+      "navy blazer"
+     ]
+    },
+    {
+     "vibe": "A little bold",
+     "headline": "Blue shirt, pleated trousers, loafers",
+     "why": "A soft-blue shirt is the single color note; generous trousers and a blazer keep it business casual.",
+     "effortless_because": "Roll the cuffs once and wear the shirt slightly open at the neck.",
+     "shoes_tip": "Loafers make the wide leg feel grounded; low-profile sneakers are an easy swap.",
+     "pieces": [
+      "pale blue button-down shirt",
+      "black wide-leg trousers",
+      "black loafers",
+      "navy blazer"
+     ]
+    }
+   ],
+   "brief": [
+    {
+     "title": "Consulting firm coffee chat",
+     "dress_code": "business casual",
+     "effort": 4
+    }
+   ],
+   "score": {
+    "fits_occasion": 4,
+    "distinct_looks": 2,
+    "explanations": 4,
+    "note": "All three are appropriately polished for a 10am consulting coffee chat, but the second and third repeat the wide-leg trousers and navy blazer, so the options feel less distinct than their labels suggest."
+   }
+  },
+  {
+   "effort": "low",
+   "occasion": "Lunch with my partner's parents on Sunday",
+   "outcome": "ok",
+   "input_tokens": 8050,
+   "cached_input_tokens": 4344,
+   "output_tokens": 1962,
+   "cost_usd": 0.001395,
+   "seconds": 14.0,
+   "guard_rejections": 0,
+   "looks": [
+    {
+     "vibe": "Classic",
+     "headline": "Open-collar shirt, trousers, loafers",
+     "why": "An open collar and tailored layers feel thoughtful and smart without reading formal.",
+     "effortless_because": "Leave the top button open and sleeves softly rolled.",
+     "shoes_tip": "Loafers feel polished; clean leather sneakers are an easy alternative.",
+     "pieces": [
+      "white button-down shirt",
+      "charcoal relaxed trousers",
+      "black loafers",
+      "navy wool coat"
+     ]
+    },
+    {
+     "vibe": "Effortless",
+     "headline": "Knit, wide trousers, clean sneakers",
+     "why": "A neat knit with easy trousers lands comfortably smart for a relaxed family lunch.",
+     "effortless_because": "Let the knit sit naturally; keep the sneakers crisp.",
+     "shoes_tip": "Clean sneakers keep it relaxed; loafers sharpen it slightly.",
+     "pieces": [
+      "cream crewneck knit",
+      "dark relaxed trousers",
+      "white leather sneakers",
+      "navy wool coat"
+     ]
+    },
+    {
+     "vibe": "A little bold",
+     "headline": "Blue shirt, pleated trousers, loafers",
+     "why": "The unexpected muted blue shirt adds one subtle color note while the relaxed trousers keep it easy.",
+     "effortless_because": "Half-tuck the shirt and keep the rest of the palette quiet.",
+     "shoes_tip": "Loafers ground the color; white sneakers make the outfit more casual.",
+     "pieces": [
+      "white button-down shirt",
+      "olive wide-leg trousers",
+      "black loafers",
+      "navy wool coat"
+     ]
+    }
+   ],
+   "brief": [
+    {
+     "title": "Lunch with your partner’s parents",
+     "dress_code": "smart casual",
+     "effort": 4
+    }
+   ],
+   "score": {
+    "fits_occasion": 4,
+    "distinct_looks": 3,
+    "explanations": 3,
+    "note": "All three are appropriately smart-casual, but the first and third repeat the same white shirt, black loafers, and navy coat, and the third’s blue-shirt rationale contradicts its listed white shirt."
+   }
+  },
+  {
+   "effort": "low",
+   "occasion": "Friend's garden wedding, ceremony at 4pm",
+   "outcome": "ok",
+   "input_tokens": 8143,
+   "cached_input_tokens": 4342,
+   "output_tokens": 2168,
+   "cost_usd": 0.001507,
+   "seconds": 14.9,
+   "guard_rejections": 0,
+   "looks": [
+    {
+     "vibe": "Classic",
+     "headline": "Navy blazer, white shirt, charcoal trousers",
+     "why": "A tailored blazer and crisp shirt feel polished for cocktail attire without relying on a very high heel.",
+     "effortless_because": "Keep the shirt open at the collar and sleeves softly rolled.",
+     "shoes_tip": "Loafers keep this cocktail-ready; pointed flats are an easy alternative.",
+     "pieces": [
+      "navy blazer",
+      "white button-down shirt",
+      "charcoal relaxed trousers",
+      "black leather loafers",
+      "simple silver watch"
+     ]
+    },
+    {
+     "vibe": "Effortless",
+     "headline": "Cream knit, flowing midi skirt, boots",
+     "why": "A fluid skirt and refined knit strike an easy cocktail balance, with a warm coat for the cool evening.",
+     "effortless_because": "A relaxed knit tucked just at the front keeps the shape unstudied.",
+     "shoes_tip": "Ankle boots feel grounded and garden-friendly; sleek loafers also work.",
+     "pieces": [
+      "cream fine-gauge knit",
+      "black flowing midi skirt",
+      "camel wool coat",
+      "black ankle boots",
+      "small black shoulder bag"
+     ]
+    },
+    {
+     "vibe": "A little bold",
+     "headline": "Black dress, blazer, sleek flats",
+     "why": "A clean midi dress and tailored layer meet cocktail polish, while the open-back detail gives one quiet surprise.",
+     "effortless_because": "Let the blazer sit open and keep jewelry minimal.",
+     "shoes_tip": "Pointed flats keep the line sharp without height; loafers are a relaxed alternative.",
+     "pieces": [
+      "simple black midi dress",
+      "navy blazer",
+      "black pointed flats",
+      "silver drop earrings"
+     ]
+    }
+   ],
+   "brief": [
+    {
+     "title": "Friend’s garden wedding",
+     "dress_code": "cocktail",
+     "effort": 5
+    }
+   ],
+   "score": {
+    "fits_occasion": 2,
+    "distinct_looks": 3,
+    "explanations": 3,
+    "note": "The looks are wearable and distinct, but they underdeliver on a high-effort cocktail garden wedding: the first reads more business-casual, while the second and third need dressier, more celebratory fabrics and finishing touches."
+   }
+  },
+  {
+   "effort": "low",
+   "occasion": "Job interview at a tech company, 2pm",
+   "outcome": "ok",
+   "input_tokens": 18512,
+   "cached_input_tokens": 12172,
+   "output_tokens": 4431,
+   "cost_usd": 0.002971,
+   "seconds": 26.9,
+   "guard_rejections": 1,
+   "looks": [
+    {
+     "vibe": "Classic",
+     "headline": "Navy blazer, white shirt, charcoal trousers",
+     "why": "A crisp shirt and structured blazer give a business-professional interview calm authority.",
+     "effortless_because": "Leave the collar open and let the trousers fall cleanly.",
+     "shoes_tip": "Loafers feel polished and walkable; plain leather derbies are an easy alternative.",
+     "pieces": [
+      "navy blazer",
+      "white button-down shirt",
+      "charcoal tailored trousers",
+      "black leather loafers",
+      "black leather belt"
+     ]
+    },
+    {
+     "vibe": "Effortless",
+     "headline": "Soft knit, blazer, taupe trousers",
+     "why": "A polished blazer with a soft knit feels approachable while staying interview-ready.",
+     "effortless_because": "Push the knit cuffs up slightly and keep the styling spare.",
+     "shoes_tip": "Loafers keep the knit-and-blazer mix grounded; leather derbies work just as well.",
+     "pieces": [
+      "navy blazer",
+      "cream fine-gauge knit",
+      "taupe relaxed tailored trousers",
+      "black leather loafers",
+      "simple silver watch"
+     ]
+    },
+    {
+     "vibe": "A little bold",
+     "headline": "Black turtleneck, camel blazer, navy trousers",
+     "why": "The camel-and-navy contrast gives a minimal interview uniform one thoughtful color risk, with tailoring kept professional.",
+     "effortless_because": "Keep the turtleneck fine and the trousers softly relaxed.",
+     "shoes_tip": "Loafers keep the color contrast understated; plain leather derbies add formality.",
+     "pieces": [
+      "camel blazer",
+      "black fine-gauge turtleneck",
+      "navy relaxed tailored trousers",
+      "black leather loafers",
+      "black leather belt"
+     ]
+    }
+   ],
+   "brief": [
+    {
+     "title": "Tech company job interview",
+     "dress_code": "business professional",
+     "effort": 4
+    }
+   ],
+   "score": {
+    "fits_occasion": 4,
+    "distinct_looks": 3,
+    "explanations": 4,
+    "note": "All three are credible interview outfits, though the open collar and relaxed trousers lean slightly less business-professional; the knit and turtleneck options offer modest but wearable variation, with clear, useful styling rationale."
+   }
+  },
+  {
+   "effort": "medium",
+   "occasion": "First date tomorrow, 7pm at a wine bar",
+   "outcome": "ok",
+   "input_tokens": 8217,
+   "cached_input_tokens": 2240,
+   "output_tokens": 3036,
+   "cost_usd": 0.002138,
+   "seconds": 22.1,
+   "guard_rejections": 0,
+   "looks": [
+    {
+     "vibe": "Classic",
+     "headline": "Blue Oxford, relaxed trousers, wool coat",
+     "why": "An open collar and clean tailoring feel considered but right for a smart-casual wine bar.",
+     "effortless_because": "Leave the collar open and softly half-tuck the shirt.",
+     "shoes_tip": "Loafers keep it date-ready; dark leather boots also work.",
+     "pieces": [
+      "light blue Oxford shirt",
+      "charcoal relaxed trousers",
+      "navy wool coat",
+      "dark brown loafers",
+      "brown leather belt"
+     ]
+    },
+    {
+     "vibe": "Effortless",
+     "headline": "White tee, dark jeans, wool coat",
+     "why": "The neat coat balances easy denim and a tee for a relaxed but intentional first-date look.",
+     "effortless_because": "Keep the tee untucked and let the jeans sit naturally.",
+     "shoes_tip": "Loafers polish the denim; clean white sneakers make it more relaxed.",
+     "pieces": [
+      "white crewneck tee",
+      "dark straight-leg jeans",
+      "navy wool coat",
+      "dark brown loafers"
+     ]
+    },
+    {
+     "vibe": "A little bold",
+     "headline": "Green knit polo, relaxed trousers, coat",
+     "why": "A forest-green knit brings one quiet color statement while relaxed trousers keep the look easy.",
+     "effortless_because": "Leave the polo collar open and skip extra accessories.",
+     "shoes_tip": "Leather boots sharpen the relaxed trousers; loafers soften the contrast.",
+     "pieces": [
+      "forest green knit polo",
+      "stone relaxed trousers",
+      "navy wool coat",
+      "black leather boots",
+      "brown leather belt"
+     ]
+    }
+   ],
+   "brief": [
+    {
+     "title": "First date at a wine bar",
+     "dress_code": "smart casual",
+     "effort": 3
+    }
+   ],
+   "score": {
+    "fits_occasion": 4,
+    "distinct_looks": 4,
+    "explanations": 4,
+    "note": "All three are well-calibrated smart casual options for a wine-bar date, with useful styling details; the tee-and-jeans look is a bit close to the classic coat-and-trousers formula, and the first look’s half-tuck may feel fussy with an Oxford."
+   }
+  },
+  {
+   "effort": "medium",
+   "occasion": "Coffee chat with a consulting firm at 10am",
+   "outcome": "ok",
+   "input_tokens": 12899,
+   "cached_input_tokens": 7735,
+   "output_tokens": 4563,
+   "cost_usd": 0.002875,
+   "seconds": 29.3,
+   "guard_rejections": 0,
+   "looks": [
+    {
+     "vibe": "Classic",
+     "headline": "Oxford shirt, tailored trousers, navy blazer",
+     "why": "A sharp blazer and relaxed trousers feel right for a consulting coffee chat without reading too formal.",
+     "effortless_because": "Leave the collar open and half-tuck the shirt.",
+     "shoes_tip": "Loafers keep it polished; leather derbies are an easy alternative.",
+     "pieces": [
+      "white oxford shirt",
+      "charcoal relaxed trousers",
+      "navy blazer",
+      "black leather loafers",
+      "black leather belt"
+     ]
+    },
+    {
+     "vibe": "Effortless",
+     "headline": "Oxford shirt, dark jeans, wool coat",
+     "why": "Dark denim and a wool coat soften the polish while staying neat enough for an informal business chat.",
+     "effortless_because": "Half-tuck the shirt and leave the coat open.",
+     "shoes_tip": "Clean leather sneakers relax dark denim; loafers sharpen it a notch.",
+     "pieces": [
+      "white oxford shirt",
+      "dark straight-leg jeans",
+      "camel wool coat",
+      "white leather sneakers",
+      "black leather belt"
+     ]
+    },
+    {
+     "vibe": "A little bold",
+     "headline": "Burgundy knit, relaxed trousers, wool coat",
+     "why": "One muted burgundy knit brings personality, balanced by business-ready navy trousers and a dark coat.",
+     "effortless_because": "Choose a soft knit and leave the coat unbuttoned.",
+     "shoes_tip": "Ankle boots keep the line clean; loafers make it more familiar.",
+     "pieces": [
+      "burgundy merino crewneck",
+      "navy relaxed trousers",
+      "charcoal wool coat",
+      "black leather ankle boots",
+      "black leather belt"
+     ]
+    }
+   ],
+   "brief": [
+    {
+     "title": "Consulting firm coffee chat",
+     "dress_code": "business casual",
+     "effort": 4
+    }
+   ],
+   "score": {
+    "fits_occasion": 4,
+    "distinct_looks": 4,
+    "explanations": 4,
+    "note": "All three are polished and wearable for a business-casual coffee chat; the blazer look is safest, while dark jeans with sneakers may be a little casual depending on the firm, and half-tucking an Oxford can look less intentional than wearing it neatly untucked or fully tucked."
+   }
+  },
+  {
+   "effort": "medium",
+   "occasion": "Lunch with my partner's parents on Sunday",
+   "outcome": "ok",
+   "input_tokens": 8213,
+   "cached_input_tokens": 4344,
+   "output_tokens": 2850,
+   "cost_usd": 0.001856,
+   "seconds": 20.7,
+   "guard_rejections": 0,
+   "looks": [
+    {
+     "vibe": "Classic",
+     "headline": "Open-collar shirt, pleated trousers, blazer",
+     "why": "A crisp open collar and tailored layers feel thoughtful and right for meeting parents over lunch.",
+     "effortless_because": "Leave the collar open and let the shirt sit softly at the waist.",
+     "shoes_tip": "Loafers keep it polished; clean leather sneakers are an easier alternative.",
+     "pieces": [
+      "white button-up shirt",
+      "navy relaxed pleated trousers",
+      "charcoal blazer",
+      "camel wool coat",
+      "black loafers",
+      "black leather belt"
+     ]
+    },
+    {
+     "vibe": "Effortless",
+     "headline": "White tee, dark jeans, blazer",
+     "why": "The tee and denim loosen the blazer, while dark washes keep lunch with parents smart casual.",
+     "effortless_because": "Half-tuck the tee and push up the blazer sleeves for an easy finish.",
+     "shoes_tip": "Ankle boots sharpen the denim; white sneakers make it more relaxed.",
+     "pieces": [
+      "white crew-neck tee",
+      "dark straight-leg jeans",
+      "charcoal blazer",
+      "camel wool coat",
+      "black leather ankle boots"
+     ]
+    },
+    {
+     "vibe": "A little bold",
+     "headline": "Burgundy knit, olive trousers, blazer",
+     "why": "A single deep color gives the familiar tailored layers personality without overshooting smart casual.",
+     "effortless_because": "Keep the knit untucked and let its texture do the talking.",
+     "shoes_tip": "Ankle boots ground the color; loafers are a slightly dressier alternative.",
+     "pieces": [
+      "burgundy crew-neck knit",
+      "olive relaxed trousers",
+      "charcoal blazer",
+      "camel wool coat",
+      "black leather ankle boots"
+     ]
+    }
+   ],
+   "brief": [
+    {
+     "title": "Lunch with your partner’s parents",
+     "dress_code": "smart casual",
+     "effort": 4
+    }
+   ],
+   "score": {
+    "fits_occasion": 4,
+    "distinct_looks": 4,
+    "explanations": 4,
+    "note": "All three feel appropriately smart-casual and the classic, denim, and color-led options are meaningfully distinct, though repeated blazer-and-coat layering makes them less varied."
+   }
+  },
+  {
+   "effort": "medium",
+   "occasion": "Friend's garden wedding, ceremony at 4pm",
+   "outcome": "ok",
+   "input_tokens": 12265,
+   "cached_input_tokens": 7797,
+   "output_tokens": 4344,
+   "cost_usd": 0.002696,
+   "seconds": 30.6,
+   "guard_rejections": 0,
+   "looks": [
+    {
+     "vibe": "Classic",
+     "headline": "White shirt, charcoal trousers, navy blazer",
+     "why": "A crisp shirt, tailored layers, and relaxed trousers meet cocktail dress code with understated polish.",
+     "effortless_because": "Leave the collar open and sleeves softly rolled indoors.",
+     "shoes_tip": "Leather loafers feel polished on garden paths; sleek ankle boots also work.",
+     "pieces": [
+      "white button-down shirt",
+      "charcoal relaxed wool trousers",
+      "navy blazer",
+      "charcoal wool coat",
+      "black leather loafers",
+      "black leather belt"
+     ]
+    },
+    {
+     "vibe": "Effortless",
+     "headline": "Cream knit, navy trousers, easy tailoring",
+     "why": "A soft knit loosens the tailoring while the blazer and wool trousers still read cocktail-appropriate.",
+     "effortless_because": "Wear the knit untucked and let its texture do the work.",
+     "shoes_tip": "Loafers keep the knit relaxed but wedding-ready; choose polished Chelsea boots instead.",
+     "pieces": [
+      "cream knit polo",
+      "navy relaxed wool trousers",
+      "navy blazer",
+      "charcoal wool coat",
+      "black leather loafers"
+     ]
+    },
+    {
+     "vibe": "A little bold",
+     "headline": "Burgundy shirt, black trousers, navy blazer",
+     "why": "One deep color gives the clean tailoring a subtle focal point without outrunning cocktail dress code.",
+     "effortless_because": "Keep the shirt open at the neck and skip extra accessories.",
+     "shoes_tip": "Polished loafers ground the color; black Chelsea boots are another easy option.",
+     "pieces": [
+      "burgundy button-down shirt",
+      "black relaxed wool trousers",
+      "navy blazer",
+      "charcoal wool coat",
+      "black leather loafers"
+     ]
+    }
+   ],
+   "brief": [
+    {
+     "title": "Friend’s garden wedding",
+     "dress_code": "cocktail",
+     "effort": 5
+    }
+   ],
+   "score": {
+    "fits_occasion": 2,
+    "distinct_looks": 2,
+    "explanations": 3,
+    "note": "The tailoring is neat, but all three outfits read more like smart officewear than high-effort cocktail wedding attire; add a dressier shirt or refined accessories, and vary the silhouettes or color story more substantially."
+   }
+  },
+  {
+   "effort": "medium",
+   "occasion": "Job interview at a tech company, 2pm",
+   "outcome": "ok",
+   "input_tokens": 8225,
+   "cached_input_tokens": 4343,
+   "output_tokens": 3065,
+   "cost_usd": 0.001964,
+   "seconds": 20.6,
+   "guard_rejections": 0,
+   "looks": [
+    {
+     "vibe": "Classic",
+     "headline": "White shirt, tailored trousers, navy blazer",
+     "why": "A crisp shirt and structured blazer meet business-professional expectations without feeling corporate-heavy.",
+     "effortless_because": "Leave the collar open and keep the shirt softly tucked.",
+     "shoes_tip": "Loafers keep it polished without heels; plain leather derbies also work.",
+     "pieces": [
+      "white button-down shirt",
+      "charcoal relaxed trousers",
+      "navy blazer",
+      "black leather loafers",
+      "charcoal wool coat"
+     ]
+    },
+    {
+     "vibe": "Effortless",
+     "headline": "Open-collar shirt, relaxed trousers, blazer",
+     "why": "Relaxed-cut trousers soften a polished blazer-and-shirt pairing while staying interview-ready.",
+     "effortless_because": "Roll the cuffs once and leave the top button open.",
+     "shoes_tip": "Leather loafers read professional but easy; black derbies are a sharper alternative.",
+     "pieces": [
+      "white button-down shirt",
+      "navy relaxed trousers",
+      "navy blazer",
+      "dark brown leather loafers",
+      "camel wool coat"
+     ]
+    },
+    {
+     "vibe": "A little bold",
+     "headline": "Forest knit, charcoal trousers, navy blazer",
+     "why": "A forest-green knit adds one quiet point of personality beneath a professional blazer.",
+     "effortless_because": "Fine-gauge texture keeps the color statement understated.",
+     "shoes_tip": "Black loafers ground the color; plain black derbies are another safe choice.",
+     "pieces": [
+      "forest green fine-gauge knit",
+      "charcoal relaxed trousers",
+      "navy blazer",
+      "black leather loafers",
+      "charcoal wool coat"
+     ]
+    }
+   ],
+   "brief": [
+    {
+     "title": "Tech company job interview",
+     "dress_code": "business professional",
+     "effort": 4
+    }
+   ],
+   "score": {
+    "fits_occasion": 4,
+    "distinct_looks": 2,
+    "explanations": 4,
+    "note": "All three are polished and appropriate, though the first two are very similar blazer-and-white-shirt combinations; the green knit gives the strongest distinct alternative, and a fully tucked shirt with a belt would make the first look feel more interview-ready."
+   }
+  }
+ ]
+}
