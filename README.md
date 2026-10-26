@@ -5,7 +5,7 @@ dressed-up to be (dress code **and** effort level), then give you **three looks 
 A little bold — built from basics you probably already own**, with shoe advice and easy swaps. Still
 unsure? Want it all built around one color (say, sage)? Pick it, and every look and color palette uses it.
 Tap the ✦ wand (bottom right) to chat with your personal stylist about anything — "what goes with wide-leg
-jeans?", "청바지 입어도 돼?", "which of these three would you pick?" — and get short answers, with outfit
+jeans?", "which of these three would you pick?" — and get short answers, with outfit
 sketches when it suggests a look.
 
 The idea: you don't need a big wardrobe to look stylish — you need a plan. No sign-up, no closet to
